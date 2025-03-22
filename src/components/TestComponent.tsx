@@ -1,5 +1,5 @@
-import React from 'react'
-import CustomButton from './CustomButton'
+import React from "react";
+import CustomButton from "./CustomButton";
 
 export default function TestComponent() {
   return (
@@ -7,5 +7,5 @@ export default function TestComponent() {
       <h3>Hola soy un componente de react :D</h3>
       <CustomButton />
     </div>
-  )
+  );
 }
