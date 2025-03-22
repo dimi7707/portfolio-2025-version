@@ -8,8 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "biome format": "bunx biome format --write",
-    "biome lint": "bunx biome --write",
-    "biome fix all": "bunx biome check --write"
+    "biome lint": "bunx biome lint --write"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",

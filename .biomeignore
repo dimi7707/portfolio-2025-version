@@ -1,0 +1,5 @@
+# .biomeignore
+.astro/
+node_modules/
+dist/
+src/
