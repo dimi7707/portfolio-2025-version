@@ -5,11 +5,8 @@ import styles from "./CustomButton.module.scss";
 export default function CustomButton() {
   return (
     <div>
-      <button
-        type="button"
-        className={styles.button}
-      >
-          Hola soy un botón feliz :)
+      <button type="button" className={styles.button}>
+        Hola soy un botón feliz :)
       </button>
     </div>
   );
