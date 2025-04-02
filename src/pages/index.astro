@@ -1,6 +1,7 @@
 ---
-import TestComponent from "../components/TestComponent";
-import Welcome from "../components/Welcome.astro";
+import Navbar from "../components/Navbar/Navbar.tsx";
+//import TestComponent from "../components/TestComponent";
+//import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -8,6 +9,8 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<!--  <Welcome /> 
 	<TestComponent />
+	-->
+	<Navbar client:load />
 </Layout>
