@@ -1,0 +1,96 @@
+@use './../../styles/global.scss' as *;
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      position: relative;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #00fff7;
+        left: 0;
+        bottom: -4px;
+        transition: width 0.3s ease;
+      }
+  
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+  
+  .active {
+    color: #00fff7;
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  
+    span {
+      width: 25px;
+      height: 2px;
+      background: white;
+      display: block;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navList {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      display: none;
+    }
+  
+    .open {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  }
+  
