@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import styles from './Navbar.module.scss';
+import { useState, useEffect } from "react";
+import styles from "./Navbar.module.scss";
 
-const sections = ['home', 'work', 'contact'];
+const sections = ["home", "work", "contact"];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,23 +20,25 @@ const Navbar = () => {
         return scrollY >= offset - 100 && scrollY < nextOffset - 100;
       });
 
-      setActiveSection(sections[current] || 'home');
+      setActiveSection(sections[current] || "home");
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <h1 className={styles.logo}>Mi Nombre - probando el estilo de la fuente</h1>
+        <h1 className={styles.logo}>
+          Mi Nombre - probando el estilo de la fuente
+        </h1>
         <button
           className={styles.hamburger}
           onClick={() => {
-          alert('Hamburger clicked');
-            console.log('Hamburger clicked');
-            setMenuOpen(!menuOpen)
+            alert("Hamburger clicked");
+            console.log("Hamburger clicked");
+            setMenuOpen(!menuOpen);
           }}
           aria-label="Toggle menu"
         >
@@ -44,12 +46,12 @@ const Navbar = () => {
           <span />
           <span />
         </button>
-        <ul className={`${styles.navList} ${menuOpen ? styles.open : ''}`}>
+        <ul className={`${styles.navList} ${menuOpen ? styles.open : ""}`}>
           {sections.map((section) => (
             <li key={section}>
               <a
                 href={`#${section}`}
-                className={activeSection === section ? styles.active : ''}
+                className={activeSection === section ? styles.active : ""}
                 onClick={() => setMenuOpen(false)}
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
