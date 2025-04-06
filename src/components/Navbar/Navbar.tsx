@@ -31,13 +31,11 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
         <h1 className={styles.logo}>
-          Mi Nombre - probando el estilo de la fuente
+          Software Developer
         </h1>
         <button
           className={styles.hamburger}
           onClick={() => {
-            alert("Hamburger clicked");
-            console.log("Hamburger clicked");
             setMenuOpen(!menuOpen);
           }}
           aria-label="Toggle menu"
