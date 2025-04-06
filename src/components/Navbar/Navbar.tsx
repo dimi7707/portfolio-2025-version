@@ -30,9 +30,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <h1 className={styles.logo}>
-          Software Developer
-        </h1>
+        <h1 className={styles.logo}>Software Developer</h1>
         <button
           className={styles.hamburger}
           onClick={() => {
