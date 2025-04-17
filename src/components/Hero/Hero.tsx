@@ -1,14 +1,27 @@
+import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import styles from "./Hero.module.scss";
 
 const Hero = () => {
+  const [text] = useTypewriter({
+    words: ['Dimitri Avila', 'Software Developer', 'Full Stack Developer'],
+    loop: 0,
+    typeSpeed: 100,
+    deleteSpeed: 50,
+    delaySpeed: 2000,
+  });
+
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
-        <h1 className={styles.title}>Tu Nombre</h1>
+        <h1 className={styles.title}>
+          <span>{text}</span>
+          <Cursor cursorColor="#1a202c" />
+        </h1>
         <h2 className={styles.subtitle}>Desarrollador Web Full Stack</h2>
         <p className={styles.description}>
           Apasionado por crear experiencias digitales únicas y funcionales.
-          Especializado en desarrollo frontend y backend con las últimas tecnologías.
+          Especializado en desarrollo frontend y backend con las últimas
+          tecnologías.
         </p>
       </div>
       <div className={styles.heroImage}>

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",
-    "astro": "^5.5.3"
+    "astro": "^5.5.3",
+    "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
