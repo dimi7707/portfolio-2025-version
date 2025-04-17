@@ -1,5 +1,5 @@
-import React from 'react';
-import './Footer.scss';
+import React from "react";
+import "./Footer.scss";
 
 const sections = ["home", "work", "contact"];
 
@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
