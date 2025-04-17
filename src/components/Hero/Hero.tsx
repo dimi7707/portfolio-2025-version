@@ -1,9 +1,9 @@
-import { useTypewriter, Cursor } from 'react-simple-typewriter';
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 import styles from "./Hero.module.scss";
 
 const Hero = () => {
   const [text] = useTypewriter({
-    words: ['Dimitri Avila', 'Software Developer', 'Full Stack Developer'],
+    words: ["Dimitri Avila", "Software Developer", "Full Stack Developer"],
     loop: 0,
     typeSpeed: 100,
     deleteSpeed: 50,
