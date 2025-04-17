@@ -1,17 +1,13 @@
 ---
-import Navbar from "../components/Navbar/Navbar.tsx";
+import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero/Hero.tsx";
 import CareerTimeLine from "../components/CareerTimeLine/CareerTimeLine.tsx";
-import Layout from "../layouts/Layout.astro";
-import Footer from "../components/Footer/Footer.tsx";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Navbar client:load />
 	<Hero client:load />
 	<CareerTimeLine client:load />
-	<Footer client:load />
 </Layout>
