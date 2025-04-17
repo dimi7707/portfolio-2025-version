@@ -1,0 +1,244 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 1rem;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    justify-content: flex-start;
+  }
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding-top: 2rem;
+  }
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a202c;
+  line-height: 1.2;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 2rem;
+    order: -1;
+  }
+}
+
+.image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+.codeElement {
+  position: absolute;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+    font-size: 0.8rem;
+  }
+  
+  &.react,
+  &.typescript,
+  &.javascript,
+  &.next {
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &.react {
+    top: 15%;
+    right: 5%;
+    transform: rotate(15deg);
+
+    @media (max-width: 768px) {
+      top: 20%;
+      right: 10%;
+      transform: rotate(10deg);
+    }
+  }
+  
+  &.typescript {
+    top: 35%;
+    right: 8%;
+    transform: rotate(-10deg);
+
+    @media (max-width: 768px) {
+      top: 40%;
+      right: 15%;
+      transform: rotate(-8deg);
+    }
+  }
+  
+  &.javascript {
+    top: 25%;
+    right: 20%;
+    transform: rotate(8deg);
+
+    @media (max-width: 768px) {
+      top: 60%;
+      right: 10%;
+      transform: rotate(5deg);
+    }
+  }
+  
+  &.next {
+    top: 75%;
+    right: 5%;
+    transform: rotate(-5deg);
+
+    @media (max-width: 768px) {
+      top: 80%;
+      right: 15%;
+      transform: rotate(-3deg);
+    }
+  }
+
+  &.node {
+    top: 55%;
+    right: 12%;
+    transform: rotate(5deg);
+  }
+
+  &.css {
+    top: 45%;
+    right: 25%;
+    transform: rotate(-12deg);
+  }
+
+  &.html {
+    top: 65%;
+    right: 18%;
+    transform: rotate(3deg);
+  }
+
+  &.git {
+    top: 85%;
+    right: 50%;
+    transform: rotate(-7deg);
+  }
+
+  &.python {
+    top: 40%;
+    right: 30%;
+    transform: rotate(10deg);
+  }
+
+  &.docker {
+    top: 60%;
+    right: 32%;
+    transform: rotate(-8deg);
+  }
+
+  &.mongodb {
+    top: 80%;
+    right: 28%;
+    transform: rotate(6deg);
+  }
+
+  &.reactLeft {
+    top: 20%;
+    left: 5%;
+    transform: rotate(-8deg);
+  }
+
+  &.reactBottom {
+    bottom: 10%;
+    left: 8%;
+    transform: rotate(12deg);
+  }
+
+
+  &.tsBottom {
+    bottom: 25%;
+    left: 5%;
+    transform: rotate(-15deg);
+  }
+}
