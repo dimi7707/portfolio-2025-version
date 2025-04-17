@@ -1,7 +1,19 @@
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.scss";
 
-const sections = ["home", "work", "contact"];
+interface Section {
+  name: string;
+  type: "section" | "page";
+  path?: string;
+}
+
+const sections: Section[] = [
+  { name: "home", type: "section" },
+  { name: "work", type: "section" },
+  { name: "about", type: "page", path: "/about" },
+  { name: "blog", type: "page", path: "/blog" },
+  { name: "contact", type: "section" },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,17 +22,22 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const offsets = sections.map((id) => {
-        const el = document.getElementById(id);
-        return el ? el.offsetTop : 0;
-      });
+      const offsets = sections
+        .filter((section) => section.type === "section")
+        .map(({ name }) => {
+          const el = document.getElementById(name);
+          return el ? el.offsetTop : 0;
+        });
 
       const current = offsets.findIndex((offset, i) => {
-        const nextOffset = offsets[i + 1] || Infinity;
+        const nextOffset = offsets[i + 1] || Number.POSITIVE_INFINITY;
         return scrollY >= offset - 100 && scrollY < nextOffset - 100;
       });
 
-      setActiveSection(sections[current] || "home");
+      const sectionNames = sections
+        .filter((s) => s.type === "section")
+        .map((s) => s.name);
+      setActiveSection(sectionNames[current] || "home");
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -44,14 +61,22 @@ const Navbar = () => {
         </button>
         <ul className={`${styles.navList} ${menuOpen ? styles.open : ""}`}>
           {sections.map((section) => (
-            <li key={section}>
-              <a
-                href={`#${section}`}
-                className={activeSection === section ? styles.active : ""}
-                onClick={() => setMenuOpen(false)}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </a>
+            <li key={section.name}>
+              {section.type === "section" ? (
+                <a
+                  href={`#${section.name}`}
+                  className={
+                    activeSection === section.name ? styles.active : ""
+                  }
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
+                </a>
+              ) : (
+                <a href={section.path} onClick={() => setMenuOpen(false)}>
+                  {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
+                </a>
+              )}
             </li>
           ))}
         </ul>

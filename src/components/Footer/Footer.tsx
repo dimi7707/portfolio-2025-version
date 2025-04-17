@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import "./Footer.scss";
 
 const sections = ["home", "work", "contact"];
