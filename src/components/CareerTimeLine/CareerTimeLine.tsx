@@ -53,38 +53,40 @@ const experiences: Experience[] = [
 const CareerTimeLine = () => {
   return (
     <div className={styles.timelineContainer}>
-      <h2 className={styles.title}>Experiencia Laboral</h2>
-      <div className={styles.timeline}>
-        {experiences.map((exp, index) => (
-          <div key={index} className={styles.timelineItem}>
-            <div className={styles.timelineContent}>
-              <h3 className={styles.company}>{exp.company}</h3>
-              <h4 className={styles.position}>{exp.position}</h4>
-              <span className={styles.period}>{exp.period}</span>
-              <p className={styles.description}>{exp.description}</p>
+      <div className={styles.timelineWrapper}>
+        <h2 className={styles.title}>Experiencia Laboral</h2>
+        <div className={styles.timeline}>
+          {experiences.map((exp, index) => (
+            <div key={index} className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <h3 className={styles.company}>{exp.company}</h3>
+                <h4 className={styles.position}>{exp.position}</h4>
+                <span className={styles.period}>{exp.period}</span>
+                <p className={styles.description}>{exp.description}</p>
 
-              <div className={styles.technologies}>
-                <h5>Tecnologías:</h5>
-                <div className={styles.techTags}>
-                  {exp.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className={styles.techTag}>
-                      {tech}
-                    </span>
-                  ))}
+                <div className={styles.technologies}>
+                  <h5>Tecnologías:</h5>
+                  <div className={styles.techTags}>
+                    {exp.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className={styles.techTag}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.achievements}>
+                  <h5>Logros:</h5>
+                  <ul>
+                    {exp.achievements.map((achievement, achIndex) => (
+                      <li key={achIndex}>{achievement}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-
-              <div className={styles.achievements}>
-                <h5>Logros:</h5>
-                <ul>
-                  {exp.achievements.map((achievement, achIndex) => (
-                    <li key={achIndex}>{achievement}</li>
-                  ))}
-                </ul>
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

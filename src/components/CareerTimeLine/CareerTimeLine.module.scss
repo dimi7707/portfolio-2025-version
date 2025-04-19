@@ -3,9 +3,31 @@
 @use 'sass:color';
 
 .timelineContainer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background-color: #f8f9fa;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 245, 245, 0.8) 100%);
+    z-index: -1;
+  }
+}
+
+.timelineWrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
+  position: relative;
 }
 
 .title {
