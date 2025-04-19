@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SkillChart from "../components/SkillChart/SkillChart.tsx";
+import AboutMeSection from "../components/AboutMeSection/AboutMeSection.tsx";
 ---
 
 <Layout>
-    <h1>About</h1>
+    <AboutMeSection client:load />
     <SkillChart client:load />
 </Layout>

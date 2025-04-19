@@ -1,0 +1,165 @@
+.aboutMeSection {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.leftColumn {
+  .title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 30px;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #636e72;
+  }
+}
+
+.rightColumn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image1, .image2, .image3 {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.image1 {
+  top: 10%;
+  left: 10%;
+  transform: rotate(-5deg);
+  z-index: 3;
+}
+
+.image2 {
+  top: 30%;
+  left: 40%;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+
+.image3 {
+  top: 15%;
+  left: 70%;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+
+.codeBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.code {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  color: #d4d4d4;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  opacity: 0.7;
+  transform: translateY(100%);
+  animation: scrollCode 20s linear infinite;
+}
+
+@keyframes scrollCode {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .leftColumn {
+    .title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .imageContainer {
+    padding-top: 120%;
+  }
+
+  .image1, .image2, .image3 {
+    width: 45%;
+    height: 45%;
+  }
+
+  .image1 {
+    top: 5%;
+    left: 5%;
+    transform: rotate(-3deg);
+    z-index: 2;
+  }
+
+  .image2 {
+    top: 5%;
+    left: 50%;
+    transform: rotate(2deg);
+    z-index: 2;
+  }
+
+  .image3 {
+    top: 40%;
+    left: 27.5%;
+    transform: rotate(-1deg);
+    z-index: 3;
+  }
+}
