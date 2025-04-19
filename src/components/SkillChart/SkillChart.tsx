@@ -81,84 +81,91 @@ const SkillChart = () => {
   };
 
   return (
-    <div className={styles.skillChart}>
-      <div className={styles.chartContainer}>
-        <svg width={radius * 2} height={radius * 2} className={styles.pieChart}>
-          {skills.map((skill, index) => {
-            const textPos = calculateTextPosition(index);
-            return (
-              <g
-                key={skill.name}
-                onMouseEnter={() => setHoveredSegment(index)}
-                onMouseLeave={() => setHoveredSegment(null)}
-                className={`${styles.segment} ${hoveredSegment === index ? styles.hovered : ""}`}
-              >
-                <path
-                  d={calculatePath(skill.percentage, index)}
-                  fill={skill.color}
-                  className={styles.pieSegment}
-                />
-                {hoveredSegment === index && (
-                  <g className={styles.percentageContainer}>
-                    <rect
-                      x={textPos.x - 30}
-                      y={textPos.y - 15}
-                      width={60}
-                      height={30}
-                      rx={15}
-                      fill="white"
-                      className={styles.percentageBackground}
-                    />
-                    <text
-                      x={textPos.x}
-                      y={textPos.y}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      className={styles.percentageText}
-                    >
-                      {skill.percentage}%
-                    </text>
-                  </g>
-                )}
-              </g>
-            );
-          })}
-          {skills.map((_, index) => {
-            if (index === 0) return null;
-            const angle = (currentAngle - gap) * (Math.PI / 180);
-            const x1 = center.x;
-            const y1 = center.y;
-            const x2 = center.x + radius * Math.cos(angle);
-            const y2 = center.y + radius * Math.sin(angle);
-            return (
-              <line
-                key={`separator-${index}`}
-                x1={x1}
-                y1={y1}
-                x2={x2}
-                y2={y2}
-                stroke="white"
-                strokeWidth="2"
-                className={styles.separator}
-              />
-            );
-          })}
-        </svg>
-        {skills.map((skill) => (
-          <div
-            key={skill.name}
-            className={`${styles.description} ${styles[skill.position]} ${
-              hoveredSegment === skills.indexOf(skill)
-                ? styles.hoveredDescription
-                : ""
-            }`}
+    <section>
+      <h1 className={styles.title}>Mi perfil de habilidades</h1>
+      <div className={styles.skillChart}>
+        <div className={styles.chartContainer}>
+          <svg
+            width={radius * 2}
+            height={radius * 2}
+            className={styles.pieChart}
           >
-            <h3>{skill.name}</h3>
-            <p>{skill.description}</p>
-          </div>
-        ))}
+            {skills.map((skill, index) => {
+              const textPos = calculateTextPosition(index);
+              return (
+                <g
+                  key={skill.name}
+                  onMouseEnter={() => setHoveredSegment(index)}
+                  onMouseLeave={() => setHoveredSegment(null)}
+                  className={`${styles.segment} ${hoveredSegment === index ? styles.hovered : ""}`}
+                >
+                  <path
+                    d={calculatePath(skill.percentage, index)}
+                    fill={skill.color}
+                    className={styles.pieSegment}
+                  />
+                  {hoveredSegment === index && (
+                    <g className={styles.percentageContainer}>
+                      <rect
+                        x={textPos.x - 30}
+                        y={textPos.y - 15}
+                        width={60}
+                        height={30}
+                        rx={15}
+                        fill="white"
+                        className={styles.percentageBackground}
+                      />
+                      <text
+                        x={textPos.x}
+                        y={textPos.y}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className={styles.percentageText}
+                      >
+                        {skill.percentage}%
+                      </text>
+                    </g>
+                  )}
+                </g>
+              );
+            })}
+            {skills.map((_, index) => {
+              if (index === 0) return null;
+              const angle = (currentAngle - gap) * (Math.PI / 180);
+              const x1 = center.x;
+              const y1 = center.y;
+              const x2 = center.x + radius * Math.cos(angle);
+              const y2 = center.y + radius * Math.sin(angle);
+              return (
+                <line
+                  key={`separator-${index}`}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke="white"
+                  strokeWidth="2"
+                  className={styles.separator}
+                />
+              );
+            })}
+          </svg>
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className={`${styles.description} ${styles[skill.position]} ${
+                hoveredSegment === skills.indexOf(skill)
+                  ? styles.hoveredDescription
+                  : ""
+              }`}
+            >
+              <h3>{skill.name}</h3>
+              <p>{skill.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
