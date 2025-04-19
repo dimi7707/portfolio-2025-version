@@ -1,0 +1,90 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/variables" as *;
+
+.contactSection {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.socialSection {
+  flex: 1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: $text-secondary;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialLink {
+  color: $text-primary;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.emailSection {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.emailButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, $accent-color, $secondary-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.buttonIcon {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .emailSection {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .socialIcons {
+    justify-content: center;
+  }
+}
+

@@ -1,0 +1,166 @@
+.skillChart {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.chartContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 150px 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.pieChart {
+  position: relative;
+  z-index: 1;
+  margin: 50px 0;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+}
+
+.segment {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.pieSegment {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+  
+  &:nth-child(1) {
+    background: hsl(0, 0%, 80%);
+    transform: rotate(0deg);
+  }
+  
+  &:nth-child(2) {
+    background: hsl(0, 0%, 60%);
+    transform: rotate(144deg);
+  }
+  
+  &:nth-child(3) {
+    background: hsl(0, 0%, 40%);
+    transform: rotate(252deg);
+  }
+  
+  &:nth-child(4) {
+    background: hsl(0, 0%, 20%);
+    transform: rotate(324deg);
+  }
+
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+
+  .segment:hover & {
+    filter: brightness(1.1) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.separator {
+  z-index: 3;
+  stroke-linecap: round;
+}
+
+.percentageContainer {
+  pointer-events: none;
+  position: relative;
+  z-index: 4;
+}
+
+.percentageBackground {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  .segment:hover & {
+    opacity: 1;
+  }
+}
+
+.percentageText {
+  font-size: 16px;
+  font-weight: bold;
+  fill: #333;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  .segment:hover & {
+    opacity: 1;
+  }
+}
+
+.description {
+  position: absolute;
+  max-width: 200px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
+
+.hoveredDescription {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 1);
+}
+
+.left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+}
+
+.bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 30px;
+}

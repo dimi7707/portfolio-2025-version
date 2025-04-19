@@ -11,7 +11,6 @@ const sections: Section[] = [
   { name: "home", type: "section" },
   { name: "work", type: "section" },
   { name: "about", type: "page", path: "/about" },
-  { name: "blog", type: "page", path: "/blog" },
   { name: "contact", type: "section" },
 ];
 
