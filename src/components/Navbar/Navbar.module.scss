@@ -19,17 +19,63 @@
     justify-content: space-between;
     position: relative;
   }
+
+  .navContent {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
   
   .logo {
     font-size: 1.5rem;
     color: $white;
     font-weight: 600;
   }
+
+  .navRight {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .languageSwitch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem;
+    border-radius: 50px;
+    position: relative;
+    gap: 0.25rem;
+  }
+
+  .languageButton {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    color: $white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+
+    &.active {
+      background: linear-gradient(45deg, $accent-color, $secondary-color);
+      color: white;
+      box-shadow: 0 2px 10px rgba(0, 255, 247, 0.3);
+    }
+
+    &:hover:not(.active) {
+      color: $accent-color;
+    }
+  }
   
   .navList {
     list-style: none;
     display: flex;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
   
     a {
       color: $white;
@@ -61,16 +107,18 @@
   .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0;
     z-index: 1001;
   
     span {
-      width: 25px;
-      height: 2px;
+      width: 100%;
+      height: 3px;
       background: $white;
       display: block;
       transition: all 0.3s ease;
@@ -78,7 +126,11 @@
   }
   
   @media (max-width: 768px) {
-    .navList {
+    .hamburger {
+      display: flex;
+    }
+
+    .navContent {
       position: fixed;
       top: 0;
       right: -100%;
@@ -90,20 +142,24 @@
       align-items: flex-start;
       padding: 5rem 2rem 2rem;
       transition: right 0.3s ease;
-      display: flex;
     }
-  
-    .open {
+
+    .navContent.open {
       right: 0;
     }
-  
-    .hamburger {
-      display: flex;
+
+    .navList {
+      flex-direction: column;
+      width: 100%;
     }
 
     .navList a {
       font-size: 1.2rem;
       padding: 0.5rem 0;
+    }
+
+    .languageSwitch {
+      margin-top: 2rem;
     }
   }
   

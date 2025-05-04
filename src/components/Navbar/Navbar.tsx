@@ -17,6 +17,7 @@ const sections: Section[] = [
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [language, setLanguage] = useState("en");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,42 +44,62 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "es" : "en");
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
         <h1 className={styles.logo}>Software Developer</h1>
         <button
           className={styles.hamburger}
-          onClick={() => {
-            setMenuOpen(!menuOpen);
-          }}
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <span />
-          <span />
-          <span />
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <ul className={`${styles.navList} ${menuOpen ? styles.open : ""}`}>
-          {sections.map((section) => (
-            <li key={section.name}>
-              {section.type === "section" ? (
-                <a
-                  href={`#${section.name}`}
-                  className={
-                    activeSection === section.name ? styles.active : ""
-                  }
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
-                </a>
-              ) : (
-                <a href={section.path} onClick={() => setMenuOpen(false)}>
-                  {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+        <div className={`${styles.navContent} ${menuOpen ? styles.open : ""}`}>
+          <ul className={styles.navList}>
+            {sections.map((section) => (
+              <li key={section.name}>
+                {section.type === "section" ? (
+                  <a
+                    href={`#${section.name}`}
+                    className={
+                      activeSection === section.name ? styles.active : ""
+                    }
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {section.name.charAt(0).toUpperCase() +
+                      section.name.slice(1)}
+                  </a>
+                ) : (
+                  <a href={section.path} onClick={() => setMenuOpen(false)}>
+                    {section.name.charAt(0).toUpperCase() +
+                      section.name.slice(1)}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+          <div className={styles.languageSwitch}>
+            <button
+              className={`${styles.languageButton} ${language === "en" ? styles.active : ""}`}
+              onClick={toggleLanguage}
+            >
+              EN
+            </button>
+            <button
+              className={`${styles.languageButton} ${language === "es" ? styles.active : ""}`}
+              onClick={toggleLanguage}
+            >
+              ES
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
   );
