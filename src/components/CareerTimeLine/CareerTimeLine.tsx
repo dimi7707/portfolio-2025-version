@@ -8,49 +8,11 @@ interface Experience {
   technologies: string[];
   achievements: string[];
 }
+interface Experiences {
+  experiences: Experience[];
+}
 
-const experiences: Experience[] = [
-  {
-    company: "Tech Solutions Inc.",
-    position: "Senior Frontend Developer",
-    period: "2022 - Presente",
-    description:
-      "Desarrollo de aplicaciones web modernas utilizando React y TypeScript.",
-    technologies: ["React", "TypeScript", "Next.js", "TailwindCSS", "GraphQL"],
-    achievements: [
-      "Lideré la migración de la aplicación principal a Next.js",
-      "Implementé un sistema de diseño reutilizable",
-      "Optimicé el rendimiento de la aplicación en un 40%",
-    ],
-  },
-  {
-    company: "Digital Innovations",
-    position: "Frontend Developer",
-    period: "2020 - 2022",
-    description:
-      "Desarrollo de interfaces de usuario y componentes reutilizables.",
-    technologies: ["React", "JavaScript", "SASS", "Redux"],
-    achievements: [
-      "Desarrollé un sistema de autenticación robusto",
-      "Implementé pruebas unitarias con Jest",
-      "Colaboré en el diseño de la arquitectura frontend",
-    ],
-  },
-  {
-    company: "Web Masters",
-    position: "Junior Developer",
-    period: "2018 - 2020",
-    description: "Desarrollo de sitios web y aplicaciones web básicas.",
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery"],
-    achievements: [
-      "Desarrollé 10+ sitios web para clientes",
-      "Implementé diseños responsivos",
-      "Optimicé el SEO de los sitios web",
-    ],
-  },
-];
-
-const CareerTimeLine = () => {
+const CareerTimeLine = ({ experiences }: Experiences) => {
   return (
     <div className={styles.timelineContainer}>
       <div className={styles.timelineWrapper}>

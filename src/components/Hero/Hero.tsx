@@ -1,9 +1,25 @@
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import styles from "./Hero.module.scss";
 
-const Hero = () => {
+interface HeroProps {
+  titleFirstPart: string;
+  titleSecondPart: string;
+  subtitle: string;
+  description: string;
+  mainImage: string;
+  imageAlt: string;
+}
+
+const Hero = ({
+  titleFirstPart,
+  titleSecondPart,
+  subtitle,
+  description,
+  mainImage,
+  imageAlt,
+}: HeroProps) => {
   const [text] = useTypewriter({
-    words: ["Dimitri Avila", "Software Developer", "Full Stack Developer"],
+    words: [titleFirstPart, titleSecondPart, subtitle],
     loop: 0,
     typeSpeed: 100,
     deleteSpeed: 50,
@@ -17,21 +33,21 @@ const Hero = () => {
           <span>{text}</span>
           <Cursor cursorColor="#1a202c" />
         </h1>
-        <h2 className={styles.subtitle}>Desarrollador Web Full Stack</h2>
-        <p className={styles.description}>
-          Apasionado por crear experiencias digitales únicas y funcionales.
-          Especializado en desarrollo frontend y backend con las últimas
-          tecnologías.
-        </p>
+        <h2 className={styles.subtitle}>{titleSecondPart}</h2>
+        <p className={styles.description}>{description}</p>
       </div>
       <div className={styles.heroImage}>
-        <img
-          src="https://placehold.co/600x400"
-          alt="Profile"
-          className={styles.image}
-        />
+        {mainImage.length > 0 && (
+          <img src={mainImage} alt={imageAlt} className={styles.image} />
+        )}
+        {!mainImage && (
+          <img
+            src="https://placehold.co/600x400"
+            alt="Profile"
+            className={styles.image}
+          />
+        )}
       </div>
-
       {/* Elementos de código flotantes */}
       <div className={`${styles.codeElement} ${styles.react}`}>
         <pre>{`import React from 'react'`}</pre>
