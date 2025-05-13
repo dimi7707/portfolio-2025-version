@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.scss";
+import { useLanguage } from "../../hooks/useLanguage";
 
 interface Section {
   name: string;
@@ -17,7 +18,7 @@ const sections: Section[] = [
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [language, setLanguage] = useState("en");
+  const { language, toggleLanguage, isEnglish, isSpanish } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,10 +44,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en");
-  };
 
   return (
     <nav className={styles.navbar}>
@@ -87,13 +84,13 @@ const Navbar = () => {
           </ul>
           <div className={styles.languageSwitch}>
             <button
-              className={`${styles.languageButton} ${language === "en" ? styles.active : ""}`}
+              className={`${styles.languageButton} ${isEnglish ? styles.active : ""}`}
               onClick={toggleLanguage}
             >
               EN
             </button>
             <button
-              className={`${styles.languageButton} ${language === "es" ? styles.active : ""}`}
+              className={`${styles.languageButton} ${isSpanish ? styles.active : ""}`}
               onClick={toggleLanguage}
             >
               ES

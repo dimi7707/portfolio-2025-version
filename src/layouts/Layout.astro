@@ -13,7 +13,7 @@ import Footer from "../components/Footer/Footer.tsx";
     <title>Dimitri Avila</title>
   </head>
   <body>
-    <Navbar client:load />
+    <Navbar client:only />
     <slot />
     <Footer client:load />
   </body>

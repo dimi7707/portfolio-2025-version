@@ -1,12 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero/Hero.tsx";
-import CareerTimeLine from "../components/CareerTimeLine/CareerTimeLine.tsx";
-import ContactSection from "../components/ContactSection/ContactSection.tsx";
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero/Hero.tsx";
+import CareerTimeLine from "../../components/CareerTimeLine/CareerTimeLine.tsx";
+import ContactSection from "../../components/ContactSection/ContactSection.tsx";
 
 import { getCollection } from "astro:content";
 
-const home = await getCollection("homeCollection");
+const { lang = "en" } = Astro.props;
+const homeCollection = lang === "en" ? "enHomeCollection" : "esHomeCollection";
+
+const home = await getCollection(homeCollection);
 
 const { hero, careerTimeLine, contactSection } = home[0].data;
 
