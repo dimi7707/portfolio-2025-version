@@ -7,7 +7,9 @@ interface Experience {
   description: string;
   technologies: string[];
   achievements: string[];
+  companyLogo?: string;
 }
+
 interface Experiences {
   experiences: Experience[];
 }
@@ -20,14 +22,41 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
         <div className={styles.timeline}>
           {experiences.map((exp, index) => (
             <div key={index} className={styles.timelineItem}>
+              <div className={styles.timelineMarker}>
+                <span className={styles.timelineDate}>{exp.period}</span>
+              </div>
               <div className={styles.timelineContent}>
-                <h3 className={styles.company}>{exp.company}</h3>
-                <h4 className={styles.position}>{exp.position}</h4>
-                <span className={styles.period}>{exp.period}</span>
+                <div className={styles.companyHeader}>
+                  <div className={styles.companyLogo}>
+                    <img
+                      src={
+                        exp.companyLogo ||
+                        "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"
+                      }
+                      alt={`Logo de ${exp.company}`}
+                    />
+                  </div>
+                  <div className={styles.companyInfo}>
+                    <h3 className={styles.company}>{exp.company}</h3>
+                    <h4 className={styles.position}>{exp.position}</h4>
+                  </div>
+                </div>
+
                 <p className={styles.description}>{exp.description}</p>
 
+                {exp.achievements.length > 0 && (
+                  <div className={styles.achievements}>
+                    <h5>Logros</h5>
+                    <ul>
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <li key={achIndex}>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div className={styles.technologies}>
-                  <h5>Tecnologías:</h5>
+                  <h5>Tecnologías</h5>
                   <div className={styles.techTags}>
                     {exp.technologies.map((tech, techIndex) => (
                       <span key={techIndex} className={styles.techTag}>
@@ -35,15 +64,6 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
                       </span>
                     ))}
                   </div>
-                </div>
-
-                <div className={styles.achievements}>
-                  <h5>Logros:</h5>
-                  <ul>
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex}>{achievement}</li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>

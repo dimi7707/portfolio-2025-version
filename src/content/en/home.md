@@ -38,7 +38,7 @@ careerTimeLine:
 
 contactSection:
   title: "Let's Connect!"
-  subtitle: "I'm **always** open to new opportunities and collaborations"
+  subtitle: "I'm always open to new opportunities and collaborations"
   email: "contact@dimitriavila.com"
   socialLinks:
     github: "https://github.com/dimitriavila"

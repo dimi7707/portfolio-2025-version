@@ -27,7 +27,13 @@ const formatTechName = (filename: string) => {
     .replace(/^./, (str) => str.toUpperCase());
 };
 
-export default function TechStackCarousel() {
+interface TechStackCarouselProps {
+  backgroundAlternative?: boolean;
+}
+
+export default function TechStackCarousel({
+  backgroundAlternative = false,
+}: TechStackCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const duplicatedIcons = [...techIcons, ...techIcons];
@@ -46,7 +52,9 @@ export default function TechStackCarousel() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${backgroundAlternative ? styles.alternativeBackground : ""}`}
+    >
       <h2 className={styles.title}>Mi Tech Stack</h2>
       <div className={styles.carouselContainer}>
         <div

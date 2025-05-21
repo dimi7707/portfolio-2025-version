@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero/Hero.tsx";
 import CareerTimeLine from "../../components/CareerTimeLine/CareerTimeLine.tsx";
 import ContactSection from "../../components/ContactSection/ContactSection.tsx";
-
+import TechStackCarousel from "../../components/TechStackCarousel/TechStackCarousel.tsx";
 import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
@@ -25,9 +25,10 @@ const { hero, careerTimeLine, contactSection } = home[0].data;
 	<CareerTimeLine 
 		{...careerTimeLine}
 		client:load
-	/>
-	<ContactSection 
+    />
+  <ContactSection 
 		{...contactSection}
 		client:load
-	/>
+  />
+  <TechStackCarousel client:load backgroundAlternative={true} />
 </Layout>
