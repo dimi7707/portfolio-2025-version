@@ -1,11 +1,4 @@
 ---
-titleFirstPart: "Dimitri Avila"
-titleSecondPart: "Software developer"
-subtitle: "Full Stack Web Developer"
-description: "Passionate about creating unique and functional digital experiences. Specialized in frontend and backend development with the latest technologies."
-mainImage: ""
-imageAlt: "Profile picture of Dimitri Avila"
-
 hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"

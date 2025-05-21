@@ -3,10 +3,20 @@ import Layout from "../../layouts/Layout.astro";
 import SkillChart from "../SkillChart/SkillChart.tsx";
 import AboutMeSection from "../AboutMeSection/AboutMeSection.tsx";
 import TechStackCarousel from "../TechStackCarousel/TechStackCarousel.tsx";
+import { getCollection } from "astro:content";
+
+const { lang = "en" } = Astro.props;
+const aboutCollection =
+  lang === "en" ? "enAboutCollection" : "esAboutCollection";
+
+const about = await getCollection(aboutCollection);
+
+const { aboutMeSection } = about[0].data;
 ---
 
+
 <Layout>
-  <AboutMeSection client:load />
+  <AboutMeSection client:load {...aboutMeSection} />
   <SkillChart client:load />
   <TechStackCarousel client:load />
 </Layout>
