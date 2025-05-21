@@ -9,16 +9,20 @@ interface Section {
 }
 
 const sections: Section[] = [
-  { name: "home", type: "section" },
-  { name: "work", type: "section" },
-  { name: "contact", type: "section" },
+  { name: "home", type: "page", path: "/" },
   { name: "about", type: "page", path: "/about" },
+  { name: "contact", type: "page", path: "/contact" },
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { language, toggleLanguage, isEnglish, isSpanish } = useLanguage();
+
+  const getLocalizedPath = (path: string) => {
+    const basePath = path === "/" ? "" : path;
+    return `/${language}${basePath}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +79,7 @@ const Navbar = () => {
                   </a>
                 ) : (
                   <a
-                    href={`${language}${section.path}`}
+                    href={getLocalizedPath(section.path || "")}
                     onClick={() => setMenuOpen(false)}
                   >
                     {section.name.charAt(0).toUpperCase() +
