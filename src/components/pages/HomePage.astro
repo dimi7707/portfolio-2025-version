@@ -26,9 +26,9 @@ const { hero, careerTimeLine, contactSection } = home[0].data;
 		{...careerTimeLine}
 		client:load
     />
+  <TechStackCarousel client:load backgroundAlternative={true} />
   <ContactSection 
 		{...contactSection}
 		client:load
   />
-  <TechStackCarousel client:load backgroundAlternative={true} />
 </Layout>

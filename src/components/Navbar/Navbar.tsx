@@ -11,8 +11,8 @@ interface Section {
 const sections: Section[] = [
   { name: "home", type: "section" },
   { name: "work", type: "section" },
-  { name: "about", type: "page", path: "/about" },
   { name: "contact", type: "section" },
+  { name: "about", type: "page", path: "/about" },
 ];
 
 const Navbar = () => {
@@ -74,7 +74,10 @@ const Navbar = () => {
                       section.name.slice(1)}
                   </a>
                 ) : (
-                  <a href={section.path} onClick={() => setMenuOpen(false)}>
+                  <a
+                    href={`${language}${section.path}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
                     {section.name.charAt(0).toUpperCase() +
                       section.name.slice(1)}
                   </a>

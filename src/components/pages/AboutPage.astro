@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SkillChart from "../SkillChart/SkillChart.tsx";
+import AboutMeSection from "../AboutMeSection/AboutMeSection.tsx";
+import TechStackCarousel from "../TechStackCarousel/TechStackCarousel.tsx";
+---
+
+<Layout>
+  <AboutMeSection client:load />
+  <SkillChart client:load />
+  <TechStackCarousel client:load />
+</Layout>
