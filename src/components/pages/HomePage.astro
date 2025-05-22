@@ -18,17 +18,8 @@ const { hero, careerTimeLine, contactSection } = home[0].data;
 ---
 
 <Layout>
-	<Hero 
-		{...hero}
-		client:load
-	/>
-	<CareerTimeLine 
-		{...careerTimeLine}
-		client:load
-    />
+  <Hero {...hero} client:load />
+  <CareerTimeLine {...careerTimeLine} client:load />
   <TechStackCarousel client:load backgroundAlternative={true} />
-  <ContactSection 
-		{...contactSection}
-		client:load
-  />
+  <ContactSection {...contactSection} client:load />
 </Layout>

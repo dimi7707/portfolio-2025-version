@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import homeSchema from "../schemas/pages/homeSchema";
 import aboutSchema from "../schemas/pages/aboutSchema";
+import contactSchema from "../schemas/pages/contactSchema";
 
 const esHomeCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/es/home/" }),
@@ -23,9 +24,21 @@ const enAboutCollection = defineCollection({
   schema: aboutSchema,
 });
 
+const enContactCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/en/contact/" }),
+  schema: contactSchema,
+});
+
+const esContactCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/es/contact/" }),
+  schema: contactSchema,
+});
+
 export const collections = {
   esHomeCollection,
   enHomeCollection,
   esAboutCollection,
   enAboutCollection,
+  esContactCollection,
+  enContactCollection,
 };
