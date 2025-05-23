@@ -4,7 +4,7 @@ hero:
   titleSecondPart: "Software developer"
   subtitle: "Desarrollador Web Full Stack"
   description: "Apasionado por crear experiencias digitales únicas y funcionales. Especializado en desarrollo frontend y backend con las últimas tecnologías."
-  mainImage: ""
+  mainImage: "/images/image-for-hero.png"
   imageAlt: "Foto de perfil de Dimitri Avila"
 
 careerTimeLine:
