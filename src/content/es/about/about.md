@@ -2,6 +2,10 @@
 aboutMeSection:
   title: Sobre Mí
   description: Soy un desarrollador apasionado por crear experiencias digitales excepcionales. Mi enfoque combina diseño intuitivo con código limpio y eficiente. Me especializo en el desarrollo web moderno, utilizando las últimas tecnologías y mejores prácticas para construir aplicaciones web robustas y escalables. Mi objetivo es crear soluciones que no solo sean técnicamente sólidas, sino también intuitivas y agradables para los usuarios.
+  images: 
+    - "/images/about-1.jpg"
+    - "/images/about-2.jpg"
+    - "/images/sayayin.png"
   codeSnippet: |
     function saludarMundo() {
       console.log("¡Hola, Mundo!");

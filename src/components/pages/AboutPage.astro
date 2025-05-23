@@ -16,7 +16,7 @@ const { aboutMeSection } = about[0].data;
 
 
 <Layout>
-  <AboutMeSection client:load {...aboutMeSection} />
+  <AboutMeSection {...aboutMeSection} client:load />
   <SkillChart client:load />
   <TechStackCarousel client:load />
 </Layout>

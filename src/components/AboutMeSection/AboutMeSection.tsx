@@ -1,16 +1,20 @@
+import { spawn } from "child_process";
 import styles from "./AboutMeSection.module.scss";
 
 interface AboutMeSectionProps {
   title: string;
   description: string;
   codeSnippet: string;
+  images: string[];
 }
 
 const AboutMeSection = ({
   title,
   description,
   codeSnippet,
+  images,
 }: AboutMeSectionProps) => {
+
   return (
     <section className={styles.aboutMeSection}>
       <div className={styles.contentWrapper}>
@@ -20,10 +24,12 @@ const AboutMeSection = ({
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.imageContainer}>
-            <div className={styles.imageWrapper}>
-              <div className={styles.image1}></div>
-              <div className={styles.image2}></div>
-              <div className={styles.image3}></div>
+            <div className={styles.imageWrapper}> 
+              {images.map((image, index) => (
+                <div className={styles[`image${index + 1}`]} key={index}>
+                  <img src={image} alt={`About me image ${index + 1}`} />
+                </div>
+              ))}
             </div>
             <div className={styles.codeBackground}>
               <pre className={styles.code}>{codeSnippet}</pre>

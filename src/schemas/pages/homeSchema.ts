@@ -1,14 +1,9 @@
 import { z } from "astro:content";
-import {
-  heroSchema,
-  careerTimeLineSchema,
-  contactSectionSchema,
-} from "../index";
+import { heroSchema, careerTimeLineSchema } from "../index";
 
 const homeSchema = z.object({
   hero: heroSchema,
-  careerTimeLine: careerTimeLineSchema,
-  contactSection: contactSectionSchema,
+  careerTimeLine: careerTimeLineSchema
 });
 
 export default homeSchema;

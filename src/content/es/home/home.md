@@ -28,16 +28,6 @@ careerTimeLine:
         - "Desarrollo de API RESTful escalable"
         - "Implementación de sistema de autenticación seguro"
         - "Optimización de rendimiento de base de datos"
-
-contactSection:
-  title: "¡Conectemos!"
-  subtitle: "Estoy siempre abierto a nuevas oportunidades y colaboraciones"
-  email: "contacto@dimitriavila.com"
-  socialLinks:
-    github: "https://github.com/dimitriavila"
-    linkedin: "https://linkedin.com/in/dimitriavila"
-    twitter: "https://twitter.com/dimitriavila"
-  emailButtonText: "Enviar mensaje"
 ---
 
 LoremIpsum bla bla
