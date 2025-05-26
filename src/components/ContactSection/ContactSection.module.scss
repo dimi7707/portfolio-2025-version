@@ -2,9 +2,13 @@
 @use "../../styles/variables" as *;
 
 .contactSection {
+  min-height: 60vh;
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
@@ -85,6 +89,12 @@
   
   .socialIcons {
     justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    margin-top: 4rem;
   }
 }
 

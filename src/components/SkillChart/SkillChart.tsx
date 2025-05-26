@@ -20,7 +20,8 @@ const skills: SkillData[] = [
   {
     name: "Frontend",
     value: 40,
-    description: "Desarrollo de interfaces de usuario con React, TypeScript y CSS moderno",
+    description:
+      "Desarrollo de interfaces de usuario con React, TypeScript y CSS moderno",
     color: "#4A90E2",
   },
   {
@@ -96,12 +97,12 @@ const SkillChart = () => {
       <div className={styles.contentWrapper}>
         <div className={styles.chartWrapper}>
           <ResponsiveContainer width="100%" height={chartHeight}>
-            <PieChart 
-              margin={{ 
+            <PieChart
+              margin={{
                 top: isMobile ? 45 : 30,
-                right: 20, 
+                right: 20,
                 bottom: isMobile ? 35 : 30,
-                left: 20 
+                left: 20,
               }}
             >
               <Pie
@@ -132,9 +133,10 @@ const SkillChart = () => {
                 verticalAlign="top"
                 align="center"
                 layout="horizontal"
-                wrapperStyle={isMobile ? 
-                  { paddingTop: "0px" } : 
-                  { paddingBottom: "20px", paddingTop: "10px" }
+                wrapperStyle={
+                  isMobile
+                    ? { paddingTop: "0px" }
+                    : { paddingBottom: "20px", paddingTop: "10px" }
                 }
               />
             </PieChart>
