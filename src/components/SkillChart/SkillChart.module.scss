@@ -1,176 +1,267 @@
-.title {
-  font-weight: 700;
-  color: #2d3436;
-  margin: 20px 0;
-  line-height: 1.2;
-  display: flex;
-  justify-content: center;
-  font-size: 3rem;
-}
-
-.skillChart {
+.skillChartContainer {
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem 1rem 2.5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.chartContainer {
+  min-height: auto;
+  background: linear-gradient(135deg, #f5f6fa, #e9ecef, #f5f6fa);
   position: relative;
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 150px 0;
-  height: 100%;
   box-sizing: border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(245, 246, 250, 0.97),
+      rgba(233, 236, 239, 0.95)
+    );
+    z-index: 0;
+  }
 }
 
-.pieChart {
+.contentWrapper {
+  width: 100%;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
   position: relative;
   z-index: 1;
-  margin: 50px 0;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.75rem 1rem 1rem;
+  }
 }
 
-.segment {
-  cursor: pointer;
-  transition: transform 0.3s ease;
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0.5rem 0 1rem;
+  text-align: center;
+  line-height: 1.2;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.chartWrapper {
+  flex: 1;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background: transparent;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    min-height: 320px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 280px;
+    padding: 0.5rem 0.5rem 1rem;
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  height: 100%;
+  min-height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    min-height: 250px;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: 2px dashed rgba(44, 62, 80, 0.2);
+  transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.02);
+    border-color: rgba(44, 62, 80, 0.4);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  &::before {
+    content: 'Imagen de habilidades';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(44, 62, 80, 0.4);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(44, 62, 80, 0.05), rgba(52, 73, 94, 0.05));
+    z-index: 0;
+  }
+}
+
+.skillsImage {
+  display: none;
+}
+
+.imageOverlay {
+  display: none; // Ocultamos el overlay hasta que haya una imagen real
+}
+
+.tooltip {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  z-index: 1000;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3436;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0 0 0.5rem 0;
+    color: #636e72;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .percentage {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #f1f2f6;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2d3436;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  transform: translateY(-10px);
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+    padding: 0.25rem;
+    transform: translateY(-25px);
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: #f1f2f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.legendText {
+  font-size: 0.9rem;
+  color: #2d3436;
+  font-weight: 500;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
   }
 }
 
 .pieSegment {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
-  
-  &:nth-child(1) {
-    background: hsl(0, 0%, 80%);
-    transform: rotate(0deg);
-  }
-  
-  &:nth-child(2) {
-    background: hsl(0, 0%, 60%);
-    transform: rotate(144deg);
-  }
-  
-  &:nth-child(3) {
-    background: hsl(0, 0%, 40%);
-    transform: rotate(252deg);
-  }
-  
-  &:nth-child(4) {
-    background: hsl(0, 0%, 20%);
-    transform: rotate(324deg);
-  }
-
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+  cursor: pointer;
 
-  .segment:hover & {
-    filter: brightness(1.1) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  &:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
   }
 }
 
-.separator {
-  z-index: 3;
-  stroke-linecap: round;
-}
-
-.percentageContainer {
-  pointer-events: none;
-  position: relative;
-  z-index: 4;
-}
-
-.percentageBackground {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  
-  .segment:hover & {
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.percentageText {
-  font-size: 16px;
-  font-weight: bold;
-  fill: #333;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  
-  .segment:hover & {
-    opacity: 1;
-  }
-}
-
-.description {
-  position: absolute;
-  max-width: 200px;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 3;
-  transition: all 0.3s ease;
-  opacity: 0.8;
-
-  h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-}
-
-.hoveredDescription {
-  opacity: 1;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 1);
-}
-
-.left {
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.right {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.top {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 30px;
-}
-
-.bottom {
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 30px;
+.skillChartContainer {
+  animation: fadeIn 0.5s ease-out;
 }

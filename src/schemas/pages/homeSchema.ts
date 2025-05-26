@@ -3,7 +3,7 @@ import { heroSchema, careerTimeLineSchema } from "../index";
 
 const homeSchema = z.object({
   hero: heroSchema,
-  careerTimeLine: careerTimeLineSchema
+  careerTimeLine: careerTimeLineSchema,
 });
 
 export default homeSchema;

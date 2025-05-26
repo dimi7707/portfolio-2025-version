@@ -14,7 +14,6 @@ const AboutMeSection = ({
   codeSnippet,
   images,
 }: AboutMeSectionProps) => {
-
   return (
     <section className={styles.aboutMeSection}>
       <div className={styles.contentWrapper}>
@@ -24,7 +23,7 @@ const AboutMeSection = ({
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.imageContainer}>
-            <div className={styles.imageWrapper}> 
+            <div className={styles.imageWrapper}>
               {images.map((image, index) => (
                 <div className={styles[`image${index + 1}`]} key={index}>
                   <img src={image} alt={`About me image ${index + 1}`} />

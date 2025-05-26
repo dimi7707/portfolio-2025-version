@@ -1,168 +1,149 @@
+import { useState, useEffect } from "react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  Legend,
+} from "recharts";
 import styles from "./SkillChart.module.scss";
-import { useState } from "react";
 
 interface SkillData {
   name: string;
-  percentage: number;
+  value: number;
   description: string;
-  position: "left" | "right" | "top" | "bottom";
   color: string;
 }
 
 const skills: SkillData[] = [
   {
     name: "Frontend",
-    percentage: 40,
-    description:
-      "Desarrollo de interfaces de usuario con React, TypeScript y CSS moderno",
-    position: "left",
-    color: "#808080",
+    value: 40,
+    description: "Desarrollo de interfaces de usuario con React, TypeScript y CSS moderno",
+    color: "#4A90E2",
   },
   {
     name: "Backend",
-    percentage: 20,
+    value: 20,
     description: "Desarrollo de APIs y servicios con Node.js y bases de datos",
-    position: "right",
-    color: "#606060",
+    color: "#50E3C2",
   },
   {
     name: "DevOps",
-    percentage: 20,
+    value: 20,
     description: "Gestión de infraestructura y despliegue continuo",
-    position: "top",
-    color: "#404040",
+    color: "#F5A623",
   },
   {
     name: "Testing",
-    percentage: 20,
+    value: 20,
     description: "Desarrollo de pruebas unitarias y de integración",
-    position: "bottom",
-    color: "#202020",
+    color: "#D0021B",
   },
 ];
 
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className={styles.tooltip}>
+        <h3>{data.name}</h3>
+        <p>{data.description}</p>
+        <span className={styles.percentage}>{data.value}%</span>
+      </div>
+    );
+  }
+  return null;
+};
+
+const CustomLegend = ({ payload }: any) => {
+  return (
+    <div className={styles.legend}>
+      {payload.map((entry: any, index: number) => (
+        <div key={`legend-${index}`} className={styles.legendItem}>
+          <div
+            className={styles.legendColor}
+            style={{ backgroundColor: entry.color }}
+          />
+          <span className={styles.legendText}>{entry.value}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const SkillChart = () => {
-  const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
-  const radius = 150;
-  const center = { x: radius, y: radius };
-  const gap = 8;
-  let currentAngle = 0;
+  const [isMobile, setIsMobile] = useState(false);
+  const [chartHeight, setChartHeight] = useState(350);
 
-  const calculatePath = (percentage: number, index: number) => {
-    const totalGap = gap * (skills.length - 1);
-    const availableAngle = 360 - totalGap;
-    const angle = (percentage / 100) * availableAngle;
-
-    const startAngle = currentAngle + (index > 0 ? gap : 0);
-    const endAngle = startAngle + angle;
-    currentAngle = endAngle;
-
-    const startRadians = (startAngle - 90) * (Math.PI / 180);
-    const endRadians = (endAngle - 90) * (Math.PI / 180);
-
-    const x1 = center.x + radius * Math.cos(startRadians);
-    const y1 = center.y + radius * Math.sin(startRadians);
-    const x2 = center.x + radius * Math.cos(endRadians);
-    const y2 = center.y + radius * Math.sin(endRadians);
-
-    const largeArcFlag = angle > 180 ? 1 : 0;
-
-    return `M ${center.x} ${center.y} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
-  };
-
-  const calculateTextPosition = (index: number) => {
-    const angle =
-      (currentAngle - skills[index].percentage / 2) * (Math.PI / 180);
-    const distance = radius * 0.5;
-    return {
-      x: center.x + distance * Math.cos(angle),
-      y: center.y + distance * Math.sin(angle),
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      setChartHeight(mobile ? 280 : 350);
     };
-  };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
-    <section>
+    <section className={styles.skillChartContainer}>
       <h1 className={styles.title}>Mi perfil de habilidades</h1>
-      <div className={styles.skillChart}>
-        <div className={styles.chartContainer}>
-          <svg
-            width={radius * 2}
-            height={radius * 2}
-            className={styles.pieChart}
-          >
-            {skills.map((skill, index) => {
-              const textPos = calculateTextPosition(index);
-              return (
-                <g
-                  key={skill.name}
-                  onMouseEnter={() => setHoveredSegment(index)}
-                  onMouseLeave={() => setHoveredSegment(null)}
-                  className={`${styles.segment} ${hoveredSegment === index ? styles.hovered : ""}`}
-                >
-                  <path
-                    d={calculatePath(skill.percentage, index)}
-                    fill={skill.color}
+      <div className={styles.contentWrapper}>
+        <div className={styles.chartWrapper}>
+          <ResponsiveContainer width="100%" height={chartHeight}>
+            <PieChart 
+              margin={{ 
+                top: isMobile ? 45 : 30,
+                right: 20, 
+                bottom: isMobile ? 35 : 30,
+                left: 20 
+              }}
+            >
+              <Pie
+                data={skills}
+                cx="50%"
+                cy={isMobile ? "50%" : "45%"}
+                innerRadius={isMobile ? 45 : 60}
+                outerRadius={isMobile ? 75 : 100}
+                paddingAngle={2}
+                dataKey="value"
+                animationDuration={1000}
+                animationBegin={0}
+              >
+                {skills.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.color}
                     className={styles.pieSegment}
                   />
-                  {hoveredSegment === index && (
-                    <g className={styles.percentageContainer}>
-                      <rect
-                        x={textPos.x - 30}
-                        y={textPos.y - 15}
-                        width={60}
-                        height={30}
-                        rx={15}
-                        fill="white"
-                        className={styles.percentageBackground}
-                      />
-                      <text
-                        x={textPos.x}
-                        y={textPos.y}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        className={styles.percentageText}
-                      >
-                        {skill.percentage}%
-                      </text>
-                    </g>
-                  )}
-                </g>
-              );
-            })}
-            {skills.map((_, index) => {
-              if (index === 0) return null;
-              const angle = (currentAngle - gap) * (Math.PI / 180);
-              const x1 = center.x;
-              const y1 = center.y;
-              const x2 = center.x + radius * Math.cos(angle);
-              const y2 = center.y + radius * Math.sin(angle);
-              return (
-                <line
-                  key={`separator-${index}`}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="white"
-                  strokeWidth="2"
-                  className={styles.separator}
-                />
-              );
-            })}
-          </svg>
-          {skills.map((skill) => (
-            <div
-              key={skill.name}
-              className={`${styles.description} ${styles[skill.position]} ${
-                hoveredSegment === skills.indexOf(skill)
-                  ? styles.hoveredDescription
-                  : ""
-              }`}
-            >
-              <h3>{skill.name}</h3>
-              <p>{skill.description}</p>
-            </div>
-          ))}
+                ))}
+              </Pie>
+              <Tooltip
+                content={<CustomTooltip />}
+                wrapperStyle={{ outline: "none" }}
+              />
+              <Legend
+                content={<CustomLegend />}
+                verticalAlign="top"
+                align="center"
+                layout="horizontal"
+                wrapperStyle={isMobile ? 
+                  { paddingTop: "0px" } : 
+                  { paddingBottom: "20px", paddingTop: "10px" }
+                }
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <div className={styles.imageWrapper}>
+          <div className={styles.imageContainer}>
+            {/* Placeholder para futura imagen */}
+          </div>
         </div>
       </div>
     </section>
