@@ -28,6 +28,12 @@ careerTimeLine:
         - "Desarrollo de API RESTful escalable"
         - "Implementación de sistema de autenticación seguro"
         - "Optimización de rendimiento de base de datos"
+
+downloadCv:
+  title: "Descarga mi CV"
+  description: "Obtén una visión detallada de mi experiencia profesional y habilidades"
+  buttonText: "Descargar CV"
+  filePath: "/Dimitri Avila -Resume.pdf"
 ---
 
 LoremIpsum bla bla

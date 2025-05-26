@@ -4,3 +4,4 @@ export { default as contactSectionSchema } from "./components/contactSectionSche
 export { default as aboutMeSchema } from "./components/aboutMeSchema";
 export { default as skillChartSchema } from "./components/skillChartSchema";
 export { default as techStackCarouselSchema } from "./components/techStackCarouselSchema";
+export { default as downloadCvSchema } from "./components/downloadCvSchema";
