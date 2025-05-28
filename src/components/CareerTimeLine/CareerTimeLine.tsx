@@ -22,15 +22,16 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
-      
+
       const ctx = gsap.context(() => {
         // Animación para el título
-        gsap.fromTo(`.${styles.title}`, 
+        gsap.fromTo(
+          `.${styles.title}`,
           {
             y: 50,
-            opacity: 0
+            opacity: 0,
           },
           {
             y: 0,
@@ -40,8 +41,8 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
             scrollTrigger: {
               trigger: `.${styles.title}`,
               start: "top 80%",
-            }
-          }
+            },
+          },
         );
 
         // Animación para cada tarjeta
@@ -51,7 +52,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
           // Ocultar inicialmente la tarjeta
           gsap.set(card, {
             opacity: 0,
-            x: -100
+            x: -100,
           });
 
           const tl = gsap.timeline({
@@ -79,7 +80,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
               duration: 0.8,
               ease: "power3.out",
             },
-            "-=0.4"
+            "-=0.4",
           );
 
           // Animación del logo de la empresa
@@ -87,7 +88,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
             card.querySelector(`.${styles.companyLogo}`),
             {
               scale: 0,
-              opacity: 0
+              opacity: 0,
             },
             {
               scale: 1,
@@ -95,15 +96,17 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
               duration: 0.6,
               ease: "back.out(1.7)",
             },
-            "-=0.6"
+            "-=0.6",
           );
 
           // Animación de los logros y tecnologías
           tl.fromTo(
-            card.querySelectorAll(`.${styles.achievements} li, .${styles.techTag}`),
+            card.querySelectorAll(
+              `.${styles.achievements} li, .${styles.techTag}`,
+            ),
             {
               y: 20,
-              opacity: 0
+              opacity: 0,
             },
             {
               y: 0,
@@ -112,16 +115,20 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
               stagger: 0.1,
               ease: "power2.out",
             },
-            "-=0.4"
+            "-=0.4",
           );
 
           // Animar la tarjeta completa
-          tl.to(card, {
-            opacity: 1,
-            x: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          }, 0);
+          tl.to(
+            card,
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            0,
+          );
         });
       }, timelineRef);
 
@@ -135,8 +142,8 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
         <h2 className={styles.title}>Experiencia Laboral</h2>
         <div className={styles.timeline}>
           {experiences.map((exp, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={styles.timelineItem}
               ref={(el) => {
                 cardsRef.current[index] = el;
