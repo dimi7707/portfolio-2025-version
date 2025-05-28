@@ -8,4 +8,12 @@ export default defineConfig({
   redirects: {
     "/": "/en",
   },
+  vite: {
+    optimizeDeps: {
+      include: ['gsap/ScrollTrigger'],
+    },
+    ssr: {
+      noExternal: ['gsap']
+    }
+  }
 });
