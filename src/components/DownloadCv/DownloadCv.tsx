@@ -19,7 +19,7 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
 
       const ctx = gsap.context(() => {
@@ -27,7 +27,7 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
           sectionRef.current,
           {
             opacity: 0,
-            y: 20
+            y: 20,
           },
           {
             opacity: 1,
@@ -37,9 +37,9 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
       }, sectionRef);
 
