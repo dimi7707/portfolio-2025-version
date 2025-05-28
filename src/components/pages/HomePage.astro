@@ -4,6 +4,7 @@ import Hero from "../../components/Hero/Hero.tsx";
 import CareerTimeLine from "../../components/CareerTimeLine/CareerTimeLine.tsx";
 import TechStackCarousel from "../../components/TechStackCarousel/TechStackCarousel.tsx";
 import DownloadCv from "../../components/DownloadCv/DownloadCv.tsx";
+import LenisWrapper from "../../components/LenisWrapper/LenisWraper.tsx";
 import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
@@ -17,6 +18,7 @@ const { hero, careerTimeLine, downloadCv } = home[0].data;
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 <Layout>
+  <LenisWrapper client:load />
   <Hero {...hero} client:load />
   <CareerTimeLine {...careerTimeLine} client:load />
   <DownloadCv {...downloadCv} client:load />
