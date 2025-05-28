@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./DownloadCv.scss";
 
 interface DownloadCvProps {
@@ -14,6 +16,37 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
   buttonText,
   filePath,
 }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          sectionRef.current,
+          {
+            opacity: 0,
+            y: 20
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }, sectionRef);
+
+      return () => ctx.revert();
+    }
+  }, []);
+
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = filePath;
@@ -26,7 +59,7 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
   console.log("description", description);
 
   return (
-    <section className="download-cv">
+    <section className="download-cv" ref={sectionRef}>
       <div className="download-cv__content">
         <h2 className="download-cv__title">{title}</h2>
         <p className="download-cv__description">{description}</p>
