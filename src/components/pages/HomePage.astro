@@ -3,8 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero/Hero.tsx";
 import CareerTimeLine from "../../components/CareerTimeLine/CareerTimeLine.tsx";
 import TechStackCarousel from "../../components/TechStackCarousel/TechStackCarousel.tsx";
-import { getCollection } from "astro:content";
 import DownloadCv from "../../components/DownloadCv/DownloadCv.tsx";
+import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
 const homeCollection = lang === "en" ? "enHomeCollection" : "esHomeCollection";
@@ -16,10 +16,10 @@ const { hero, careerTimeLine, downloadCv } = home[0].data;
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-
 <Layout>
   <Hero {...hero} client:load />
   <CareerTimeLine {...careerTimeLine} client:load />
   <DownloadCv {...downloadCv} client:load />
   <TechStackCarousel client:load backgroundAlternative={true} />
 </Layout>
+

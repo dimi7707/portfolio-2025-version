@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.scss";
 import { useLanguage } from "../../hooks/useLanguage";
-
-interface Section {
-  name: string;
-  type: "section" | "page";
-  path?: string;
-}
+import type { Section } from "../../utils/pathUtils";
+import { getLocalizedPath } from "../../utils/pathUtils";
 
 const sections: Section[] = [
   { name: "home", type: "page", path: "/" },
@@ -18,11 +14,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { language, toggleLanguage, isEnglish, isSpanish } = useLanguage();
-
-  const getLocalizedPath = (path: string) => {
-    const basePath = path === "/" ? "" : path;
-    return `/${language}${basePath}`;
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +70,7 @@ const Navbar = () => {
                   </a>
                 ) : (
                   <a
-                    href={getLocalizedPath(section.path || "")}
+                    href={getLocalizedPath(section.path || "", language)}
                     onClick={() => setMenuOpen(false)}
                   >
                     {section.name.charAt(0).toUpperCase() +

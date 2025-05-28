@@ -1,9 +1,18 @@
 import type React from "react";
 import "./Footer.scss";
+import { useLanguage } from "../../hooks/useLanguage";
+import type { Section } from "../../utils/pathUtils";
+import { getLocalizedPath } from "../../utils/pathUtils";
 
-const sections = ["home", "work", "contact"];
+const sections: Section[] = [
+  { name: "home", type: "page", path: "/" },
+  { name: "about", type: "page", path: "/about" },
+  { name: "contact", type: "page", path: "/contact" },
+];
 
 const Footer: React.FC = () => {
+  const { language } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -24,9 +33,9 @@ const Footer: React.FC = () => {
           </div>
           <ul className="footer-nav">
             {sections.map((section) => (
-              <li key={section}>
-                <a href={`#${section}`}>
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+              <li key={section.name}>
+                <a href={getLocalizedPath(section.path || "", language)}>
+                  {section.name.charAt(0).toUpperCase() + section.name.slice(1)}
                 </a>
               </li>
             ))}
