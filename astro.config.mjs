@@ -10,10 +10,10 @@ export default defineConfig({
   },
   vite: {
     optimizeDeps: {
-      include: ['gsap/ScrollTrigger'],
+      include: ["gsap/ScrollTrigger"],
     },
     ssr: {
-      noExternal: ['gsap']
-    }
-  }
+      noExternal: ["gsap"],
+    },
+  },
 });
