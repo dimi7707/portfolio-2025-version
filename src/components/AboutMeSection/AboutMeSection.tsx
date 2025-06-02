@@ -22,9 +22,9 @@ const AboutMeSection = ({
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger, Flip);
-      
+
       const ctx = gsap.context(() => {
         // Animación del texto (título y descripción)
         const textElements = textRef.current?.children;
@@ -33,7 +33,7 @@ const AboutMeSection = ({
             Array.from(textElements),
             {
               opacity: 0,
-              y: 30
+              y: 30,
             },
             {
               opacity: 1,
@@ -44,9 +44,9 @@ const AboutMeSection = ({
               scrollTrigger: {
                 trigger: textRef.current,
                 start: "top 80%",
-                toggleActions: "play none none reverse"
-              }
-            }
+                toggleActions: "play none none reverse",
+              },
+            },
           );
         }
 
@@ -55,11 +55,11 @@ const AboutMeSection = ({
           if (!imageContainer) return;
 
           // Estado inicial aleatorio con rotación más extrema
-          const randomRotation = (Math.random() * 360) - 180; // Entre -180 y 180 grados
+          const randomRotation = Math.random() * 360 - 180; // Entre -180 y 180 grados
           const randomScale = 0.5 + Math.random() * 0.5;
-          
+
           // Rotación final aleatoria pero más sutil
-          const finalRotation = (Math.random() * 20) - 10; // Entre -10 y 10 grados
+          const finalRotation = Math.random() * 20 - 10; // Entre -10 y 10 grados
 
           // Guardar el estado final
           const state = Flip.getState(imageContainer);
@@ -69,7 +69,7 @@ const AboutMeSection = ({
             rotation: randomRotation,
             scale: randomScale,
             opacity: 0,
-            transformOrigin: "center center"
+            transformOrigin: "center center",
           });
 
           // Crear timeline para cada imagen
@@ -77,29 +77,32 @@ const AboutMeSection = ({
             scrollTrigger: {
               trigger: imageContainer,
               start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
+              toggleActions: "play none none reverse",
+            },
           });
 
           // Animación de flip y rotación
           tl.to(imageContainer, {
             opacity: 1,
             duration: 0.5,
-            ease: "power2.in"
-          })
-          .to(imageContainer, {
-            rotation: finalRotation, // Usar la rotación final aleatoria
-            scale: 1,
-            duration: 1.5,
-            ease: "elastic.out(1, 0.5)",
-            onComplete: () => {
-              // Aplicar el estado final con Flip
-              Flip.from(state, {
-                duration: 0.5,
-                ease: "power2.inOut"
-              });
-            }
-          }, "-=0.3");
+            ease: "power2.in",
+          }).to(
+            imageContainer,
+            {
+              rotation: finalRotation, // Usar la rotación final aleatoria
+              scale: 1,
+              duration: 1.5,
+              ease: "elastic.out(1, 0.5)",
+              onComplete: () => {
+                // Aplicar el estado final con Flip
+                Flip.from(state, {
+                  duration: 0.5,
+                  ease: "power2.inOut",
+                });
+              },
+            },
+            "-=0.3",
+          );
 
           // Añadir un pequeño retraso entre cada imagen
           tl.delay(index * 0.2);
@@ -110,7 +113,7 @@ const AboutMeSection = ({
           `.${styles.codeBackground}`,
           {
             opacity: 0,
-            scale: 0.95
+            scale: 0.95,
           },
           {
             opacity: 1,
@@ -120,11 +123,10 @@ const AboutMeSection = ({
             scrollTrigger: {
               trigger: `.${styles.codeBackground}`,
               start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
-
       }, sectionRef);
 
       return () => ctx.revert();
@@ -142,8 +144,8 @@ const AboutMeSection = ({
           <div className={styles.imageContainer}>
             <div className={styles.imageWrapper}>
               {images.map((image, index) => (
-                <div 
-                  className={styles[`image${index + 1}`]} 
+                <div
+                  className={styles[`image${index + 1}`]}
                   key={index}
                   ref={(el) => {
                     imagesRef.current[index] = el;
