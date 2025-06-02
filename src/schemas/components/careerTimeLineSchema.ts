@@ -9,6 +9,7 @@ const careerTimeLineSchema = z.object({
       description: z.string(),
       technologies: z.array(z.string()),
       achievements: z.array(z.string()),
+      companyLogo: z.string().optional(),
     }),
   ),
 });

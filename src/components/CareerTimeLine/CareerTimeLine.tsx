@@ -136,6 +136,8 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
     }
   }, [experiences]);
 
+  console.log(experiences);
+
   return (
     <div className={styles.timelineContainer} ref={timelineRef}>
       <div className={styles.timelineWrapper}>
@@ -157,8 +159,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
                   <div className={styles.companyLogo}>
                     <img
                       src={
-                        exp.companyLogo ||
-                        "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"
+                        exp.companyLogo
                       }
                       alt={`Logo de ${exp.company}`}
                     />

@@ -22,7 +22,7 @@ const Hero = ({
   imageAlt,
 }: HeroProps) => {
   const [text] = useTypewriter({
-    words: [titleFirstPart, titleSecondPart, subtitle],
+    words: [titleFirstPart, titleSecondPart],
     loop: 0,
     typeSpeed: 100,
     deleteSpeed: 50,
@@ -86,7 +86,7 @@ const Hero = ({
           <Cursor cursorColor="#1a202c" />
         </h1>
         <h2 className={styles.subtitle} ref={subtitleRef}>
-          {titleSecondPart}
+          {subtitle}
         </h2>
         <p className={styles.description} ref={descriptionRef}>
           {description}
