@@ -27,16 +27,16 @@ export default function ContactSection({
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
-      
+
       const ctx = gsap.context(() => {
         // Animación del título y subtítulo
         gsap.fromTo(
           [`.${styles.title}`, `.${styles.subtitle}`],
           {
             opacity: 0,
-            y: 30
+            y: 30,
           },
           {
             opacity: 1,
@@ -47,9 +47,9 @@ export default function ContactSection({
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top 80%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
 
         // Animación de los iconos sociales
@@ -57,7 +57,7 @@ export default function ContactSection({
           `.${styles.socialLink}`,
           {
             scale: 0,
-            opacity: 0
+            opacity: 0,
           },
           {
             scale: 1,
@@ -68,9 +68,9 @@ export default function ContactSection({
             scrollTrigger: {
               trigger: `.${styles.socialIcons}`,
               start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
+              toggleActions: "play none none reverse",
+            },
+          },
         );
 
         // Animación del botón de email
@@ -79,44 +79,44 @@ export default function ContactSection({
             scrollTrigger: {
               trigger: buttonRef.current,
               start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
+              toggleActions: "play none none reverse",
+            },
           });
 
           // Secuencia de animación del botón
           tl.to(buttonRef.current, {
             scaleX: 1.5, // Estirar horizontalmente
             duration: 0.4,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
           })
-          .to(buttonRef.current, {
-            scaleX: 0.8, // Comprimir
-            duration: 0.3,
-            ease: "power2.inOut"
-          })
-          .to(buttonRef.current, {
-            scaleX: 1.2, // Estirar de nuevo
-            duration: 0.3,
-            ease: "power2.inOut"
-          })
-          .to(buttonRef.current, {
-            scaleX: 1, // Volver al tamaño normal
-            y: -20, // Saltar
-            duration: 0.4,
-            ease: "bounce.out"
-          })
-          .to(buttonRef.current, {
-            y: 0, // Aterrizar
-            duration: 0.3,
-            ease: "power2.out"
-          });
+            .to(buttonRef.current, {
+              scaleX: 0.8, // Comprimir
+              duration: 0.3,
+              ease: "power2.inOut",
+            })
+            .to(buttonRef.current, {
+              scaleX: 1.2, // Estirar de nuevo
+              duration: 0.3,
+              ease: "power2.inOut",
+            })
+            .to(buttonRef.current, {
+              scaleX: 1, // Volver al tamaño normal
+              y: -20, // Saltar
+              duration: 0.4,
+              ease: "bounce.out",
+            })
+            .to(buttonRef.current, {
+              y: 0, // Aterrizar
+              duration: 0.3,
+              ease: "power2.out",
+            });
 
           // Añadir efecto hover
           buttonRef.current.addEventListener("mouseenter", () => {
             gsap.to(buttonRef.current, {
               scale: 1.05,
               duration: 0.3,
-              ease: "power2.out"
+              ease: "power2.out",
             });
           });
 
@@ -124,7 +124,7 @@ export default function ContactSection({
             gsap.to(buttonRef.current, {
               scale: 1,
               duration: 0.3,
-              ease: "power2.out"
+              ease: "power2.out",
             });
           });
         }
@@ -174,9 +174,9 @@ export default function ContactSection({
         </div>
 
         <div className={styles.emailSection}>
-          <button 
+          <button
             ref={buttonRef}
-            onClick={handleEmailClick} 
+            onClick={handleEmailClick}
             className={styles.emailButton}
           >
             <FaPaperPlane className={styles.buttonIcon} />

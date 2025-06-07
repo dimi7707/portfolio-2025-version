@@ -157,12 +157,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
               <div className={styles.timelineContent}>
                 <div className={styles.companyHeader}>
                   <div className={styles.companyLogo}>
-                    <img
-                      src={
-                        exp.companyLogo
-                      }
-                      alt={`Logo de ${exp.company}`}
-                    />
+                    <img src={exp.companyLogo} alt={`Logo de ${exp.company}`} />
                   </div>
                   <div className={styles.companyInfo}>
                     <h3 className={styles.company}>{exp.company}</h3>
