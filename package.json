@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prepare": "husky install",
+    "prepare": "if [ \"$CI\" != \"true\" ]; then husky install; fi",
     "biome format": "bunx biome format --write",
     "biome lint": "bunx biome lint --write"
   },
