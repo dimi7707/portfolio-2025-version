@@ -27,5 +27,10 @@
     "husky": "^9.1.7",
     "sass": "^1.86.0",
     "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "rollup": "3.29.5"
+    }
   }
 }
