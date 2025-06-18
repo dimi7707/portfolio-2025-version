@@ -3,7 +3,7 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "La IA no me ha reemplazado... todavía. "
-  description: "Soy desarrollador de software y actualmente vivo en Colombia. Me apasiona crear experiencias digitales que combinan funcionalidad y diseño. Me entusiasma seguir el ritmo del mundo tecnológico, con todos sus avances y herramientas que no paran de aparecer, y trato de asimilar lo nuevo paso a paso, con curiosidad y sin prisa."
+  description: "Soy desarrollador de software y actualmente vivo en Colombia. Me apasiona crear experiencias digitales que combinan funcionalidad y diseño. Me entusiasma seguir el ritmo del mundo tecnológico, con todos sus avances y herramientas que no paran de aparecer."
   mainImage: "/images/image-for-hero.png"
   imageAlt: "Foto de perfil de Dimitri Avila"
 
@@ -20,15 +20,15 @@ careerTimeLine:
         - "Establecí dinámicas de revisión de código y mentoría que han contribuido a mejorar la calidad del desarrollo y resolver bloqueos con mayor fluidez."
         - "Ayudé a organizar espacios de trabajo colaborativos y rutinas de planificación que han fortalecido la cohesión del equipo y la claridad en los objetivos."
 
-    - company: "Digital Innovations"
-      position: "Full Stack Developer"
-      period: "2020 - 2022"
-      description: "Desarrollo de soluciones web completas"
+    - company: "Sophos Solutions"
+      position: "Full Stack Developer - Solution Consultant II"
+      period: "octubre 2021 - febrero 2023"
+      description: "Durante mi paso por Sophos Solutions trabajé como desarrollador en el rediseño y evolución del sitio web de la Bolsa de Valores de Colombia (bvc.com.co), un proyecto con una arquitectura compleja e innovadora orientada al manejo de grandes volúmenes de datos del mercado financiero. Participé activamente en el desarrollo de nuevas funcionalidades y en la solución de bugs, trabajando estrechamente con un stack distribuido que integraba Kafka como fuente principal de datos del mercado, múltiples servicios en Java que consumían y almacenaban esta información en PostgreSQL, y una capa intermedia de orquestadores en Node.js que servían como puente entre los datos y el frontend. Además, colaboré con el uso de un CMS basado en GraphQL (Hygraph) para la gestión del contenido estático y con un sistema de caché en Redis que optimizaba la carga de datos diarios, mejorando considerablemente la experiencia del usuario. También asumí temporalmente la responsabilidad técnica del equipo durante la ausencia del líder técnico, lo que fortaleció mis habilidades de liderazgo y entendimiento integral del sistema."
       technologies: ["Vue.js", "Node.js", "MongoDB", "AWS"]
       achievements:
-        - "Desarrollo de API RESTful escalable"
-        - "Implementación de sistema de autenticación seguro"
-        - "Optimización de rendimiento de base de datos"
+        - "Asumí el rol de líder técnico temporalmente, garantizando la continuidad y calidad del desarrollo durante ese periodo."
+        - "Implementé junto con mi equipo mejoras en el flujo de consumo de indicadores del mercado, optimizando la carga de datos diarios mediante Redis y reduciendo tiempos de respuesta."
+        - "Contribuí activamente al desarrollo de nuevos módulos del sitio, asegurando una integración eficiente entre frontend, orquestadores y servicios backend."
 
 downloadCv:
   title: "Descarga mi CV"
