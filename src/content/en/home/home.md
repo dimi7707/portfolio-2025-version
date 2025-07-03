@@ -20,26 +20,32 @@ careerTimeLine:
         - "40% reduction in application load time"
         - "Mentoring 5 junior developers"
 
-    - company: "Digital Innovations"
-      position: "Full Stack Developer"
-      period: "2020 - 2022"
-      description: "Development of complete web solutions"
-      technologies: ["Vue.js", "Node.js", "MongoDB", "AWS"]
-      achievements:
-        - "Development of scalable RESTful API"
-        - "Implementation of secure authentication system"
-        - "Database performance optimization"
+    - company: "Sophos Solutions"
+      position: "Full Stack Developer - Solution Consultant II"
+      period: "Oct 2021 – Feb 2023"
+      description: "At Sophos Solutions, I worked as a developer on the redesign and evolution of the Colombian Stock Exchange website bvc.com.co, a highly complex and innovative project focused on handling large volumes of financial market data. I actively contributed to the development of new features and bug fixes, collaborating in a distributed architecture that used Kafka as the main data source, Java services for data processing and storage (PostgreSQL), and Node.js orchestrators acting as the main communication bridge with the frontend.
 
-    - company: "Inchcape digital delivery Center"
-      position: "Frontend Technical Lead"
-      period: "March 2023 - Present"
-      description: "Since the formation of the team at the Colombia office, I have had the opportunity to support the growth of the frontend development area. I have contributed to the knowledge transfer from the teams in the Philippines and in building a technical foundation that allows us to maintain, improve, and evolve the company's digital products. My focus has been on supporting the team both technically and organizationally, always seeking clear communication and sustainable best practices."
-      technologies: ["React", "Angular", "Cypress", "Cucumber", "Apollo GraphQL", "PHP", "Azure"]
-      companyLogo: "/images/Imagen cuadrada-inchcape.png"
+      Additionally, I worked with a GraphQL-based CMS - Hygraph to manage static content and helped implement a Redis-based caching system, allowing daily market indicators to load instantly and significantly improving the user experience. I also stepped up as acting technical lead during my team lead’s absence, strengthening my leadership skills and deepening my understanding of the overall architecture."
+      technologies: ["Node.js", "Express", "Typescript", "Redis", "React", "Redux", "GraphQL", "PostgreSQL", "Hygraph CMS" ]
       achievements:
-        - "Supported the transition and knowledge transfer process from the teams in the Philippines, enabling the local team to progressively assume technical responsibilities."
-        - "Established code review and mentoring dynamics that have contributed to improving development quality and resolving blockages more smoothly."
-        - "Helped organize collaborative workspaces and planning routines that have strengthened team cohesion and clarity in objectives."
+        - "Acted as interim technical lead, ensuring high-quality delivery and team continuity."
+        - "Improved market data flows by implementing a Redis caching strategy, greatly reducing load times."
+        - "Contributed to new modules and features, integrating frontend and backend components seamlessly."
+    
+    - company: "KUBO SAS"
+      position: "Full stack developer"
+      period: "Sep 2019 - Sep 2020"
+      description: "At Kubo SAS, a Colombian company focused on mobile app development for Android and iOS, I worked as a Full Stack Developer, playing a key role in building comprehensive solutions that connected mobile apps with complementary web platforms. I designed and developed multiple REST APIs using Node.js with Express, as well as PHP with Laravel and CodeIgniter, enabling smooth and secure data communication with mobile applications.
+
+      Additionally, I built robust web backoffice applications that allowed administrators to monitor statistics, generate detailed reports, and manage business-critical configurations for their mobile apps. These platforms featured efficient backends (REST APIs) and dynamic, modern frontend interfaces built with Vue.js (Nuxt) and React, providing high flexibility and performance.
+
+      I also integrated socket.io to enable real-time communication between client and server, supporting features like live chat between app users and instant updates, significantly enhancing user engagement and interactivity."
+      technologies: ["TypeScript", "PHP/Laravel/Codeigniter", "Vue.js/Nuxt", "React", "Node.js/Express", "Socket.io" ]
+      companyLogo: "/images/logo-kubo.png"
+      achievements:
+        - "Developed and deployed multiple scalable REST APIs, improving stability and performance in mobile-web integrations."
+        - "Implemented real-time functionalities using socket.io, enabling interactive features like user chats and live notifications."
+        - "Built comprehensive, flexible backoffice systems that empowered clients to fully manage and control their mobile apps with intuitive interfaces built in Vue.js (Nuxt) and React."
 
 downloadCv:
   title: "Download my Resume"
