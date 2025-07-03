@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./CareerTimeLine.module.scss";
+import React from "react";
 
 interface Experience {
   company: string;
@@ -164,9 +165,13 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
                     <h4 className={styles.position}>{exp.position}</h4>
                   </div>
                 </div>
-
-                <p className={styles.description}>{exp.description}</p>
-
+                <div>
+                  {exp.description.split('\n').map((paragraph, i) => (
+                    <p className={styles.description} key={i}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
                 {exp.achievements.length > 0 && (
                   <div className={styles.achievements}>
                     <h5>Logros</h5>

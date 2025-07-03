@@ -26,8 +26,12 @@ careerTimeLine:
 
     - company: "Sophos Solutions"
       position: "Full Stack Developer - Solution Consultant II"
-      period: "oct 2021 - feb 2023"
-      description: "Durante mi paso por Sophos Solutions trabajé como desarrollador en el rediseño y evolución del sitio web de la Bolsa de Valores de Colombia (bvc.com.co), un proyecto con una arquitectura compleja e innovadora orientada al manejo de grandes volúmenes de datos del mercado financiero. Participé activamente en el desarrollo de nuevas funcionalidades y en la solución de bugs, trabajando estrechamente con un stack distribuido que integraba Kafka como fuente principal de datos del mercado, múltiples servicios en Java que consumían y almacenaban esta información en PostgreSQL, y una capa intermedia de orquestadores en Node.js que servían como puente entre los datos y el frontend. Además, colaboré con el uso de un CMS basado en GraphQL (Hygraph) para la gestión del contenido estático y con un sistema de caché en Redis que optimizaba la carga de datos diarios, mejorando considerablemente la experiencia del usuario. También asumí temporalmente la responsabilidad técnica del equipo durante la ausencia del líder técnico, lo que fortaleció mis habilidades de liderazgo y entendimiento integral del sistema."
+      period: "Oct 2021 - Feb 2023"
+      description: "Durante mi paso por Sophos Solutions trabajé como desarrollador en el rediseño y evolución del sitio web de la Bolsa de Valores de Colombia (bvc.com.co), un proyecto con una arquitectura compleja e innovadora orientada al manejo de grandes volúmenes de datos del mercado financiero.
+      
+      Participé activamente en el desarrollo de nuevas funcionalidades y en la solución de bugs, trabajando estrechamente con un stack distribuido que integraba Kafka como fuente principal de datos del mercado, múltiples servicios en Java que consumían y almacenaban esta información en PostgreSQL, y una capa intermedia de orquestadores en Node.js que servían como puente entre los datos y el frontend.
+      
+      Además, colaboré con el uso de un CMS basado en GraphQL (Hygraph) para la gestión del contenido estático y con un sistema de caché en Redis que optimizaba la carga de datos diarios, mejorando considerablemente la experiencia del usuario. También asumí temporalmente la responsabilidad técnica del equipo durante la ausencia del líder técnico, lo que fortaleció mis habilidades de liderazgo y entendimiento integral del sistema."
       technologies: ["Node.js", "Express", "Typescript", "Redis", "React", "Redux", "GraphQL", "PostgreSQL", "Hygraph CMS" ]
       companyLogo: "/images/sophos-logo.png"
       achievements:
@@ -37,7 +41,7 @@ careerTimeLine:
     
     - company: "Aplyca Teclogía SAS"
       position: "Frontend Developer"
-      period: "oct 2020 - oct 2021"
+      period: "Oct 2020 - Oct 2021"
       description: "Durante mi experiencia en Aplyca Tecnología me enfoqué en la construcción de soluciones frontend robustas y escalables, participando en proyectos basados en el CMS Ibexa. Lideré la creación de design systems completos: colecciones de componentes reutilizables y principios de diseño que aseguraban una identidad visual coherente y una experiencia de usuario consistente en cada producto. Esta estrategia permitió a los administradores y editores construir nuevas páginas de forma flexible, manteniendo siempre la calidad y los estándares definidos.
       
       Trabajé con tecnologías clave como Pangolin.js para la arquitectura del design system y React para el desarrollo dinámico de componentes, complementando con herramientas como Sass, JavaScript, Nunjucks. Gracias a este enfoque, se lograron productos finales sólidos, mantenibles y fácilmente escalables, facilitando el crecimiento y evolución de los sitios web a lo largo del tiempo."
