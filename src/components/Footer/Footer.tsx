@@ -4,11 +4,13 @@ import { useLanguage } from "../../hooks/useLanguage";
 import type { Section } from "../../utils/pathUtils";
 import { getLocalizedPath } from "../../utils/pathUtils";
 
-const sections: Section[] = [
+/*const sections: Section[] = [
   { name: "home", type: "page", path: "/" },
   { name: "about", type: "page", path: "/about" },
   { name: "contact", type: "page", path: "/contact" },
-];
+];*/
+
+const sections: Section[] = [];
 
 const Footer: React.FC = () => {
   const { language } = useLanguage();

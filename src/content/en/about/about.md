@@ -1,7 +1,9 @@
 ---
 aboutMeSection:
   title: About
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  description: "I am a software developer based in Colombia who crafts digital experiences that seamlessly integrate functionality and design. Driven by curiosity, I stay up to date with the rapid evolution of technology, eagerly exploring new tools and trends while continuously expanding my knowledge.
+
+  I believe that one of the things that fuels my passion for this profession is the constant evolution and the never-ending advancements in the field. There is always something new to learn and always different or innovative ways to implement solutions. This dynamic nature motivates me to keep improving, maintain an open mindset, and enjoy every challenge as an opportunity to grow and create value."
   images: 
     - "/images/about-1.jpg"
     - "/images/about-2.jpg"

@@ -138,7 +138,11 @@ const AboutMeSection = ({
       <div className={styles.contentWrapper}>
         <div className={styles.leftColumn} ref={textRef}>
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.description}>{description}</p>
+          <div className={styles.description}>
+            {description.split("\n").map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.imageContainer}>
