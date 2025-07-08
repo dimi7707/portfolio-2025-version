@@ -56,8 +56,6 @@ const DownloadCv: React.FC<DownloadCvProps> = ({
     document.body.removeChild(link);
   };
 
-  console.log("description", description);
-
   return (
     <section className="download-cv" ref={sectionRef}>
       <div className="download-cv__content">

@@ -4,21 +4,33 @@ import { useLanguage } from "../../hooks/useLanguage";
 import type { Section } from "../../utils/pathUtils";
 import { getLocalizedPath } from "../../utils/pathUtils";
 
-const sections: Section[] = [
+/*const sections: Section[] = [
   { name: "home", type: "page", path: "/" },
   { name: "about", type: "page", path: "/about" },
   { name: "contact", type: "page", path: "/contact" },
-];
+];*/
 
-const Navbar = () => {
+type NavbarElement = {
+  name: string;
+  type: string;
+  path: string;
+};
+
+type NavbarProps = {
+  navElements: NavbarElement[];
+};
+
+const Navbar = ({ navElements }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { language, toggleLanguage, isEnglish, isSpanish } = useLanguage();
 
+  console.log("navElements", navElements);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const offsets = sections
+      const offsets = navElements
         .filter((section) => section.type === "section")
         .map(({ name }) => {
           const el = document.getElementById(name);
@@ -30,7 +42,7 @@ const Navbar = () => {
         return scrollY >= offset - 100 && scrollY < nextOffset - 100;
       });
 
-      const sectionNames = sections
+      const sectionNames = navElements
         .filter((s) => s.type === "section")
         .map((s) => s.name);
       setActiveSection(sectionNames[current] || "home");
@@ -43,7 +55,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <h1 className={styles.logo}>Software Developer</h1>
+        <h1 className={styles.logo}>DA</h1>
         <button
           className={styles.hamburger}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -55,7 +67,7 @@ const Navbar = () => {
         </button>
         <div className={`${styles.navContent} ${menuOpen ? styles.open : ""}`}>
           <ul className={styles.navList}>
-            {sections.map((section) => (
+            {navElements.map((section) => (
               <li key={section.name}>
                 {section.type === "section" ? (
                   <a

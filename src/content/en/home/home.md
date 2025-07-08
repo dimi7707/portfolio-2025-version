@@ -7,6 +7,9 @@ hero:
   mainImage: "/images/image-for-hero.png"
   imageAlt: "Profile picture of Dimitri Avila"
 
+techStackCarousel:
+  title: "Technologies I Master"
+
 careerTimeLine:
   experiences:
     - company: "Inchcape digital delivery Center"

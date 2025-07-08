@@ -1,6 +1,16 @@
 ---
 import Navbar from "../components/Navbar/Navbar.tsx";
 import Footer from "../components/Footer/Footer.tsx";
+import { getCollection } from "astro:content";
+
+const url = new URL(Astro.request.url);
+const { pathname } = url;
+const language = pathname.startsWith("/es") ? "es" : "en";
+const headerCollection =
+  language === "en" ? "enHeaderCollection" : "esHeaderCollection";
+const header = await getCollection(headerCollection);
+
+const { menuElements } = header[0].data;
 ---
 
 <!doctype html>
@@ -13,7 +23,7 @@ import Footer from "../components/Footer/Footer.tsx";
     <title>Dimitri Avila</title>
   </head>
   <body>
-    <Navbar client:only />
+    <Navbar navElements={menuElements} client:only />
     <slot />
     <Footer client:only />
   </body>

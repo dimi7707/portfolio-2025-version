@@ -29,10 +29,12 @@ const formatTechName = (filename: string) => {
 
 interface TechStackCarouselProps {
   backgroundAlternative?: boolean;
+  title: string;
 }
 
 export default function TechStackCarousel({
   backgroundAlternative = false,
+  title,
 }: TechStackCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
@@ -55,7 +57,7 @@ export default function TechStackCarousel({
     <div
       className={`${styles.container} ${backgroundAlternative ? styles.alternativeBackground : ""}`}
     >
-      <h2 className={styles.title}>Mi Tech Stack</h2>
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.carouselContainer}>
         <div
           className={styles.carousel}

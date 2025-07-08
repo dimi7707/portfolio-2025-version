@@ -137,8 +137,6 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
     }
   }, [experiences]);
 
-  console.log(experiences);
-
   return (
     <div className={styles.timelineContainer} ref={timelineRef}>
       <div className={styles.timelineWrapper}>
@@ -166,7 +164,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
                   </div>
                 </div>
                 <div>
-                  {exp.description.split('\n').map((paragraph, i) => (
+                  {exp.description.split("\n").map((paragraph, i) => (
                     <p className={styles.description} key={i}>
                       {paragraph}
                     </p>

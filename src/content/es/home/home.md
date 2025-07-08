@@ -7,6 +7,9 @@ hero:
   mainImage: "/images/image-for-hero.png"
   imageAlt: "Foto de perfil de Dimitri Avila"
 
+techStackCarousel:
+  title: "Tecnologías que Domino"
+
 careerTimeLine:
   experiences:
     - company: "Inchcape digital delivery Center"

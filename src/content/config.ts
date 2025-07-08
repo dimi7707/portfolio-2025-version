@@ -3,6 +3,28 @@ import { glob } from "astro/loaders";
 import homeSchema from "../schemas/pages/homeSchema";
 import aboutSchema from "../schemas/pages/aboutSchema";
 import contactSchema from "../schemas/pages/contactSchema";
+import headerSchema from "../schemas/components/headerSchema";
+import footerSchema from "../schemas/components/footerSchema";
+
+const esHeaderCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/es/header/" }),
+  schema: headerSchema,
+});
+
+const enHeaderCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/en/header/" }),
+  schema: headerSchema,
+});
+
+const esFooterCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/es/footer/" }),
+  schema: footerSchema,
+});
+
+const enFooterCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/en/footer/" }),
+  schema: footerSchema,
+});
 
 const esHomeCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/es/home/" }),
@@ -35,6 +57,8 @@ const esContactCollection = defineCollection({
 });
 
 export const collections = {
+  esHeaderCollection,
+  enHeaderCollection,
   esHomeCollection,
   enHomeCollection,
   esAboutCollection,
