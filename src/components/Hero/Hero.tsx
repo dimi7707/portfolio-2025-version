@@ -88,9 +88,11 @@ const Hero = ({
         <h2 className={styles.subtitle} ref={subtitleRef}>
           {subtitle}
         </h2>
-        <p className={styles.description} ref={descriptionRef}>
-          {description}
-        </p>
+        <div className={styles.description} ref={descriptionRef}>
+          {description.split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </div>
       </div>
       <div className={styles.heroImage}>
         {mainImage.length > 0 && (

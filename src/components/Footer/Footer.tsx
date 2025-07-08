@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
         <div className="footer-main">
           <div className="footer-info">
             <p>© {new Date().getFullYear()} Mi Portfolio</p>
-            <p>Diseñado con ❤️</p>
+            <p>Designed with ❤️ and Astro</p>
           </div>
           <ul className="footer-nav">
             {sections.map((section) => (

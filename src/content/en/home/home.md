@@ -3,7 +3,9 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "AI hasn't replaced me... yet."
-  description: "I am a software developer based in Colombia with over 9 years of experience creating high-impact technology solutions. Throughout my career, I have had the opportunity to work in diverse industries — including finance, automotive, and retail — participating in a wide range of challenging projects. I’m detail-oriented and always strive for the highest quality in every product I develop or collaborate on, consistently aiming to deliver value and contribute to the success of the team."
+  description: "I am a software developer based in Colombia with over 9 years of experience creating high-impact technology solutions. Throughout my career, I have had the opportunity to work in diverse industries — including finance, automotive, and retail — participating in a wide range of challenging projects.
+  
+  I’m detail-oriented and always strive for the highest quality in every product I develop or collaborate on, consistently aiming to deliver value and contribute to the success of the team."
   mainImage: "/images/image-for-hero.png"
   imageAlt: "Profile picture of Dimitri Avila"
 
@@ -11,6 +13,7 @@ techStackCarousel:
   title: "Technologies I Master"
 
 careerTimeLine:
+  titleSection: "Professional experience"
   experiences:
     - company: "Inchcape digital delivery Center"
       position: "Frontend Teach Lead"
@@ -77,5 +80,5 @@ downloadCv:
   title: "Download my Resume"
   description: "Get a detailed overview of my professional experience and skills"
   buttonText: "Download CV"
-  filePath: "/Dimitri Avila -Resume.pdf"
+  filePath: "/Resume - Dimitri Avila.pdf"
 ---

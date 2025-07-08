@@ -61,6 +61,11 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  &:first-child .timelineMarker {
+    top: 0;
+    transform: translateY(-50%) translateX(-50%);
+  }
 }
 
 .timelineMarker {
@@ -268,14 +273,40 @@
 
   .timeline {
     &::before {
-      left: 1.5rem;
+      display: none; // Ocultamos la línea vertical en mobile
+    }
+  }
+
+  .timelineItem {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 2rem;
+    padding-top: 0;
+  }
+
+  .timelineMarker {
+    position: static;
+    left: unset;
+    transform: none;
+    margin: 0 auto 0.5rem auto;
+    min-width: unset;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    &::before {
+      display: none;
     }
   }
 
   .timelineContent {
-    width: calc(100% - 4rem);
-    margin-left: 3rem;
-    padding: 1.25rem;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.25rem 1rem;
+    margin-top: 0;
+    box-sizing: border-box;
   }
 
   .companyHeader {

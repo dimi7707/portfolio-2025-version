@@ -8,6 +8,7 @@ import {
   Legend,
 } from "recharts";
 import styles from "./SkillChart.module.scss";
+import { useLanguage } from "../../hooks/useLanguage";
 
 interface SkillData {
   name: string;
@@ -74,9 +75,25 @@ const CustomLegend = ({ payload }: any) => {
   );
 };
 
+const messages = {
+  es: {
+    title: "¡En construcción!",
+    description:
+      "Esta sección de la página estará disponible muy pronto.<br />¡Gracias por tu paciencia!",
+    signature: "— Dimitri Avila",
+  },
+  en: {
+    title: "Under construction!",
+    description:
+      "This section of the page will be available very soon.<br />Thank you for your patience!",
+    signature: "— Dimitri Avila",
+  },
+};
+
 const SkillChart = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [chartHeight, setChartHeight] = useState(350);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -92,62 +109,66 @@ const SkillChart = () => {
   }, []);
 
   return (
-    <section className={styles.skillChartContainer}>
-      <h1 className={styles.title}>Mi perfil de habilidades</h1>
-      <div className={styles.contentWrapper}>
-        <div className={styles.chartWrapper}>
-          <ResponsiveContainer width="100%" height={chartHeight}>
-            <PieChart
-              margin={{
-                top: isMobile ? 45 : 30,
-                right: 20,
-                bottom: isMobile ? 35 : 30,
-                left: 20,
-              }}
-            >
-              <Pie
-                data={skills}
-                cx="50%"
-                cy={isMobile ? "50%" : "45%"}
-                innerRadius={isMobile ? 45 : 60}
-                outerRadius={isMobile ? 75 : 100}
-                paddingAngle={2}
-                dataKey="value"
-                animationDuration={1000}
-                animationBegin={0}
-              >
-                {skills.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={entry.color}
-                    className={styles.pieSegment}
-                  />
-                ))}
-              </Pie>
-              <Tooltip
-                content={<CustomTooltip />}
-                wrapperStyle={{ outline: "none" }}
-              />
-              <Legend
-                content={<CustomLegend />}
-                verticalAlign="top"
-                align="center"
-                layout="horizontal"
-                wrapperStyle={
-                  isMobile
-                    ? { paddingTop: "0px" }
-                    : { paddingBottom: "20px", paddingTop: "10px" }
-                }
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-        <div className={styles.imageWrapper}>
-          <div className={styles.imageContainer}>
-            {/* Placeholder para futura imagen */}
-          </div>
-        </div>
-      </div>
+    <section
+      style={{
+        minHeight: "60vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%)",
+        fontFamily:
+          "'Space Grotesk', 'Meedori Sans', 'Segoe UI', Arial, sans-serif",
+        color: "#1e293b",
+        borderRadius: "2rem",
+        margin: "2rem",
+        boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <svg
+        width="120"
+        height="120"
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ marginBottom: "1.5rem" }}
+      >
+        <circle cx="60" cy="60" r="60" fill="#60a5fa" fillOpacity="0.15" />
+        <path d="M40 80 L60 40 L80 80 Z" fill="#3b82f6" opacity="0.7" />
+        <rect x="55" y="85" width="10" height="10" rx="2" fill="#3b82f6" />
+      </svg>
+      <h1
+        style={{
+          fontSize: "2.5rem",
+          fontWeight: 700,
+          letterSpacing: "-1px",
+          marginBottom: "0.5rem",
+        }}
+      >
+        {messages[language].title}
+      </h1>
+      <p
+        style={{
+          fontSize: "1.25rem",
+          color: "#64748b",
+          maxWidth: "420px",
+          textAlign: "center",
+          marginBottom: "1.5rem",
+        }}
+        dangerouslySetInnerHTML={{ __html: messages[language].description }}
+      />
+      <span
+        style={{
+          fontSize: "0.95rem",
+          color: "#3b82f6",
+          fontWeight: 500,
+          letterSpacing: "0.5px",
+        }}
+      >
+        {messages[language].signature}
+      </span>
     </section>
   );
 };

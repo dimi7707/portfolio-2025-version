@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaPaperPlane } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaPaperPlane,
+} from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./ContactSection.module.scss";
@@ -11,7 +16,7 @@ interface ContactSectionProps {
   socialLinks: {
     github: string;
     linkedin: string;
-    twitter: string;
+    instagram: string;
   };
   emailButtonText: string;
 }
@@ -163,12 +168,12 @@ export default function ContactSection({
               <FaLinkedin size={40} />
             </a>
             <a
-              href={socialLinks.twitter}
+              href={socialLinks.instagram}
               className={styles.socialLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaTwitter size={40} />
+              <FaInstagram size={40} />
             </a>
           </div>
         </div>

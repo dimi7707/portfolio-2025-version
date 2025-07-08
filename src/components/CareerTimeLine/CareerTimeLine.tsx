@@ -15,10 +15,11 @@ interface Experience {
 }
 
 interface Experiences {
+  titleSection: string;
   experiences: Experience[];
 }
 
-const CareerTimeLine = ({ experiences }: Experiences) => {
+const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -140,7 +141,7 @@ const CareerTimeLine = ({ experiences }: Experiences) => {
   return (
     <div className={styles.timelineContainer} ref={timelineRef}>
       <div className={styles.timelineWrapper}>
-        <h2 className={styles.title}>Experiencia Laboral</h2>
+        <h2 className={styles.title}>{titleSection}</h2>
         <div className={styles.timeline}>
           {experiences.map((exp, index) => (
             <div

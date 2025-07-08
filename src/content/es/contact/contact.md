@@ -2,11 +2,11 @@
 contactSection:
   title: "¡Conectemos!"
   subtitle: "Siempre estoy abierto a nuevas oportunidades y colaboraciones"
-  email: "contact@dimitriavila.com"
+  email: "dimi7707@gmail.com"
   socialLinks:
-    github: "https://github.com/dimitriavila"
+    github: "https://github.com/dimi7707"
     linkedin: "https://linkedin.com/in/dimitriavila"
-    twitter: "https://twitter.com/dimitriavila"
+    twitter: "https://www.instagram.com/avila_dimitri/"
   emailButtonText: "Enviar mensaje"
 ---
 
