@@ -6,7 +6,7 @@ hero:
   description: "I am a software developer based in Colombia with over 9 years of experience creating high-impact technology solutions. Throughout my career, I have had the opportunity to work in diverse industries — including finance, automotive, and retail — participating in a wide range of challenging projects.
   
   I’m detail-oriented and always strive for the highest quality in every product I develop or collaborate on, consistently aiming to deliver value and contribute to the success of the team."
-  mainImage: "/images/image-for-hero.png"
+  mainImage: "/images/fix-hero-image.jpg"
   imageAlt: "Profile picture of Dimitri Avila"
 
 techStackCarousel:
