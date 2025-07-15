@@ -3,7 +3,7 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "La IA no me ha reemplazado... todavía. "
-  description: "Soy un desarrollador de software radicado en Colombia con más de 9 años de experiencia creando soluciones tecnológicas de alto impacto. A lo largo de mi carrera he tenido la oportunidad de trabajar en industrias tan diversas como finanzas, automotriz y retail, participando en una amplia variedad de proyectos desafiantes. 
+  description: "Soy un desarrollador de software radicado en Colombia con más de 8 años de experiencia creando soluciones tecnológicas de alto impacto. A lo largo de mi carrera he tenido la oportunidad de trabajar en industrias tan diversas como finanzas, automotriz y retail, participando en una amplia variedad de proyectos desafiantes. 
   
   Me caracteriza la atención al detalle y la búsqueda constante de la máxima calidad en cada producto que desarrollo o en el que colaboro, siempre con el objetivo de aportar valor y contribuir al éxito del equipo."
   mainImage: "/images/fix-hero-image.jpg"
