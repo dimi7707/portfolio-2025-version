@@ -167,7 +167,9 @@ const BlackHorseConverter = () => {
               >
                 Cancelar
               </button>
-              {rateError && <span className={styles.bhcError}>{rateError}</span>}
+              {rateError && (
+                <span className={styles.bhcError}>{rateError}</span>
+              )}
             </>
           ) : (
             <>
@@ -178,7 +180,10 @@ const BlackHorseConverter = () => {
                 disabled
                 className={styles.bhcRateInput}
               />
-              <button className={`${styles.bhcBtn} ${styles.bhcBtnEdit}`} onClick={handleEditRate}>
+              <button
+                className={`${styles.bhcBtn} ${styles.bhcBtnEdit}`}
+                onClick={handleEditRate}
+              >
                 Editar
               </button>
             </>
@@ -199,7 +204,7 @@ const BlackHorseConverter = () => {
           Número → Código
         </button>
       </div>
-        <div className={styles.bhcMain}>
+      <div className={styles.bhcMain}>
         <input
           className={styles.bhcInput}
           type="text"
