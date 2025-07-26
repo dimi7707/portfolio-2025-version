@@ -2,18 +2,18 @@ import { useState } from "react";
 import styles from "./BlackHorseConverter.module.scss";
 
 const LETTER_TO_NUMBER: Record<string, number> = {
-  E: 0,
-  B: 1,
-  L: 2,
-  A: 3,
-  C: 4,
-  K: 5,
-  H: 6,
-  O: 7,
-  R: 8,
-  S: 9,
+  B: 0,
+  L: 1,
+  A: 2,
+  C: 3,
+  K: 4,
+  H: 5,
+  O: 6,
+  R: 7,
+  S: 8,
+  E: 9,
 };
-const NUMBER_TO_LETTER = ["E", "B", "L", "A", "C", "K", "H", "O", "R", "S"];
+const NUMBER_TO_LETTER = ["B", "L", "A", "C", "K", "H", "O", "R", "S", "E"];
 
 const DEFAULT_RATE = 3900;
 
@@ -227,7 +227,7 @@ const BlackHorseConverter = () => {
         <p>
           <b>Referencia Black Horse:</b>
         </p>
-        <p>E=0, B=1, L=2, A=3, C=4, K=5, H=6, O=7, R=8, S=9</p>
+        <p>B=0, L=1, A=2, C=3, K=4, H=5, O=6, R=7, S=8, E=9</p>
       </div>
     </div>
   );
