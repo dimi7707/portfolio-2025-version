@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./BlackHorseConverter.scss";
 
 const LETTER_TO_NUMBER: Record<string, number> = {
