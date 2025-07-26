@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
-import './BlackHorseConverter.scss';
+import React, { useState } from "react";
+import "./BlackHorseConverter.scss";
 
 const LETTER_TO_NUMBER: Record<string, number> = {
-  'E': 0,
-  'B': 1,
-  'L': 2,
-  'A': 3,
-  'C': 4,
-  'K': 5,
-  'H': 6,
-  'O': 7,
-  'R': 8,
-  'S': 9,
+  E: 0,
+  B: 1,
+  L: 2,
+  A: 3,
+  C: 4,
+  K: 5,
+  H: 6,
+  O: 7,
+  R: 8,
+  S: 9,
 };
-const NUMBER_TO_LETTER = ['E', 'B', 'L', 'A', 'C', 'K', 'H', 'O', 'R', 'S'];
+const NUMBER_TO_LETTER = ["E", "B", "L", "A", "C", "K", "H", "O", "R", "S"];
 
 const DEFAULT_RATE = 3900;
 
 const BlackHorseConverter = () => {
-  const [mode, setMode] = useState<'code-to-number' | 'number-to-code'>('code-to-number');
-  const [input, setInput] = useState('');
-  const [result, setResult] = useState('');
+  const [mode, setMode] = useState<"code-to-number" | "number-to-code">(
+    "code-to-number",
+  );
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
   const [rate, setRate] = useState(DEFAULT_RATE);
   const [editRate, setEditRate] = useState(false);
   const [rateInput, setRateInput] = useState(rate.toString());
-  const [error, setError] = useState('');
-  const [rateError, setRateError] = useState('');
+  const [error, setError] = useState("");
+  const [rateError, setRateError] = useState("");
 
   // --- Conversión de código a número ---
   const convertCodeToNumber = (code: string) => {
-    let numStr = '';
+    let numStr = "";
     for (let char of code) {
-      if (LETTER_TO_NUMBER[char as keyof typeof LETTER_TO_NUMBER] === undefined) return null;
+      if (LETTER_TO_NUMBER[char as keyof typeof LETTER_TO_NUMBER] === undefined)
+        return null;
       numStr += LETTER_TO_NUMBER[char as keyof typeof LETTER_TO_NUMBER];
     }
     return numStr; // Devuelvo el string, no el número parseado
@@ -40,7 +43,7 @@ const BlackHorseConverter = () => {
   // --- Conversión de número a código ---
   const convertNumberToCode = (num: string) => {
     if (!/^[0-9]{1,4}$/.test(num)) return null;
-    let code = '';
+    let code = "";
     for (let digit of num) {
       code += NUMBER_TO_LETTER[parseInt(digit, 10)];
     }
@@ -49,39 +52,43 @@ const BlackHorseConverter = () => {
 
   // --- Manejo de conversión ---
   const handleConvert = () => {
-    setError('');
-    setResult('');
-    if (mode === 'code-to-number') {
+    setError("");
+    setResult("");
+    if (mode === "code-to-number") {
       if (!/^[BLACKHORSE]{1,4}$/.test(input)) {
-        setError('El código solo puede contener letras válidas (B, L, A, C, K, H, O, R, S, E) y tener entre 1 y 4 caracteres.');
+        setError(
+          "El código solo puede contener letras válidas (B, L, A, C, K, H, O, R, S, E) y tener entre 1 y 4 caracteres.",
+        );
         return;
       }
       const numberStr = convertCodeToNumber(input);
       if (numberStr === null) {
-        setError('Código inválido.');
+        setError("Código inválido.");
         return;
       }
       const number = parseInt(numberStr, 10);
       const total = number * rate;
-      setResult(`${numberStr} x ${rate} = ${total.toLocaleString('es-CO')}`);
+      setResult(`${numberStr} x ${rate} = ${total.toLocaleString("es-CO")}`);
     } else {
       if (!/^[0-9]{1,10}$/.test(input)) {
-        setError('El número debe ser un valor numérico válido.');
+        setError("El número debe ser un valor numérico válido.");
         return;
       }
       const inputNumber = parseInt(input, 10);
       if (isNaN(inputNumber) || inputNumber <= 0) {
-        setError('El número debe ser mayor que cero.');
+        setError("El número debe ser mayor que cero.");
         return;
       }
       const quotient = Math.floor(inputNumber / rate);
       if (quotient <= 0 || quotient > 9999) {
-        setError('El resultado de la división debe ser un número positivo de hasta 4 dígitos.');
+        setError(
+          "El resultado de la división debe ser un número positivo de hasta 4 dígitos.",
+        );
         return;
       }
       const code = convertNumberToCode(quotient.toString());
       if (!code) {
-        setError('No se pudo convertir el número a código Black Horse.');
+        setError("No se pudo convertir el número a código Black Horse.");
         return;
       }
       setResult(code);
@@ -89,46 +96,46 @@ const BlackHorseConverter = () => {
   };
 
   // --- Manejo de cambio de modo ---
-  const handleModeChange = (newMode: 'code-to-number' | 'number-to-code') => {
+  const handleModeChange = (newMode: "code-to-number" | "number-to-code") => {
     setMode(newMode);
-    setInput('');
-    setResult('');
-    setError('');
+    setInput("");
+    setResult("");
+    setError("");
   };
 
   // --- Manejo de edición del rate ---
   const handleEditRate = () => {
     setEditRate(true);
     setRateInput(rate.toString());
-    setRateError('');
+    setRateError("");
   };
   const handleSaveRate = () => {
     if (!/^[0-9]+$/.test(rateInput) || parseInt(rateInput, 10) <= 0) {
-      setRateError('El valor debe ser un número positivo.');
+      setRateError("El valor debe ser un número positivo.");
       return;
     }
     setRate(parseInt(rateInput, 10));
     setEditRate(false);
-    setRateError('');
+    setRateError("");
   };
   const handleCancelRate = () => {
     setEditRate(false);
     setRateInput(rate.toString());
-    setRateError('');
+    setRateError("");
   };
 
   // --- Validación reactiva del input ---
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInput(value.toUpperCase());
-    setError('');
-    if (mode === 'code-to-number') {
+    setError("");
+    if (mode === "code-to-number") {
       if (/[^BLACKHORSE]/i.test(value)) {
-        setError('Solo se permiten letras B, L, A, C, K, H, O, R, S, E.');
+        setError("Solo se permiten letras B, L, A, C, K, H, O, R, S, E.");
       }
     } else {
       if (/[^0-9]/.test(value)) {
-        setError('Solo se permiten números en este campo.');
+        setError("Solo se permiten números en este campo.");
       }
     }
   };
@@ -147,12 +154,19 @@ const BlackHorseConverter = () => {
                 id="rate-input"
                 type="text"
                 value={rateInput}
-                onChange={e => setRateInput(e.target.value)}
+                onChange={(e) => setRateInput(e.target.value)}
                 className="bhc-rate-input editable"
                 autoFocus
               />
-              <button className="bhc-btn bhc-btn-save" onClick={handleSaveRate}>Guardar</button>
-              <button className="bhc-btn bhc-btn-cancel" onClick={handleCancelRate}>Cancelar</button>
+              <button className="bhc-btn bhc-btn-save" onClick={handleSaveRate}>
+                Guardar
+              </button>
+              <button
+                className="bhc-btn bhc-btn-cancel"
+                onClick={handleCancelRate}
+              >
+                Cancelar
+              </button>
               {rateError && <span className="bhc-error">{rateError}</span>}
             </>
           ) : (
@@ -164,21 +178,23 @@ const BlackHorseConverter = () => {
                 disabled
                 className="bhc-rate-input"
               />
-              <button className="bhc-btn bhc-btn-edit" onClick={handleEditRate}>Editar</button>
+              <button className="bhc-btn bhc-btn-edit" onClick={handleEditRate}>
+                Editar
+              </button>
             </>
           )}
         </div>
       </div>
       <div className="bhc-mode-switch">
         <button
-          className={`bhc-btn-switch${mode === 'code-to-number' ? ' active' : ''}`}
-          onClick={() => handleModeChange('code-to-number')}
+          className={`bhc-btn-switch${mode === "code-to-number" ? " active" : ""}`}
+          onClick={() => handleModeChange("code-to-number")}
         >
           Código → Número
         </button>
         <button
-          className={`bhc-btn-switch${mode === 'number-to-code' ? ' active' : ''}`}
-          onClick={() => handleModeChange('number-to-code')}
+          className={`bhc-btn-switch${mode === "number-to-code" ? " active" : ""}`}
+          onClick={() => handleModeChange("number-to-code")}
         >
           Número → Código
         </button>
@@ -187,17 +203,25 @@ const BlackHorseConverter = () => {
         <input
           className="bhc-input"
           type="text"
-          placeholder={mode === 'code-to-number' ? 'Ingresa el código (B, L, A, C, K, H, O, R, S, E)' : 'Ingresa la cantidad'}
+          placeholder={
+            mode === "code-to-number"
+              ? "Ingresa el código (B, L, A, C, K, H, O, R, S, E)"
+              : "Ingresa la cantidad"
+          }
           value={input}
           onChange={handleInputChange}
-          maxLength={mode === 'code-to-number' ? 4 : undefined}
+          maxLength={mode === "code-to-number" ? 4 : undefined}
         />
-        <button className="bhc-btn bhc-btn-convert" onClick={handleConvert}>Convertir</button>
+        <button className="bhc-btn bhc-btn-convert" onClick={handleConvert}>
+          Convertir
+        </button>
       </div>
       {error && <div className="bhc-error">{error}</div>}
       {result && <div className="bhc-result">{result}</div>}
       <div className="bhc-info">
-        <p><b>Referencia Black Horse:</b></p>
+        <p>
+          <b>Referencia Black Horse:</b>
+        </p>
         <p>E=0, B=1, L=2, A=3, C=4, K=5, H=6, O=7, R=8, S=9</p>
       </div>
     </div>
