@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./BlackHorseConverter.scss";
+import styles from "./BlackHorseConverter.module.scss";
 
 const LETTER_TO_NUMBER: Record<string, number> = {
   E: 0,
@@ -141,12 +141,12 @@ const BlackHorseConverter = () => {
   };
 
   return (
-    <div className="bhc-container">
-      <div className="bhc-title-row">
+    <div className={styles.bhcContainer}>
+      <div className={styles.bhcTitleRow}>
         <h2>Black Horse Converter</h2>
       </div>
-      <div className="bhc-row">
-        <div className="bhc-rate-box">
+      <div className={styles.bhcRow}>
+        <div className={styles.bhcRateBox}>
           <label htmlFor="rate-input">Valor constante:</label>
           {editRate ? (
             <>
@@ -155,19 +155,19 @@ const BlackHorseConverter = () => {
                 type="text"
                 value={rateInput}
                 onChange={(e) => setRateInput(e.target.value)}
-                className="bhc-rate-input editable"
+                className={styles.bhcRateInputEditable}
                 autoFocus
               />
-              <button className="bhc-btn bhc-btn-save" onClick={handleSaveRate}>
+              <button className={styles.bhcBtnSave} onClick={handleSaveRate}>
                 Guardar
               </button>
               <button
-                className="bhc-btn bhc-btn-cancel"
+                className={styles.bhcBtnCancel}
                 onClick={handleCancelRate}
               >
                 Cancelar
               </button>
-              {rateError && <span className="bhc-error">{rateError}</span>}
+              {rateError && <span className={styles.bhcError}>{rateError}</span>}
             </>
           ) : (
             <>
@@ -176,32 +176,32 @@ const BlackHorseConverter = () => {
                 type="text"
                 value={rate}
                 disabled
-                className="bhc-rate-input"
+                className={styles.bhcRateInput}
               />
-              <button className="bhc-btn bhc-btn-edit" onClick={handleEditRate}>
+              <button className={`${styles.bhcBtn} ${styles.bhcBtnEdit}`} onClick={handleEditRate}>
                 Editar
               </button>
             </>
           )}
         </div>
       </div>
-      <div className="bhc-mode-switch">
+      <div className={styles.bhcModeSwitch}>
         <button
-          className={`bhc-btn-switch${mode === "code-to-number" ? " active" : ""}`}
+          className={`${styles.bhcBtnSwitch} ${mode === "code-to-number" ? styles.active : ""}`}
           onClick={() => handleModeChange("code-to-number")}
         >
           Código → Número
         </button>
         <button
-          className={`bhc-btn-switch${mode === "number-to-code" ? " active" : ""}`}
+          className={`${styles.bhcBtnSwitch} ${mode === "number-to-code" ? styles.active : ""}`}
           onClick={() => handleModeChange("number-to-code")}
         >
           Número → Código
         </button>
       </div>
-      <div className="bhc-main">
+        <div className={styles.bhcMain}>
         <input
-          className="bhc-input"
+          className={styles.bhcInput}
           type="text"
           placeholder={
             mode === "code-to-number"
@@ -212,13 +212,13 @@ const BlackHorseConverter = () => {
           onChange={handleInputChange}
           maxLength={mode === "code-to-number" ? 4 : undefined}
         />
-        <button className="bhc-btn bhc-btn-convert" onClick={handleConvert}>
+        <button className={styles.bhcBtnConvert} onClick={handleConvert}>
           Convertir
         </button>
       </div>
-      {error && <div className="bhc-error">{error}</div>}
-      {result && <div className="bhc-result">{result}</div>}
-      <div className="bhc-info">
+      {error && <div className={styles.bhcError}>{error}</div>}
+      {result && <div className={styles.bhcResult}>{result}</div>}
+      <div className={styles.bhcInfo}>
         <p>
           <b>Referencia Black Horse:</b>
         </p>

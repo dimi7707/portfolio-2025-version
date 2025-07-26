@@ -1,4 +1,4 @@
-.bhc-container {
+.bhcContainer {
   max-width: 600px;
   margin: 4rem auto;
   background: #fff;
@@ -11,7 +11,7 @@
   gap: 2.5rem;
 }
 
-.bhc-title-row {
+.bhcTitleRow {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -19,7 +19,7 @@
   margin-bottom: 0.5rem;
 }
 
-.bhc-title-row h2 {
+.bhcTitleRow h2 {
   font-size: 2.45rem;
   font-weight: 800;
   margin: 0;
@@ -29,7 +29,7 @@
   letter-spacing: -1px;
 }
 
-.bhc-row {
+.bhcRow {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -37,14 +37,14 @@
   margin-bottom: 0.5rem;
 }
 
-.bhc-rate-box {
+.bhcRateBox {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-left: auto;
 }
 
-.bhc-rate-input {
+.bhcRateInput {
   width: 70px;
   padding: 0.3rem 0.7rem;
   border: 1.5px solid #e0e7ef;
@@ -54,12 +54,12 @@
   color: #222;
   transition: border 0.2s;
 }
-.bhc-rate-input.editable {
+.bhcRateInputEditable {
   border: 1.5px solid #3a7bd5;
   background: #fff;
 }
 
-.bhc-btn {
+.bhcBtn {
   padding: 0.35rem 1.1rem;
   border: none;
   border-radius: 8px;
@@ -72,27 +72,27 @@
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(58,123,213,0.08);
 }
-.bhc-btn-edit {
+.bhcBtnEdit {
   background: #e0e7ef;
   color: #3a7bd5;
   font-weight: 500;
 }
-.bhc-btn-save {
+.bhcBtnSave {
   background: linear-gradient(45deg, #00b09b, #96c93d);
 }
-.bhc-btn-cancel {
+.bhcBtnCancel {
   background: #e57373;
   color: #fff;
 }
 
-.bhc-mode-switch {
+.bhcModeSwitch {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.bhc-btn-switch {
+.bhcBtnSwitch {
   background: #f7fafd;
   color: #3a7bd5;
   border: 1.5px solid #3a7bd5;
@@ -101,21 +101,25 @@
   font-weight: 600;
   padding: 0.35rem 1.1rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
-.bhc-btn-switch.active, .bhc-btn-switch:hover {
+.bhcBtnSwitch.active,
+.bhcBtnSwitch:active,
+.bhcBtnSwitch:focus,
+.bhcBtnSwitch:hover {
   background: linear-gradient(45deg, #3a7bd5, #00d2ff);
   color: #fff;
+  border: none;
 }
 
-.bhc-main {
+.bhcMain {
   display: flex;
   gap: 1.1rem;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
 }
-.bhc-input {
+.bhcInput {
   flex: 1;
   padding: 0.88rem 1.43rem;
   border: 1.5px solid #e0e7ef;
@@ -125,21 +129,22 @@
   color: #222;
   transition: border 0.2s;
 }
-.bhc-input:focus {
+.bhcInput:focus {
   border: 1.5px solid #3a7bd5;
   outline: none;
   background: #fff;
 }
-.bhc-btn-convert {
+.bhcBtnConvert {
   background: linear-gradient(45deg, #00b09b, #96c93d);
   color: #fff;
   font-weight: 700;
   font-size: 1.27rem;
   padding: 0.88rem 1.65rem;
   border-radius: 12px;
+  border: none;
 }
 
-.bhc-error {
+.bhcError {
   color: #e57373;
   background: #fff0f0;
   border: 1px solid #e57373;
@@ -150,7 +155,7 @@
   font-size: 1.19rem;
 }
 
-.bhc-result {
+.bhcResult {
   color: #388e3c;
   background: #e8f5e9;
   border: 1px solid #388e3c;
@@ -162,7 +167,7 @@
   font-weight: 700;
 }
 
-.bhc-info {
+.bhcInfo {
   margin-top: 1.5rem;
   font-size: 1.19rem;
   color: #555;
@@ -172,24 +177,30 @@
   padding: 1.1rem 1.32rem;
 }
 
+.active {
+  background: linear-gradient(45deg, #3a7bd5, #00d2ff) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
 @media (max-width: 700px) {
-  .bhc-container {
+  .bhcContainer {
     padding: 1.7rem 0.5rem;
     max-width: 99vw;
   }
-  .bhc-title-row h2 {
+  .bhcTitleRow h2 {
     font-size: 1.43rem;
   }
-  .bhc-main {
+  .bhcMain {
     flex-direction: column;
     gap: 0.7rem;
   }
-  .bhc-row {
+  .bhcRow {
     flex-direction: column;
     align-items: stretch;
     gap: 0.7rem;
   }
-  .bhc-rate-box {
+  .bhcRateBox {
     margin-left: 0;
     justify-content: flex-end;
   }
