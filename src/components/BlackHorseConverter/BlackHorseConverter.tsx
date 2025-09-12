@@ -15,7 +15,7 @@ const LETTER_TO_NUMBER: Record<string, number> = {
 };
 const NUMBER_TO_LETTER = ["B", "L", "A", "C", "K", "H", "O", "R", "S", "E"];
 
-const DEFAULT_RATE = 3900;
+const DEFAULT_RATE = 4000;
 
 const BlackHorseConverter = () => {
   const [mode, setMode] = useState<"code-to-number" | "number-to-code">(
@@ -227,7 +227,12 @@ const BlackHorseConverter = () => {
         <p>
           <b>Referencia Black Horse:</b>
         </p>
-        <p>B=0, L=1, A=2, C=3, K=4, H=5, O=6, R=7, S=8, E=9</p>
+        <p>
+          <b>B</b>=0 &nbsp;|&nbsp; <b>L</b>=1 &nbsp;|&nbsp; <b>A</b>=2
+          &nbsp;|&nbsp; <b>C</b>=3 &nbsp;|&nbsp; <b>K</b>=4 &nbsp;|&nbsp;{" "}
+          <b>H</b>=5 &nbsp;|&nbsp; <b>O</b>=6 &nbsp;|&nbsp; <b>R</b>=7
+          &nbsp;|&nbsp; <b>S</b>=8 &nbsp;|&nbsp; <b>E</b>=9
+        </p>
       </div>
     </div>
   );
