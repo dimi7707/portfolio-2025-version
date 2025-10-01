@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SiOpenai, SiGithubcopilot, SiAnthropic } from "react-icons/si";
+import { TbTerminal2, TbBrain, TbRobot, TbSparkles, TbCpu, TbBulb, TbBrandVscode, TbMessageChatbot, TbNetwork, TbAtom } from "react-icons/tb";
 import styles from "./AIPassionSection.module.scss";
 
 interface AIPassionSectionProps {
@@ -15,6 +17,7 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
+  const iconsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -77,6 +80,30 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
           });
         }
 
+        // Animate background icons
+        if (iconsRef.current) {
+          const icons = iconsRef.current.children;
+          Array.from(icons).forEach((icon, index) => {
+            gsap.to(icon, {
+              rotation: "random(-360, 360)",
+              duration: "random(20, 40)",
+              repeat: -1,
+              ease: "none",
+              delay: index * 0.5,
+            });
+            
+            gsap.to(icon, {
+              y: "random(-10, 10)",
+              x: "random(-10, 10)",
+              duration: "random(8, 15)",
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+              delay: index * 0.3,
+            });
+          });
+        }
+
         // Gradient animation
         gsap.to(sectionRef.current, {
           scrollTrigger: {
@@ -96,6 +123,22 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
   return (
     <section className={styles.aiPassionSection} ref={sectionRef}>
       <div className={styles.backgroundGradient}></div>
+      
+      {/* Background AI Tools Icons */}
+      <div className={styles.backgroundIcons} ref={iconsRef}>
+        <SiAnthropic className={`${styles.backgroundIcon} ${styles.icon1}`} />
+        <SiOpenai className={`${styles.backgroundIcon} ${styles.icon2}`} />
+        <SiGithubcopilot className={`${styles.backgroundIcon} ${styles.icon3}`} />
+        <TbBrandVscode className={`${styles.backgroundIcon} ${styles.icon4}`} />
+        <TbTerminal2 className={`${styles.backgroundIcon} ${styles.icon5}`} />
+        <TbBrain className={`${styles.backgroundIcon} ${styles.icon6}`} />
+        <TbRobot className={`${styles.backgroundIcon} ${styles.icon7}`} />
+        <TbSparkles className={`${styles.backgroundIcon} ${styles.icon8}`} />
+        <TbCpu className={`${styles.backgroundIcon} ${styles.icon9}`} />
+        <TbBulb className={`${styles.backgroundIcon} ${styles.icon10}`} />
+        <TbMessageChatbot className={`${styles.backgroundIcon} ${styles.icon11}`} />
+        <TbNetwork className={`${styles.backgroundIcon} ${styles.icon12}`} />
+      </div>
       
       {/* Floating particles */}
       <div className={styles.particles} ref={particlesRef}>
