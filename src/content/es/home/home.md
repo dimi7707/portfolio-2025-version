@@ -3,9 +3,9 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "La IA no me ha reemplazado... todavía. "
-  description: "Soy un desarrollador de software radicado en Colombia con más de 8 años de experiencia creando soluciones tecnológicas de alto impacto. A lo largo de mi carrera he tenido la oportunidad de trabajar en industrias tan diversas como finanzas, automotriz y retail, participando en una amplia variedad de proyectos desafiantes. 
+  description: "Soy Ingeniero Full Stack con sede en Colombia y casi 10 años de experiencia en desarrollo de software. A lo largo de mi carrera, he liderado equipos de desarrollo como líder técnico, combinando habilidades de gestión con experiencia hands-on.
   
-  Me caracteriza la atención al detalle y la búsqueda constante de la máxima calidad en cada producto que desarrollo o en el que colaboro, siempre con el objetivo de aportar valor y contribuir al éxito del equipo."
+  Aunque mi mayor fortaleza está en el frontend, también tengo amplia experiencia en backend y me apasiona seguir aprendiendo sobre infraestructura. En los últimos años, he profundizado bastante en AWS y servicios cloud."
   mainImage: "/images/fix-hero-image.jpg"
   imageAlt: "Foto de perfil de Dimitri Avila"
 
