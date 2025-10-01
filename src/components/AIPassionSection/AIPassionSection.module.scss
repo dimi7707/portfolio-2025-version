@@ -1,0 +1,289 @@
+@import "../../styles/variables";
+
+.aiPassionSection {
+  position: relative;
+  min-height: 51vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5.1rem 2rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  --gradient-rotation: 0deg;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: conic-gradient(from var(--gradient-rotation), 
+      rgba(79, 172, 254, 0.1) 0deg,
+      rgba(139, 69, 255, 0.15) 120deg,
+      rgba(255, 71, 87, 0.1) 240deg,
+      rgba(79, 172, 254, 0.1) 360deg);
+    opacity: 0.6;
+    z-index: 1;
+  }
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(79, 172, 254, 0.15) 0%,
+    rgba(139, 69, 255, 0.1) 30%,
+    rgba(255, 71, 87, 0.08) 60%,
+    transparent 80%
+  );
+  animation: rotateGradient 20s linear infinite;
+  z-index: 1;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+  
+  &:nth-child(1) { top: 20%; left: 10%; }
+  &:nth-child(2) { top: 40%; left: 20%; }
+  &:nth-child(3) { top: 60%; left: 15%; }
+  &:nth-child(4) { top: 80%; left: 25%; }
+  &:nth-child(5) { top: 30%; left: 70%; }
+  &:nth-child(6) { top: 50%; left: 80%; }
+  &:nth-child(7) { top: 70%; left: 85%; }
+  &:nth-child(8) { top: 90%; left: 75%; }
+  &:nth-child(9) { top: 25%; left: 45%; }
+  &:nth-child(10) { top: 55%; left: 55%; }
+  &:nth-child(11) { top: 35%; left: 90%; }
+  &:nth-child(12) { top: 65%; left: 5%; }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+}
+
+.neuralNetwork {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.networkSvg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.networkPath {
+  stroke-dasharray: 5, 10;
+  animation: dashFlow 3s linear infinite;
+}
+
+.networkNode {
+  fill: #4facfe;
+  stroke: rgba(79, 172, 254, 0.5);
+  stroke-width: 2;
+  animation: nodePulse 2s infinite alternate;
+  filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.7));
+}
+
+.container {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  z-index: 3;
+}
+
+.content {
+  text-align: center;
+  padding: 2.55rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 12.75px 25.5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(79, 172, 254, 0.05) 0%,
+      rgba(139, 69, 255, 0.05) 50%,
+      rgba(255, 71, 87, 0.05) 100%);
+    border-radius: 20px;
+    z-index: -1;
+  }
+}
+
+.title {
+  font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.275rem;
+  line-height: 1.2;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    border-radius: 2px;
+  }
+}
+
+.description {
+  font-size: clamp(0.85rem, 1.7vw, 1.02rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.915rem;
+  max-width: 595px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, 
+    rgba(79, 172, 254, 0.2) 0%,
+    rgba(139, 69, 255, 0.2) 100%);
+  color: white;
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+    border-color: rgba(79, 172, 254, 0.6);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// Animations
+@keyframes rotateGradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes dashFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 15; }
+}
+
+@keyframes nodePulse {
+  0% { r: 4; opacity: 0.7; }
+  100% { r: 6; opacity: 1; }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .aiPassionSection {
+    padding: 2.55rem 1rem;
+    min-height: 44.2vh;
+  }
+  
+  .content {
+    padding: 1.7rem 1.5rem;
+  }
+  
+  .tools {
+    gap: 0.68rem;
+  }
+  
+  .tool {
+    padding: 0.51rem 1.02rem;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.275rem 1rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
+    margin-bottom: 1.275rem;
+  }
+}
