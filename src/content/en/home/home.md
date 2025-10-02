@@ -3,11 +3,16 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "AI hasn't replaced me... yet."
-  description: "I am a software developer based in Colombia with over 8 years of experience creating high-impact technology solutions. Throughout my career, I have had the opportunity to work in diverse industries — including finance, automotive, and retail — participating in a wide range of challenging projects.
+  description: "I'm a Full Stack Engineer based in Colombia with nearly 10 years of experience in software development. Throughout my career, I've led development teams as a technical leader, combining management skills with hands-on expertise.
   
-  I’m detail-oriented and always strive for the highest quality in every product I develop or collaborate on, consistently aiming to deliver value and contribute to the success of the team."
+  While my strongest suit is frontend development, I also have extensive backend experience and a genuine passion for learning about infrastructure. In recent years, I've gained solid experience with AWS and cloud services."
   mainImage: "/images/fix-hero-image.jpg"
   imageAlt: "Profile picture of Dimitri Avila"
+
+aiPassion:
+  title: "My Passion for AI"
+  description: "I have a true passion for AI. I firmly believe it's not just the future, but the present of development. These are incredible tools that enhance our capabilities and improve the quality of what we build. In my daily work, I use Claude Code, Cursor AI, MCP integrations, Warp Terminal, and I'm always exploring new tools and learning more about this ecosystem."
+  tools: ["Claude Code", "Cursor AI", "MCP Integrations", "Warp Terminal", "GitHub Copilot", "ChatGPT", "Midjourney", "Runway ML"]
 
 techStackCarousel:
   title: "Technologies I Master"
