@@ -13,7 +13,8 @@ const homeCollection = lang === "en" ? "enHomeCollection" : "esHomeCollection";
 
 const home = await getCollection(homeCollection);
 
-const { hero, aiPassion, careerTimeLine, downloadCv, techStackCarousel } = home[0].data;
+const { hero, aiPassion, careerTimeLine, downloadCv, techStackCarousel } =
+  home[0].data;
 console.log(aiPassion);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
