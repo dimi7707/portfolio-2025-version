@@ -3,9 +3,7 @@ hero:
   titleFirstPart: "Dimitri Avila"
   titleSecondPart: "Software developer"
   subtitle: "La IA no me ha reemplazado... todavía. "
-  description: "Soy Ingeniero Full Stack con sede en Colombia y casi 10 años de experiencia en desarrollo de software. A lo largo de mi carrera, he liderado equipos de desarrollo como líder técnico, combinando habilidades de gestión con experiencia hands-on.
-  
-  Aunque mi mayor fortaleza está en el frontend, también tengo amplia experiencia en backend y me apasiona seguir aprendiendo sobre infraestructura. En los últimos años, he profundizado bastante en AWS y servicios cloud."
+  description: "Ingeniero Full Stack con 11 años de experiencia construyendo soluciones de software escalables. Integro activamente IA en mi flujo de desarrollo mediante Spec-Driven Development, aprovechando herramientas como Claude y Cursor para mejorar productividad y calidad de código. A lo largo de mi carrera, he liderado equipos de desarrollo como líder técnico, combinando experiencia hands-on con liderazgo estratégico. Fuerte enfoque en servicios cloud de AWS y prácticas modernas de desarrollo."
   mainImage: "/images/fix-hero-image.jpg"
   imageAlt: "Foto de perfil de Dimitri Avila"
 
@@ -20,63 +18,60 @@ techStackCarousel:
 careerTimeLine:
   titleSection: "Experiencia profesional"
   experiences:
+    - company: "Cafeto Software / Apptega"
+      position: "Full Stack Developer"
+      period: "Ago 2025 - Presente"
+      description: "Full Stack Developer liderando el desarrollo y arquitectura del módulo de reportes para la plataforma de Apptega. Responsable de la propiedad end-to-end del sistema de reportes, integrando fuertemente asistencia de IA en el flujo de trabajo diario mediante Claude, Cursor y prácticas de Spec-Driven Development. Uso extensivo de servicios AWS incluyendo SQS, S3, Bedrock, IAM, ECS y EC2 para infraestructura cloud escalable."
+      technologies: ["Python", "Node.js", "PHP", "React", "TypeScript", "AWS", "Docker"]
+      companyLogo: "/images/generic-company-logo.png"
+      achievements:
+        - "Arquitecté y entregué el módulo completo de reportes, estableciéndolo como una capacidad core de la plataforma para análisis de datos e insights."
+        - "Integré prácticas de desarrollo impulsadas por IA (Spec-Driven Development con Claude/Cursor), mejorando significativamente la velocidad de desarrollo y calidad del código."
+        - "Diseñé e implementé infraestructura basada en AWS aprovechando SQS, S3, Bedrock y ECS para generación de reportes escalable y resiliente."
+
     - company: "Inchcape digital delivery Center"
       position: "Líder Técnico Frontend"
       period: "Mar 2023 - Jun 2025"
-      description: "En Inchcape Delivery Center participé en la conformación y consolidación del equipo de desarrollo digital en la sede de Colombia para el área de Ecommerce de la compañía. Asumí el rol de Líder Técnico Frontend, acompañando el crecimiento y fortalecimiento del área desde sus inicios. Junto con mi equipo, atravesamos un proceso de transferencia de conocimientos por parte del equipo de Filipinas, lo que nos permitió adquirir dominio profundo sobre los distintos productos digitales y evolucionar hacia un equipo local autosuficiente, capaz de asumir proyectos completos, brindar soporte técnico especializado y desarrollar o ampliar la gama de soluciones de la compañía.
-
-      Durante mi etapa en la empresa, trabajé junto al equipo en el desarrollo, mantenimiento y optimización de diversos widgets integrados en los sitios web de múltiples marcas automotrices aliadas. Estos widgets cumplen un papel clave en todo el flujo de compra, venta y servicios de mantenimiento, representando una pieza fundamental para mejorar la experiencia de usuario y facilitar los procesos comerciales dentro del ecosistema digital de Inchcape.
-
-      Como líder técnico, además de contribuir directamente al desarrollo, me enfoqué en establecer directrices claras para el equipo, promoviendo buenas prácticas, estándares de calidad y un enfoque en la escalabilidad y mantenibilidad de las soluciones. Fomenté la adopción de revisiones de código colaborativas, definición de guías de arquitectura frontend, automatización de procesos de despliegue y fortalecimiento de la cultura de aprendizaje continuo. Mi liderazgo buscó empoderar al equipo para tomar decisiones técnicas informadas y garantizar la entrega de productos de alto impacto y calidad."
+      description: "Líder Técnico Frontend gestionando un equipo de 6-8 personas de Ecommerce en Colombia, supervisando la transición desde el hub de Filipinas y estableciendo autonomía local. Definí estándares frontend, prácticas de CI/CD y lideré el programa de onboarding para construir capacidades del equipo. Entregué widgets core para múltiples sitios web de marcas automotrices, mejorando las experiencias de compra, reserva y servicios."
       technologies: [ "TypeScript", "React", "Angular", ".Net - C#",  "Cypress", "Cucumber", "Apollo GraphQL", "PHP", "PostgreSQL", "Azure"]
       companyLogo: "/images/Imagen cuadrada-inchcape.png"
       achievements:
-        - "Ayudé a consolidar un equipo local autosuficiente, capaz de asumir proyectos end-to-end y brindar soporte técnico estratégico."
-        - "Lideré la implementación de buenas prácticas y estándares de desarrollo, mejorando la calidad y mantenibilidad del código."
-        - "Contribuí a la creación y optimización de widgets clave para marcas automotrices, fortaleciendo el canal digital de venta y servicios."
+        - "Construí y lideré un equipo completamente autosuficiente capaz de entregar proyectos end-to-end con ownership técnico estratégico."
+        - "Establecí mejores prácticas y estándares frontend que mejoraron significativamente la calidad y mantenibilidad del código en todos los proyectos."
+        - "Entregué widgets de alto impacto para sitios de e-commerce automotriz, mejorando directamente la experiencia de usuario e impulsando el crecimiento de ingresos digitales."
 
     - company: "Sophos Solutions"
       position: "Full Stack Developer - Solution Consultant II"
       period: "Oct 2021 - Feb 2023"
-      description: "Durante mi paso por Sophos Solutions trabajé como desarrollador en el rediseño y evolución del sitio web de la Bolsa de Valores de Colombia (bvc.com.co), un proyecto con una arquitectura compleja e innovadora orientada al manejo de grandes volúmenes de datos del mercado financiero.
-      
-      Participé activamente en el desarrollo de nuevas funcionalidades y en la solución de bugs, trabajando estrechamente con un stack distribuido que integraba Kafka como fuente principal de datos del mercado, múltiples servicios en Java que consumían y almacenaban esta información en PostgreSQL, y una capa intermedia de orquestadores en Node.js que servían como puente entre los datos y el frontend.
-      
-      Además, colaboré con el uso de un CMS basado en GraphQL (Hygraph) para la gestión del contenido estático y con un sistema de caché en Redis que optimizaba la carga de datos diarios, mejorando considerablemente la experiencia del usuario. También asumí temporalmente la responsabilidad técnica del equipo durante la ausencia del líder técnico, lo que fortaleció mis habilidades de liderazgo y entendimiento integral del sistema."
+      description: "Full Stack Developer en la plataforma de la Bolsa de Valores de Colombia (bvc.com.co), trabajando con una arquitectura distribuida que incluye streams de eventos Kafka, servicios Java/PostgreSQL, orquestadores Node.js y CMS GraphQL (Hygraph). Diseñé e implementé una capa de caché Redis que redujo significativamente los tiempos de carga de datos del mercado y mejoró la experiencia de usuario. Asumí responsabilidades de líder técnico interino durante la ausencia del líder del equipo, fortaleciendo habilidades de liderazgo y conocimiento arquitectónico."
       technologies: ["Node.js", "Express", "Typescript", "Redis", "React", "Redux", "GraphQL", "PostgreSQL", "Hygraph CMS" ]
       companyLogo: "/images/sophos-logo.png"
       achievements:
-        - "Asumí el rol de líder técnico temporalmente, garantizando la continuidad y calidad del desarrollo durante ese periodo."
-        - "Implementé junto con mi equipo mejoras en el flujo de consumo de indicadores del mercado, optimizando la carga de datos diarios mediante Redis y reduciendo tiempos de respuesta."
-        - "Contribuí activamente al desarrollo de nuevos módulos del sitio, asegurando una integración eficiente entre frontend, orquestadores y servicios backend."
+        - "Fungí como líder técnico interino, manteniendo altos estándares de calidad en las entregas y asegurando continuidad del equipo durante la transición de liderazgo."
+        - "Arquitecté e implementé estrategia de caché con Redis para datos del mercado, reduciendo drásticamente los tiempos de carga y mejorando el rendimiento de la plataforma."
+        - "Entregué funcionalidades críticas y corrección de bugs a lo largo del full stack, integrando perfectamente componentes frontend y backend en una arquitectura distribuida compleja."
     
     - company: "Aplyca Teclogía SAS"
       position: "Frontend Developer"
       period: "Oct 2020 - Oct 2021"
-      description: "Durante mi experiencia en Aplyca Tecnología me enfoqué en la construcción de soluciones frontend robustas y escalables, participando en proyectos basados en el CMS Ibexa. Lideré la creación de design systems completos: colecciones de componentes reutilizables y principios de diseño que aseguraban una identidad visual coherente y una experiencia de usuario consistente en cada producto. Esta estrategia permitió a los administradores y editores construir nuevas páginas de forma flexible, manteniendo siempre la calidad y los estándares definidos.
-      
-      Trabajé con tecnologías clave como Pangolin.js para la arquitectura del design system y React para el desarrollo dinámico de componentes, complementando con herramientas como Sass, JavaScript, Nunjucks. Gracias a este enfoque, se lograron productos finales sólidos, mantenibles y fácilmente escalables, facilitando el crecimiento y evolución de los sitios web a lo largo del tiempo."
+      description: "Frontend Developer especializado en desarrollo de design systems para proyectos Ibexa-CMS, creando componentes modulares que permitieron creación rápida de páginas manteniendo consistencia de marca. Construí componentes escalables y reutilizables usando Pangolin.js, React, Sass, JavaScript y Nunjucks. Establecí estándares frontend y documentación que mejoraron la colaboración entre diseñadores y desarrolladores."
       technologies: ["React", "Pangolin.js", "Javascript", "Nunjucks", "SASS", "PHP"]
       companyLogo: "/images/aplyca-logo.png"
       achievements:
-        - "Diseñé e implementé un design system completo que permitió aumentar la eficiencia y consistencia en el desarrollo de nuevas páginas y módulos."
-        - "Mejoré la escalabilidad y mantenibilidad de los proyectos mediante la creación de componentes altamente reutilizables y documentados."
-        - "Contribuí a la modernización tecnológica del equipo frontend, integrando React y Pangolin.js de manera exitosa en proyectos basados en CMS."
+        - "Creé un design system modular integral que aceleró significativamente los ciclos de desarrollo y aseguró consistencia visual en todos los proyectos."
+        - "Impulsé tecnologías frontend modernas (React y Pangolin.js), elevando la calidad del código y estableciendo patrones de arquitectura escalables."
+        - "Definí estándares y mejores prácticas de desarrollo frontend que mejoraron la mantenibilidad del código y fomentaron la colaboración cross-funcional efectiva."
   
     - company: "KUBO SAS"
       position: "Full Stack Developer"
       period: "Sep 2019 - Sep 2020"
-      description: "En Kubo SAS, una empresa colombiana especializada en el desarrollo de aplicaciones móviles para Android e iOS, trabajé como Full Stack Developer, desempeñando un rol clave en la construcción de soluciones integrales que conectaban aplicaciones móviles con plataformas web complementarias. Una de mis principales responsabilidades fue el diseño y desarrollo de múltiples API REST, creadas en Node.js con Express y en PHP utilizando Laravel y CodeIgniter, las cuales eran consumidas por las aplicaciones móviles para garantizar una experiencia fluida y segura a los usuarios.
-      
-      Además, desarrollé aplicaciones web tipo backoffice que funcionaban como paneles administrativos robustos, permitiendo a los usuarios monitorear estadísticas, revisar reportes detallados y configurar funcionalidades críticas para sus aplicaciones móviles. Estas soluciones combinaban un backend eficiente (API REST) con interfaces frontend dinámicas y modernas, construidas con Vue.js (Nuxt) y React, asegurando flexibilidad, rendimiento y escalabilidad.  
-
-      Adicionalmente, integré socket.io para establecer mecanismos de comunicación en tiempo real entre cliente y servidor, permitiendo funcionalidades como chats en vivo entre usuarios de las aplicaciones móviles. Esta capacidad mejoró notablemente la interacción y la inmediatez en las experiencias ofrecidas a los usuarios finales."
+      description: "Full Stack Developer construyendo soluciones móvil-web end-to-end, diseñando e implementando APIs REST con Node.js (Express) y PHP (Laravel, CodeIgniter) para intercambio seguro de datos. Creé aplicaciones administrativas backoffice completas usando Vue.js (Nuxt) y React, proporcionando a los stakeholders dashboards, reportes y capacidades de configuración. Integré socket.io para funcionalidades en tiempo real incluyendo chat en vivo y notificaciones instantáneas."
       technologies: ["TypeScript", "PHP", "Laravel - Codeigniter", "Vue.js - Nuxt", "React", "Node.js - Express", "Socket.io" ]
       companyLogo: "/images/logo-kubo.png"
       achievements:
-        - "Desarrollé y desplegué múltiples API REST escalables, optimizando la integración entre aplicaciones móviles y sistemas web, incrementando la estabilidad y la velocidad de respuesta."
-        - "Implementé funcionalidades en tiempo real utilizando socket.io, habilitando mecanismos interactivos como chats y notificaciones instantáneas entre usuarios."
-        - "Construí backoffices completos y flexibles que empoderaron a los clientes para gestionar sus aplicaciones móviles de manera autónoma y eficiente, con interfaces intuitivas desarrolladas en Vue.js (Nuxt) y React." 
+        - "Arquitecté e implementé múltiples APIs REST escalables que mejoraron significativamente la estabilidad y rendimiento para integraciones móvil-web."
+        - "Implementé funcionalidades de comunicación en tiempo real usando socket.io, habilitando capacidades interactivas como chat en vivo y notificaciones push instantáneas."
+        - "Construí plataformas backoffice completas que empoderaron a los clientes con control autónomo total sobre sus aplicaciones móviles mediante interfaces intuitivas en Vue.js (Nuxt) y React." 
 
 downloadCv:
   title: "Descarga mi CV"
