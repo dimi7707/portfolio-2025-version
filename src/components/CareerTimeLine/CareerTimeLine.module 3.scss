@@ -34,32 +34,14 @@ $shadow-cyan: rgba(34, 211, 238, 0.2);
   margin: 0 auto;
   box-sizing: border-box;
 
-  // Laptops medianas y tabletas grandes
-  @media (max-width: 1280px) {
-    gap: 1.5rem;
-  }
-
-  // Laptops pequeñas y tabletas
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
-  // Móviles
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-}
-
-// Ajustar padding del container en pantallas pequeñas
-.careerContainer {
-  @media (max-width: 1280px) {
-    padding: 4rem 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    padding: 3rem 1rem;
   }
 }
 

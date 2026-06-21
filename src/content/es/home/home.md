@@ -23,7 +23,7 @@ careerTimeLine:
       period: "Ago 2025 - Presente"
       description: "Full Stack Developer liderando el desarrollo y arquitectura del módulo de reportes para la plataforma de Apptega. Responsable de la propiedad end-to-end del sistema de reportes, integrando fuertemente asistencia de IA en el flujo de trabajo diario mediante Claude, Cursor y prácticas de Spec-Driven Development. Uso extensivo de servicios AWS incluyendo SQS, S3, Bedrock, IAM, ECS y EC2 para infraestructura cloud escalable."
       technologies: ["Python", "Node.js", "PHP", "React", "TypeScript", "AWS", "Docker"]
-      companyLogo: "/images/generic-company-logo.png"
+      companyLogo: "/images/apptega-logo.webp"
       achievements:
         - "Arquitecté y entregué el módulo completo de reportes, estableciéndolo como una capacidad core de la plataforma para análisis de datos e insights."
         - "Integré prácticas de desarrollo impulsadas por IA (Spec-Driven Development con Claude/Cursor), mejorando significativamente la velocidad de desarrollo y calidad del código."
