@@ -2,7 +2,18 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiOpenai, SiGithubcopilot, SiAnthropic } from "react-icons/si";
-import { TbTerminal2, TbBrain, TbRobot, TbSparkles, TbCpu, TbBulb, TbBrandVscode, TbMessageChatbot, TbNetwork, TbAtom } from "react-icons/tb";
+import {
+  TbTerminal2,
+  TbBrain,
+  TbRobot,
+  TbSparkles,
+  TbCpu,
+  TbBulb,
+  TbBrandVscode,
+  TbMessageChatbot,
+  TbNetwork,
+  TbAtom,
+} from "react-icons/tb";
 import styles from "./AIPassionSection.module.scss";
 
 interface AIPassionSectionProps {
@@ -11,7 +22,11 @@ interface AIPassionSectionProps {
   tools: string[];
 }
 
-const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) => {
+const AIPassionSection = ({
+  title,
+  description,
+  tools,
+}: AIPassionSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -91,7 +106,7 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
               ease: "none",
               delay: index * 0.5,
             });
-            
+
             gsap.to(icon, {
               y: "random(-10, 10)",
               x: "random(-10, 10)",
@@ -123,12 +138,14 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
   return (
     <section className={styles.aiPassionSection} ref={sectionRef}>
       <div className={styles.backgroundGradient}></div>
-      
+
       {/* Background AI Tools Icons */}
       <div className={styles.backgroundIcons} ref={iconsRef}>
         <SiAnthropic className={`${styles.backgroundIcon} ${styles.icon1}`} />
         <SiOpenai className={`${styles.backgroundIcon} ${styles.icon2}`} />
-        <SiGithubcopilot className={`${styles.backgroundIcon} ${styles.icon3}`} />
+        <SiGithubcopilot
+          className={`${styles.backgroundIcon} ${styles.icon3}`}
+        />
         <TbBrandVscode className={`${styles.backgroundIcon} ${styles.icon4}`} />
         <TbTerminal2 className={`${styles.backgroundIcon} ${styles.icon5}`} />
         <TbBrain className={`${styles.backgroundIcon} ${styles.icon6}`} />
@@ -136,10 +153,12 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
         <TbSparkles className={`${styles.backgroundIcon} ${styles.icon8}`} />
         <TbCpu className={`${styles.backgroundIcon} ${styles.icon9}`} />
         <TbBulb className={`${styles.backgroundIcon} ${styles.icon10}`} />
-        <TbMessageChatbot className={`${styles.backgroundIcon} ${styles.icon11}`} />
+        <TbMessageChatbot
+          className={`${styles.backgroundIcon} ${styles.icon11}`}
+        />
         <TbNetwork className={`${styles.backgroundIcon} ${styles.icon12}`} />
       </div>
-      
+
       {/* Floating particles */}
       <div className={styles.particles} ref={particlesRef}>
         {Array.from({ length: 12 }).map((_, index) => (
@@ -157,30 +176,30 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
               <stop offset="100%" stopColor="rgba(255, 71, 87, 0.3)" />
             </linearGradient>
           </defs>
-          
+
           {/* Animated lines connecting nodes */}
-          <path 
-            d="M100,200 Q300,100 500,200 T900,200" 
-            stroke="url(#lineGradient)" 
-            strokeWidth="2" 
+          <path
+            d="M100,200 Q300,100 500,200 T900,200"
+            stroke="url(#lineGradient)"
+            strokeWidth="2"
             fill="none"
             className={styles.networkPath}
           />
-          <path 
-            d="M150,150 Q400,250 700,150 T1000,150" 
-            stroke="url(#lineGradient)" 
-            strokeWidth="2" 
+          <path
+            d="M150,150 Q400,250 700,150 T1000,150"
+            stroke="url(#lineGradient)"
+            strokeWidth="2"
             fill="none"
             className={styles.networkPath}
           />
-          <path 
-            d="M200,250 Q500,50 800,250" 
-            stroke="url(#lineGradient)" 
-            strokeWidth="2" 
+          <path
+            d="M200,250 Q500,50 800,250"
+            stroke="url(#lineGradient)"
+            strokeWidth="2"
             fill="none"
             className={styles.networkPath}
           />
-          
+
           {/* Nodes */}
           <circle cx="100" cy="200" r="6" className={styles.networkNode} />
           <circle cx="300" cy="150" r="4" className={styles.networkNode} />
@@ -195,11 +214,11 @@ const AIPassionSection = ({ title, description, tools }: AIPassionSectionProps) 
           <h2 className={styles.title} ref={titleRef}>
             {title}
           </h2>
-          
+
           <p className={styles.description} ref={descriptionRef}>
             {description}
           </p>
-          
+
           <div className={styles.tools} ref={toolsRef}>
             {/*tools.map((tool, index) => (
               <span key={index} className={styles.tool}>
