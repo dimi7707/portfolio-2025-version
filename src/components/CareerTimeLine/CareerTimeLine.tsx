@@ -43,7 +43,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
               trigger: `.${styles.title}`,
               start: "top 80%",
             },
-          }
+          },
         );
 
         // Cards stagger animation
@@ -62,7 +62,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
                 trigger: containerRef.current,
                 start: "top 80%",
               },
-            }
+            },
           );
         }
       }, containerRef);
@@ -105,9 +105,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
             role="article"
           >
             <div className={styles.cardHeader}>
-              <div className={styles.companyBadge}>
-                {getBadgeContent(exp)}
-              </div>
+              <div className={styles.companyBadge}>{getBadgeContent(exp)}</div>
               <div className={styles.dateBadge}>{exp.period}</div>
             </div>
 
