@@ -1,13 +1,30 @@
 import React from "react";
 import styles from "./TechConstellation.module.scss";
 import { getIconForTech } from "./iconMap";
-import type { TechConstellationNode } from "./types";
+import { groupByCategory } from "./groupByCategory";
+import type { TechConstellationCategory, TechConstellationNode } from "./types";
 
 interface TechConstellationProps {
   title: string;
   subtitle: string;
   nodes: TechConstellationNode[];
 }
+
+const CATEGORY_ORDER: TechConstellationCategory[] = [
+  "languages",
+  "frameworks",
+  "data",
+  "infra",
+  "testing",
+];
+
+const CATEGORY_LABELS: Record<TechConstellationCategory, string> = {
+  languages: "Languages",
+  frameworks: "Frameworks",
+  data: "Data",
+  infra: "Infra / Cloud",
+  testing: "QA & Testing",
+};
 
 // Single place node markup is built — both the desktop cluster layout and
 // the mobile chain layout call this instead of duplicating node JSX.
@@ -22,7 +39,13 @@ const renderNode = (node: TechConstellationNode) => {
   );
 };
 
-const TechConstellation = ({ title, subtitle, nodes }: TechConstellationProps) => {
+const TechConstellation = ({
+  title,
+  subtitle,
+  nodes,
+}: TechConstellationProps) => {
+  const grouped = groupByCategory(nodes);
+
   return (
     <section className={styles.techConstellation}>
       <div className={styles.header}>
@@ -30,7 +53,22 @@ const TechConstellation = ({ title, subtitle, nodes }: TechConstellationProps) =
         <p className={styles.subtitle}>{subtitle}</p>
       </div>
 
-      <div className={styles.nodes}>{nodes.map(renderNode)}</div>
+      {/* Desktop: nodes grouped into category clusters, connected within
+          each cluster by dashed lines. */}
+      <div className={styles.clusters}>
+        {CATEGORY_ORDER.filter((category) => grouped[category].length > 0).map(
+          (category) => (
+            <div key={category} className={styles.cluster}>
+              <span className={styles.clusterLabel}>
+                {CATEGORY_LABELS[category]}
+              </span>
+              <div className={styles.clusterNodes}>
+                {grouped[category].map(renderNode)}
+              </div>
+            </div>
+          ),
+        )}
+      </div>
     </section>
   );
 };

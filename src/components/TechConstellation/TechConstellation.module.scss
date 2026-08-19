@@ -39,13 +39,48 @@ $glow-opacity-hover: 0.35;
   color: rgba($white, 0.5);
 }
 
-.nodes {
+.clusters {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cluster {
+  position: relative;
+}
+
+.clusterLabel {
+  display: block;
+  font-family: $mono-font;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba($white, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+.clusterNodes {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  max-width: 1100px;
-  margin: 0 auto;
+  gap: 0;
+}
+
+// Within-cluster dashed connectors between sibling node cards.
+.clusterNodes .node:not(:last-child) {
+  position: relative;
+  margin-right: 1.5rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -1.5rem;
+    width: 1.5rem;
+    border-top: 1px dashed rgba($neon-cyan, 0.3);
+  }
 }
 
 .node {
@@ -85,4 +120,10 @@ $glow-opacity-hover: 0.35;
   font-size: 0.65rem;
   color: rgba($white, 0.45);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .techConstellation {
+    padding: 2.55rem 1rem;
+  }
 }
