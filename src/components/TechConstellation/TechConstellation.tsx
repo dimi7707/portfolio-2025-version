@@ -69,6 +69,13 @@ const TechConstellation = ({
           ),
         )}
       </div>
+
+      {/* Mobile: single vertical chain, ordered by category. */}
+      <div className={styles.mobileChain}>
+        {CATEGORY_ORDER.flatMap((category) => grouped[category]).map(
+          renderNode,
+        )}
+      </div>
     </section>
   );
 };

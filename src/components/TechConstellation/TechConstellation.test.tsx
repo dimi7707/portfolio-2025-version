@@ -48,8 +48,11 @@ describe("TechConstellation Component Interface", () => {
           nodes={fullNodeList}
         />,
       );
+      // The desktop cluster layout and the mobile chain layout both render
+      // in the DOM simultaneously (toggled via CSS media query), so each
+      // node name appears more than once — assert presence, not uniqueness.
       fullNodeList.forEach((node) => {
-        expect(screen.getByText(node.name)).toBeInTheDocument();
+        expect(screen.getAllByText(node.name).length).toBeGreaterThan(0);
       });
     });
   });
