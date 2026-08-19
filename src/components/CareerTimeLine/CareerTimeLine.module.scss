@@ -92,6 +92,31 @@ $shadow-cyan: rgba(34, 211, 238, 0.2);
   }
 }
 
+// Compact card modifier: used for description-less entries, alone or paired
+.compact {
+  padding: 1rem;
+
+  .cardHeader {
+    margin-bottom: 1rem;
+  }
+
+  .cardBody {
+    gap: 0.5rem;
+  }
+}
+
+// Wrapper that lets up to two compact cards share a single grid cell
+.compactPairSlot {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+
+  .card {
+    flex: 1;
+  }
+}
+
 // Card header
 .cardHeader {
   display: flex;

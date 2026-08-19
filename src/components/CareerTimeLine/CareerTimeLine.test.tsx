@@ -90,6 +90,146 @@ describe("CareerTimeLine Component Interface", () => {
   });
 });
 
+describe("Compact Card Rendering (description-less experiences)", () => {
+  const fullExperience = (company: string): Experience => ({
+    company,
+    position: "Senior Developer",
+    period: "Mar 2023 - Jun 2025",
+    description: "Led development team",
+    technologies: ["React", "TypeScript"],
+    achievements: ["Shipped major feature"],
+    companyLogo: "/logo.png",
+  });
+
+  const compactExperience = (
+    company: string,
+    technologies: string[] = ["PHP", "MySQL"],
+  ): Experience => ({
+    company,
+    position: "Full Stack Developer",
+    period: "Jun 2018 - Sep 2019",
+    technologies,
+  });
+
+  describe("4.1: Description-less experience omits description block", () => {
+    it("should not render a description paragraph for a compact experience", () => {
+      const { container } = render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[compactExperience("CompactCo")]}
+        />,
+      );
+      expect(screen.getByText("CompactCo")).toBeInTheDocument();
+      const descriptionBlock = container.querySelector(
+        '[class*="description"]',
+      );
+      expect(descriptionBlock).not.toBeInTheDocument();
+    });
+  });
+
+  describe("4.2: Description-less experience omits achievements block", () => {
+    it("should not render achievements heading or list for a compact experience", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[compactExperience("CompactCo")]}
+        />,
+      );
+      expect(screen.queryByText("Logros")).not.toBeInTheDocument();
+    });
+  });
+
+  describe("4.3: Description-less experience still renders technologies", () => {
+    it("should render technology tags for a compact experience", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[compactExperience("CompactCo", ["Python", "Bootstrap"])]}
+        />,
+      );
+      expect(screen.getByText("Python")).toBeInTheDocument();
+      expect(screen.getByText("Bootstrap")).toBeInTheDocument();
+    });
+  });
+
+  describe("4.4: Two consecutive compact experiences share one grid slot", () => {
+    it("should render both compact experiences inside one shared paired-slot container", () => {
+      const { container } = render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[
+            compactExperience("CorpBid"),
+            compactExperience("Coinimp"),
+          ]}
+        />,
+      );
+      expect(screen.getByText("CorpBid")).toBeInTheDocument();
+      expect(screen.getByText("Coinimp")).toBeInTheDocument();
+
+      const pairedSlot = container.querySelector('[class*="compactPairSlot"]');
+      expect(pairedSlot).toBeInTheDocument();
+      expect(pairedSlot).toHaveTextContent("CorpBid");
+      expect(pairedSlot).toHaveTextContent("Coinimp");
+    });
+  });
+
+  describe("4.5: Unpaired compact experience surrounded by full experiences renders alone", () => {
+    it("should not place a lone compact experience inside a paired-slot container", () => {
+      const { container } = render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[
+            fullExperience("FullBefore"),
+            compactExperience("LonelyCompact"),
+            fullExperience("FullAfter"),
+          ]}
+        />,
+      );
+      expect(screen.getByText("LonelyCompact")).toBeInTheDocument();
+      const pairedSlot = container.querySelector('[class*="compactPairSlot"]');
+      expect(pairedSlot).not.toBeInTheDocument();
+    });
+  });
+
+  describe("4.6: Three consecutive compact experiences pair the first two, leaving the third alone", () => {
+    it("should group first two into one paired slot and render the third separately", () => {
+      const { container } = render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[
+            compactExperience("First"),
+            compactExperience("Second"),
+            compactExperience("Third"),
+          ]}
+        />,
+      );
+
+      const pairedSlots = container.querySelectorAll(
+        '[class*="compactPairSlot"]',
+      );
+      expect(pairedSlots).toHaveLength(1);
+      expect(pairedSlots[0]).toHaveTextContent("First");
+      expect(pairedSlots[0]).toHaveTextContent("Second");
+      expect(pairedSlots[0]).not.toHaveTextContent("Third");
+      expect(screen.getByText("Third")).toBeInTheDocument();
+    });
+  });
+
+  describe("4.7: Compact card preserves accessibility semantics", () => {
+    it("should render compact cards with role=article and tabIndex 0", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          experiences={[compactExperience("CompactCo")]}
+        />,
+      );
+      const article = screen.getByRole("article");
+      expect(article).toBeInTheDocument();
+      expect(article).toHaveAttribute("tabIndex", "0");
+    });
+  });
+});
+
 describe("Company Badge Display Logic", () => {
   describe("3.1: Badge displays company logo when companyLogo prop exists", () => {
     it("should display company logo image when companyLogo is provided", () => {

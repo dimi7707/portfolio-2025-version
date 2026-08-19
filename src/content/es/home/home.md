@@ -64,7 +64,7 @@ careerTimeLine:
   
     - company: "KUBO SAS"
       position: "Full Stack Developer"
-      period: "Sep 2019 - Sep 2020"
+      period: "Sep 2019 - Dic 2020"
       description: "Full Stack Developer construyendo soluciones móvil-web end-to-end, diseñando e implementando APIs REST con Node.js (Express) y PHP (Laravel, CodeIgniter) para intercambio seguro de datos. Creé aplicaciones administrativas backoffice completas usando Vue.js (Nuxt) y React, proporcionando a los stakeholders dashboards, reportes y capacidades de configuración. Integré socket.io para funcionalidades en tiempo real incluyendo chat en vivo y notificaciones instantáneas."
       technologies: ["TypeScript", "PHP", "Laravel - Codeigniter", "Vue.js - Nuxt", "React", "Node.js - Express", "Socket.io" ]
       companyLogo: "/images/logo-kubo.png"
@@ -72,6 +72,26 @@ careerTimeLine:
         - "Arquitecté e implementé múltiples APIs REST escalables que mejoraron significativamente la estabilidad y rendimiento para integraciones móvil-web."
         - "Implementé funcionalidades de comunicación en tiempo real usando socket.io, habilitando capacidades interactivas como chat en vivo y notificaciones push instantáneas."
         - "Construí plataformas backoffice completas que empoderaron a los clientes con control autónomo total sobre sus aplicaciones móviles mediante interfaces intuitivas en Vue.js (Nuxt) y React." 
+
+    - company: "CORPBID"
+      position: "Desarrollador Full Stack"
+      period: "Jun 2018 - Sep 2019"
+      technologies: ["PHP", "CodeIgniter", "Laravel", "MySQL", "jQuery", "Vue.js", "Polymer Library"]
+
+    - company: "Coinimp.com / ABC Hosting"
+      position: "Desarrollador Full Stack"
+      period: "Abr 2017 - May 2018"
+      technologies: ["Python", "PHP", "jQuery", "Vue.js", "Bootstrap"]
+
+    - company: "Energía y Movilidad"
+      position: "Desarrollador de Software (Medio tiempo)"
+      period: "Jun 2016 - Feb 2017"
+      technologies: ["PHP", "WordPress", "JavaScript", "jQuery"]
+
+    - company: "PATROCINARTE.NET"
+      position: "Desarrollador de Software"
+      period: "Jun 2015 - Ago 2016"
+      technologies: ["PHP", "JavaScript", "jQuery"]
 
 downloadCv:
   title: "Descarga mi CV"

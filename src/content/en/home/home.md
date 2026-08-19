@@ -64,7 +64,7 @@ careerTimeLine:
     
     - company: "KUBO SAS"
       position: "Full stack developer"
-      period: "Sep 2019 - Sep 2020"
+      period: "Sep 2019 - Dec 2020"
       description: "Full Stack Developer building end-to-end mobile-web solutions, designing and implementing REST APIs with Node.js (Express) and PHP (Laravel, CodeIgniter) for secure data exchange. Created comprehensive admin back-office applications using Vue.js (Nuxt) and React, providing stakeholders with dashboards, reporting, and configuration capabilities. Integrated socket.io for real-time features including live chat and instant notifications."
       technologies: ["TypeScript", "PHP", "Laravel - Codeigniter",  "Vue.js - Nuxt", "React", "Node.js - Express", "Socket.io" ]
       companyLogo: "/images/logo-kubo.png"
@@ -72,6 +72,26 @@ careerTimeLine:
         - "Architected and deployed multiple scalable REST APIs that significantly improved stability and performance for mobile-web integrations."
         - "Implemented real-time communication features using socket.io, enabling interactive capabilities like live chat and instant push notifications."
         - "Built comprehensive backoffice platforms that empowered clients with full autonomous control over their mobile applications through intuitive Vue.js (Nuxt) and React interfaces."
+
+    - company: "CORPBID"
+      position: "Full Stack Developer"
+      period: "Jun 2018 - Sep 2019"
+      technologies: ["PHP", "CodeIgniter", "Laravel", "MySQL", "jQuery", "Vue.js", "Polymer Library"]
+
+    - company: "Coinimp.com / ABC Hosting"
+      position: "Full Stack Developer"
+      period: "Apr 2017 - May 2018"
+      technologies: ["Python", "PHP", "jQuery", "Vue.js", "Bootstrap"]
+
+    - company: "Energía y Movilidad"
+      position: "Software Developer (Part-time)"
+      period: "Jun 2016 - Feb 2017"
+      technologies: ["PHP", "WordPress", "JavaScript", "jQuery"]
+
+    - company: "PATROCINARTE.NET"
+      position: "Software Developer"
+      period: "Jun 2015 - Aug 2016"
+      technologies: ["PHP", "JavaScript", "jQuery"]
 
 downloadCv:
   title: "Download my Resume"
