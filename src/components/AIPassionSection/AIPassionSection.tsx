@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiOpenai, SiGithubcopilot, SiAnthropic } from "react-icons/si";
@@ -19,18 +19,12 @@ import styles from "./AIPassionSection.module.scss";
 interface AIPassionSectionProps {
   title: string;
   description: string;
-  tools: string[];
 }
 
-const AIPassionSection = ({
-  title,
-  description,
-  tools,
-}: AIPassionSectionProps) => {
+const AIPassionSection = ({ title, description }: AIPassionSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const toolsRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const iconsRef = useRef<HTMLDivElement>(null);
 
@@ -62,20 +56,6 @@ const AIPassionSection = ({
           duration: 1,
           delay: 0.3,
           ease: "power3.out",
-        });
-
-        // Animate tools
-        gsap.from(toolsRef.current?.children || [], {
-          scrollTrigger: {
-            trigger: toolsRef.current,
-            start: "top 85%",
-          },
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          delay: 0.6,
-          ease: "power2.out",
         });
 
         // Animate floating particles
@@ -218,14 +198,6 @@ const AIPassionSection = ({
           <p className={styles.description} ref={descriptionRef}>
             {description}
           </p>
-
-          <div className={styles.tools} ref={toolsRef}>
-            {/*tools.map((tool, index) => (
-              <span key={index} className={styles.tool}>
-                {tool}
-              </span>
-            ))*/}
-          </div>
         </div>
       </div>
     </section>
