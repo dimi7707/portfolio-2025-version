@@ -49,6 +49,8 @@ techConstellation:
 
 careerTimeLine:
   titleSection: "Experiencia profesional"
+  achievementsLabel: "Logros"
+  technologiesLabel: "Tecnologías"
   experiences:
     - company: "Cafeto Software / Apptega"
       position: "Full Stack Developer"
