@@ -2,6 +2,11 @@ import React, { useMemo } from "react";
 import styles from "./TechConstellation.module.scss";
 import { getIconForTech } from "./iconMap";
 import { groupByCategory } from "./groupByCategory";
+import {
+  NODE_POSITIONS,
+  DEFAULT_POSITION,
+  CONNECTIONS,
+} from "./constellationLayout";
 import type { TechConstellationCategory, TechConstellationNode } from "./types";
 
 interface TechConstellationProps {
@@ -18,20 +23,15 @@ const CATEGORY_ORDER: TechConstellationCategory[] = [
   "testing",
 ];
 
-const CATEGORY_LABELS: Record<TechConstellationCategory, string> = {
-  languages: "Languages",
-  frameworks: "Frameworks",
-  data: "Data",
-  infra: "Infra / Cloud",
-  testing: "QA & Testing",
-};
-
-// Single place node markup is built — both the desktop cluster layout and
+// Single place node markup is built — both the desktop scatter canvas and
 // the mobile chain layout call this instead of duplicating node JSX.
-const renderNode = (node: TechConstellationNode) => {
+const renderNode = (
+  node: TechConstellationNode,
+  style?: React.CSSProperties,
+) => {
   const Icon = getIconForTech(node.name);
   return (
-    <div key={node.name} className={styles.node} tabIndex={0}>
+    <div key={node.name} className={styles.node} style={style} tabIndex={0}>
       <Icon className={styles.nodeIcon} aria-hidden="true" />
       <span className={styles.nodeName}>{node.name}</span>
       {node.note && <span className={styles.nodeNote}>{node.note}</span>}
@@ -55,27 +55,44 @@ const TechConstellation = ({
         <p className={styles.subtitle}>{subtitle}</p>
       </div>
 
-      {/* Desktop: nodes grouped into category clusters, connected within
-          each cluster by dashed lines. */}
-      <div className={styles.clusters}>
-        {CATEGORY_ORDER.filter((category) => grouped[category].length > 0).map(
-          (category) => (
-            <div key={category} className={styles.cluster}>
-              <span className={styles.clusterLabel}>
-                {CATEGORY_LABELS[category]}
-              </span>
-              <div className={styles.clusterNodes}>
-                {grouped[category].map(renderNode)}
-              </div>
-            </div>
-          ),
-        )}
+      {/* Desktop: nodes scattered across a hand-placed star-map layout,
+          connected by dashed lines — deliberately not grouped by category. */}
+      <div className={styles.scatterCanvas}>
+        <svg
+          className={styles.scatterSvg}
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {CONNECTIONS.map(([from, to]) => {
+            const a = NODE_POSITIONS[from];
+            const b = NODE_POSITIONS[to];
+            if (!a || !b) return null;
+            return (
+              <line
+                key={`${from}-${to}`}
+                x1={a.x}
+                y1={a.y}
+                x2={b.x}
+                y2={b.y}
+                className={styles.connectorLine}
+              />
+            );
+          })}
+        </svg>
+        {nodes.map((node) => {
+          const position = NODE_POSITIONS[node.name] ?? DEFAULT_POSITION;
+          return renderNode(node, {
+            left: `${position.x}%`,
+            top: `${position.y}%`,
+          });
+        })}
       </div>
 
-      {/* Mobile: single vertical chain, ordered by category. */}
+      {/* Mobile: two-column grid, ordered by category. */}
       <div className={styles.mobileChain}>
-        {CATEGORY_ORDER.flatMap((category) => grouped[category]).map(
-          renderNode,
+        {CATEGORY_ORDER.flatMap((category) => grouped[category]).map((node) =>
+          renderNode(node),
         )}
       </div>
     </section>
