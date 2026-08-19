@@ -2,6 +2,8 @@ import { z } from "astro:content";
 
 const careerTimeLineSchema = z.object({
   titleSection: z.string().optional(),
+  achievementsLabel: z.string(),
+  technologiesLabel: z.string(),
   experiences: z.array(
     z.object({
       company: z.string(),
