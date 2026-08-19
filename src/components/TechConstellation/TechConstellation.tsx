@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./TechConstellation.module.scss";
 import { getIconForTech } from "./iconMap";
 import { groupByCategory } from "./groupByCategory";
@@ -44,7 +44,9 @@ const TechConstellation = ({
   subtitle,
   nodes,
 }: TechConstellationProps) => {
-  const grouped = groupByCategory(nodes);
+  // `nodes` is static per page render (sourced from content collections),
+  // so avoid recomputing the grouping on every re-render.
+  const grouped = useMemo(() => groupByCategory(nodes), [nodes]);
 
   return (
     <section className={styles.techConstellation}>
