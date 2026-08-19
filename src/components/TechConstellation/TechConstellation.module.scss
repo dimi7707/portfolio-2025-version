@@ -1,32 +1,77 @@
 @use "../../styles/variables" as *;
 
+// Cyber-Terminal Executive identity tokens, matching AIPassionSection.module.scss
+// (see openspec/changes/refresh-home-sections/design.md).
+$neon-cyan: $primary; // #00fff7
+$surface-base: #050505;
+$surface-elevation-1: #141416;
+$surface-elevation-2: #1c1c1f;
+$mono-font: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Consolas,
+  monospace;
+
 .techConstellation {
   position: relative;
+  padding: 5.1rem 2rem;
+  background: $surface-base;
 }
 
 .header {
   text-align: center;
+  margin-bottom: 3rem;
 }
 
 .title {
+  font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+  font-weight: 700;
+  color: $white;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
+  font-family: $mono-font;
+  font-size: 0.85rem;
+  color: rgba($white, 0.5);
 }
 
 .nodes {
   display: flex;
   flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 110px;
+  padding: 1.25rem 1rem;
+  background: $surface-elevation-1;
+  border: 1px solid $surface-elevation-2;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 12px rgba($neon-cyan, 0.12);
+  transition: box-shadow 0.3s ease;
 }
 
 .nodeIcon {
+  // Fixed cyan at all times, per design decision — no neutral resting state.
+  color: $neon-cyan;
+  font-size: 2rem;
 }
 
 .nodeName {
+  font-family: $mono-font;
+  font-size: 0.8rem;
+  color: rgba($white, 0.85);
+  text-align: center;
 }
 
 .nodeNote {
+  font-family: $mono-font;
+  font-size: 0.65rem;
+  color: rgba($white, 0.45);
+  text-align: center;
 }
