@@ -12,9 +12,7 @@ describe("AIPassionSection Component Interface", () => {
           description="I don't just use AI tools — I orchestrate them."
         />,
       );
-      expect(
-        screen.getByText("AI-Native Development"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("AI-Native Development")).toBeInTheDocument();
       expect(
         screen.getByText("I don't just use AI tools — I orchestrate them."),
       ).toBeInTheDocument();
@@ -24,9 +22,7 @@ describe("AIPassionSection Component Interface", () => {
   describe("1.2: Component renders without crashing with an empty description", () => {
     it("should render the title even when description is an empty string", () => {
       render(<AIPassionSection title="AI-Native Development" description="" />);
-      expect(
-        screen.getByText("AI-Native Development"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("AI-Native Development")).toBeInTheDocument();
     });
   });
 

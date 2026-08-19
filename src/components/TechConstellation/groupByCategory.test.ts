@@ -13,10 +13,7 @@ describe("groupByCategory", () => {
 
       const grouped = groupByCategory(nodes);
 
-      expect(grouped.languages.map((n) => n.name)).toEqual([
-        "Python",
-        "PHP",
-      ]);
+      expect(grouped.languages.map((n) => n.name)).toEqual(["Python", "PHP"]);
       expect(grouped.frameworks.map((n) => n.name)).toEqual(["React"]);
     });
   });

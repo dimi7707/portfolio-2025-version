@@ -23,7 +23,10 @@ interface Experiences {
 
 type Slot =
   | { type: "full"; experience: Experience }
-  | { type: "compactPair"; experiences: [Experience] | [Experience, Experience] };
+  | {
+      type: "compactPair";
+      experiences: [Experience] | [Experience, Experience];
+    };
 
 const isCompact = (exp: Experience) => !exp.description;
 

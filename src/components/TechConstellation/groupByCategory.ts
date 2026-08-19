@@ -8,7 +8,10 @@ const KNOWN_CATEGORIES: TechConstellationCategory[] = [
   "testing",
 ];
 
-export type GroupedTechNodes = Record<TechConstellationCategory | "other", TechConstellationNode[]>;
+export type GroupedTechNodes = Record<
+  TechConstellationCategory | "other",
+  TechConstellationNode[]
+>;
 
 const isKnownCategory = (
   category: string,

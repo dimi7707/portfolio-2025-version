@@ -144,7 +144,9 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
-          experiences={[compactExperience("CompactCo", ["Python", "Bootstrap"])]}
+          experiences={[
+            compactExperience("CompactCo", ["Python", "Bootstrap"]),
+          ]}
         />,
       );
       expect(screen.getByText("Python")).toBeInTheDocument();
