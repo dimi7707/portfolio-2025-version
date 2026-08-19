@@ -39,6 +39,10 @@ $glow-opacity-hover: 0.35;
   color: rgba($white, 0.5);
 }
 
+// Clusters are stacked along a dashed vertical "spine", each connecting to it
+// via a short stub. Since languages, frameworks, data, infra and testing all
+// sit along the same spine, adjacent clusters (languages↔frameworks,
+// data↔infra) read as connected without needing per-pair coordinate math.
 .clusters {
   position: relative;
   display: flex;
@@ -46,10 +50,29 @@ $glow-opacity-hover: 0.35;
   gap: 2.5rem;
   max-width: 900px;
   margin: 0 auto;
+  padding-left: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    border-left: 1px dashed rgba($neon-cyan, 0.3);
+  }
 }
 
 .cluster {
   position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    top: 1.5rem;
+    width: 2rem;
+    border-top: 1px dashed rgba($neon-cyan, 0.3);
+  }
 }
 
 .clusterLabel {
