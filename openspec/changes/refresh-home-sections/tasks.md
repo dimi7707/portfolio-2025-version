@@ -10,7 +10,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 - [x] 1.6 Replace the `techStackCarousel` block with a `techConstellation` block in `src/content/es/home/home.md` (translated title/subtitle, same 15 nodes/categories).
 - [x] 1.7 ~~Delete `src/schemas/components/techStackCarouselSchema.ts`~~ — **kept**: discovered `aboutSchema.ts` also imports it for the About page's own (separate, currently-unrendered) `techStackCarousel` content field, unrelated to the home page. Deleting it would break the About collection's schema, which is out of scope for this change (see design.md Non-Goals). `home`'s schema/index wiring now exports both `techStackCarouselSchema` (for About) and `techConstellationSchema` (for Home) side by side.
 - [x] 1.8 Update `careerTimeLineSchema.ts`: add `achievementsLabel: string` and `technologiesLabel: string` to the schema (top-level, alongside `titleSection`).
-- [ ] 1.9 Add `achievementsLabel: "Achievements"` and `technologiesLabel: "Technologies"` to the `careerTimeLine` block in `src/content/en/home/home.md`.
+- [x] 1.9 Add `achievementsLabel: "Achievements"` and `technologiesLabel: "Technologies"` to the `careerTimeLine` block in `src/content/en/home/home.md`.
 - [ ] 1.10 Add `achievementsLabel: "Logros"` and `technologiesLabel: "Tecnologías"` to the `careerTimeLine` block in `src/content/es/home/home.md`.
 
 ## 2. AIPassionSection Refresh
