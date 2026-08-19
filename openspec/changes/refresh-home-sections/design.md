@@ -54,7 +54,14 @@ techConstellation:
 
 **Icon color is fixed cyan, always** (`$primary`/neon-cyan) — no neutral resting state. Hover only intensifies the existing glow (larger blur/opacity), it does not change hue, scale, or position, per explicit user direction ("siempre en cian... pequeñísimo o muy leve efecto").
 
-**Layout — category clusters over hand-placed coordinates or radial simulation:**
+**Layout — superseded during implementation: hand-placed scatter, not category clusters.** The original plan below (category-cluster boxes with a shared dashed "spine") was actually built, but live visual QA against the mockups (task 3.13) showed it read as a grouped list/spreadsheet, not a constellation. Per explicit user direction ("puedes ignorar el hecho de tener que agrupar las tecnologías por clasificación"), it was replaced with:
+
+- **Desktop**: `constellationLayout.ts` hand-places all 15 nodes on a 5-column × 3-row jittered grid (small ±jitter per node, node order shuffled across the grid so it doesn't read as a grid), scaled to the canvas via percentage coordinates matched 1:1 against an SVG `viewBox="0 0 100 100"` with `preserveAspectRatio="none"`. The grid guarantees minimum spacing so no two nodes overlap regardless of jitter. Category is no longer visually represented on desktop at all — `groupByCategory` is unused there.
+- **Connector lines are sparse, not category-scoped**: a curated list of 10 node-name pairs (not all 15×14 possible pairs, and not restricted to same-category pairs) — density was tuned down twice after visual review (first from a fully-connected ~21-edge graph, which looked cluttered, down to 10, which every node still touches at least once).
+- **Mobile**: superseded from "single vertical chain with connector lines" to a **two-column grid** with smaller cards (smaller icon/name font sizes) — requested specifically to reduce scroll length on phones. Connector lines were dropped on mobile entirely since a linear "chain" line doesn't map cleanly onto a 2-column grid; `groupByCategory` is still used there, only to order the grid (not to group it visually).
+
+The original category-cluster-box design this replaced is kept below for historical context (why clusters were considered first), but does not reflect the shipped implementation:
+
 | Category | Nodes | Count |
 |---|---|---|
 | Languages | Python, PHP, JavaScript, TypeScript, C# | 5 |
@@ -63,7 +70,7 @@ techConstellation:
 | Infra/Cloud | Docker, AWS | 2 |
 | Testing | Testing (combined) | 1 |
 
-Desktop groups each category into a visual cluster (CSS grid/flex per cluster, clusters positioned across the section) with dashed SVG/CSS connector lines drawn within a cluster and a few cross-cluster lines (e.g. languages↔frameworks, data↔infra) to preserve the "constellation" read from the mockups without needing per-node manual coordinates for 15 items. Mobile collapses to the single vertical connected chain shown in the second mockup, ordered by category. This avoids both the fragility of hand-tuned absolute positions at 15-node scale and the added complexity/non-determinism of a radial or force-directed layout.
+~~Desktop groups each category into a visual cluster (CSS grid/flex per cluster, clusters positioned across the section) with dashed SVG/CSS connector lines drawn within a cluster and a few cross-cluster lines (e.g. languages↔frameworks, data↔infra)... Mobile collapses to the single vertical connected chain shown in the second mockup, ordered by category.~~
 
 ### 4. `TechStackCarousel.tsx` and `/public/tech-icons/*.svg` are deleted; `techStackCarouselSchema.ts` is not
 Nothing renders the carousel component (`AboutPage.astro`'s usage is already commented out) or the icon SVGs once `TechConstellation` ships, so those are deleted. **Correction discovered during implementation**: `techStackCarouselSchema.ts` itself is *not* deleted — `aboutSchema.ts` independently imports it for the About page's own `techStackCarousel` content field (title + technologies list), which is unrelated to the home page's carousel and out of scope for this change (see Non-Goals). `src/schemas/index.ts` now exports both `techStackCarouselSchema` (consumed by `aboutSchema`) and the new `techConstellationSchema` (consumed by `homeSchema`) side by side. `AboutPage.astro`'s dead *component* import is still removed in the same change so the build doesn't reference the deleted `.tsx` module.
@@ -76,7 +83,7 @@ Add `achievementsLabel` and `technologiesLabel` (strings) to `careerTimeLineSche
 
 ## Risks / Trade-offs
 
-- **[Risk] Category-cluster layout still needs real CSS authoring per breakpoint** (cluster positions, connector-line paths) → **Mitigation**: tasks.md scopes this as its own step with the two mockups as the visual reference; connector lines can start as a small fixed set (within-cluster only) and cross-cluster lines added once the base layout is confirmed visually, rather than blocking on a perfect first pass.
+- **[Risk] Hand-placed scatter coordinates can overlap or look cluttered without a real browser check** → **Materialized during implementation, twice**: the first coordinate set overlapped (Testing/C#) — fixed by moving to an explicit spacing-guaranteed grid+jitter scheme; the first connector set (~21 edges) looked cluttered — fixed by trimming to 10. Both were caught via the scratch-route visual verification in task 3.13, not assumed correct upfront — confirms the mitigation this risk originally called for (verify visually, don't block on a perfect first pass) was the right call.
 - **[Risk] Not every technology has a polished Simple Icons brand glyph (e.g. C#, generic "Testing")** → **Mitigation**: fallback order (Simple Icons → DevIcons/Tabler → generic glyph) is defined in this doc so task execution doesn't stall on a missing icon; since all icons render in fixed cyan, mismatched brand-color fidelity isn't a visual concern.
 - **[Risk] Removing `aiPassion.tools` and replacing `techStackCarousel` are schema-breaking for existing content** → **Mitigation**: both locale `home.md` files are updated in the same change as the schema, so there's no intermediate broken state; this is a single-repo content collection, not a public API, so no external consumers are affected.
 - **[Risk] Deleting `/public/tech-icons/*.svg` could be a wider blast radius if something outside grep's reach references them** → **Mitigation**: tasks.md includes an explicit re-grep for `tech-icons/` across `src/` and `public/` right before deletion, not just at design time.
