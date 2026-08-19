@@ -9,6 +9,12 @@ $surface-elevation-2: #1c1c1f;
 $mono-font: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Consolas,
   monospace;
 
+// Hover only intensifies the glow — never color, scale, or position.
+$glow-blur-rest: 12px;
+$glow-opacity-rest: 0.12;
+$glow-blur-hover: 24px;
+$glow-opacity-hover: 0.35;
+
 .techConstellation {
   position: relative;
   padding: 5.1rem 2rem;
@@ -52,8 +58,13 @@ $mono-font: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Consolas,
   background: $surface-elevation-1;
   border: 1px solid $surface-elevation-2;
   border-radius: 0.75rem;
-  box-shadow: 0 0 12px rgba($neon-cyan, 0.12);
+  box-shadow: 0 0 $glow-blur-rest rgba($neon-cyan, $glow-opacity-rest);
   transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 $glow-blur-hover rgba($neon-cyan, $glow-opacity-hover);
+  }
 }
 
 .nodeIcon {
