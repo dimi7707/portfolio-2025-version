@@ -8,9 +8,8 @@ hero:
   imageAlt: "Foto de perfil de Dimitri Avila"
 
 aiPassion:
-  title: "Mi Pasión por la IA"
-  description: "Tengo una verdadera pasión por la IA. Creo firmemente que no es solo el futuro, sino el presente del desarrollo. Son herramientas increíbles que potencian nuestras capacidades y mejoran la calidad de lo que construimos. En mi día a día trabajo con Claude Code, Cursor IA, integraciones MCP, Warp Terminal y siempre estoy explorando nuevas herramientas y aprendiendo más sobre este ecosistema."
-  tools: ["Claude Code", "Cursor IA", "MCP Integrations", "Warp Terminal", "GitHub Copilot", "ChatGPT", "Midjourney", "Runway ML"]
+  title: "Desarrollo AI-Native"
+  description: "No solo uso herramientas de IA: las orquesto. En 2026, la verdadera ventaja no está en escribir código más rápido, sino en saber delegar intención, supervisar agentes autónomos y validar sus resultados con criterio propio. Mi stack diario incluye Claude Code, Cursor IA e integraciones MCP funcionando junto a Warp Terminal, lo que me permite pasar de dar prompts para tareas puntuales a coordinar flujos de trabajo de múltiples pasos y múltiples archivos. Trato la IA como una colaboradora genuina dentro del ciclo de desarrollo — no como un atajo, sino como un multiplicador de fuerza que exige el mismo rigor, revisión y ownership que cualquier otra decisión de ingeniería."
 
 techStackCarousel:
   title: "Tecnologías que Domino"
