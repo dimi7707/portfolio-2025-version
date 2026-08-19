@@ -5,6 +5,9 @@
 $neon-cyan: $primary; // #00fff7
 $neon-cyan-alt: #00daf3;
 $neon-blue: #2979ff;
+$surface-base: #050505;
+$surface-elevation-1: #141416;
+$surface-elevation-2: #1c1c1f;
 
 .aiPassionSection {
   position: relative;
@@ -14,7 +17,7 @@ $neon-blue: #2979ff;
   justify-content: center;
   padding: 5.1rem 2rem;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: linear-gradient(135deg, $surface-base 0%, $surface-elevation-1 50%, $surface-elevation-2 100%);
   --gradient-rotation: 0deg;
 
   &::before {
