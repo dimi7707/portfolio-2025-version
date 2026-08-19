@@ -8,9 +8,8 @@ hero:
   imageAlt: "Profile picture of Dimitri Avila"
 
 aiPassion:
-  title: "My Passion for AI"
-  description: "I have a true passion for AI. I firmly believe it's not just the future, but the present of development. These are incredible tools that enhance our capabilities and improve the quality of what we build. In my daily work, I use Claude Code, Cursor AI, MCP integrations, Warp Terminal, and I'm always exploring new tools and learning more about this ecosystem."
-  tools: ["Claude Code", "Cursor AI", "MCP Integrations", "Warp Terminal", "GitHub Copilot", "ChatGPT", "Midjourney", "Runway ML"]
+  title: "AI-Native Development"
+  description: "I don't just use AI tools — I orchestrate them. In 2026, the real edge isn't writing code faster; it's knowing how to delegate intent, supervise autonomous agents, and validate their output with judgment. My daily stack includes Claude Code, Cursor AI, and MCP integrations running alongside Warp Terminal, letting me move from single-task prompting to coordinating multi-step, multi-file workflows. I treat AI as a genuine collaborator in the SDLC — not a shortcut, but a force multiplier that demands the same rigor, review, and ownership as any other engineering decision."
 
 techStackCarousel:
   title: "Technologies I Master"

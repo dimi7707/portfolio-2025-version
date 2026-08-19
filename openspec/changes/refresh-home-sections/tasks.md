@@ -3,7 +3,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 ## 1. Content & Schemas (no tests — these are data/typing changes verified by Zod at build time)
 
 - [x] 1.1 Update `aiPassionSchema.ts`: remove the `tools` field.
-- [ ] 1.2 Update `aiPassion` block in `src/content/en/home/home.md`: set `title` to "AI-Native Development" and `description` to the user-supplied 2026 copy; remove `tools`.
+- [x] 1.2 Update `aiPassion` block in `src/content/en/home/home.md`: set `title` to "AI-Native Development" and `description` to the user-supplied 2026 copy; remove `tools`.
 - [ ] 1.3 Update `aiPassion` block in `src/content/es/home/home.md`: add a natural (non-literal) Spanish translation of the same title/description; remove `tools`.
 - [ ] 1.4 Create `src/schemas/components/techConstellationSchema.ts` defining `title`, `subtitle`, and `nodes: { name: string; category: "languages" | "frameworks" | "data" | "infra" | "testing"; note?: string }[]`. 🔎 *Docs*: add a one-line comment on `category` explaining it drives cluster grouping/connector rendering, since that's not obvious from the field name alone.
 - [ ] 1.5 Replace the `techStackCarousel` block with a `techConstellation` block in `src/content/en/home/home.md` (title "The Tech Constellation", subtitle "Mapping the core stack architecture.", and the 15 nodes with categories per design.md's cluster table, including the combined "Testing" node with `note: "Jest / Cypress / PHPUnit"`).
