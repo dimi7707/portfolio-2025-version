@@ -50,7 +50,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 
 ## 5. Remove TechStackCarousel
 
-- [ ] 5.1 Re-search the codebase (`src/`, `public/`) for any remaining reference to `TechStackCarousel`, `techStackCarouselSchema`, or `tech-icons/` before deleting anything.
+- [x] 5.1 Re-searched the codebase (`src/`, `public/`) for `TechStackCarousel`/`tech-icons/`. Confirmed the only remaining references are internal to `TechStackCarousel.tsx` itself (nothing external imports it anymore). `techStackCarouselSchema` is intentionally kept alive for `aboutSchema.ts` — see 1.7's correction.
 - [ ] 5.2 Delete `src/components/TechStackCarousel/` (component + module SCSS).
 - [ ] 5.3 Delete `/public/tech-icons/*.svg` and the now-empty `tech-icons/` directory.
 - [ ] 5.4 Confirm the production build (`bun build`) succeeds with no missing-module or missing-asset errors.
