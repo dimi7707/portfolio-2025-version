@@ -26,10 +26,7 @@ const CATEGORY_ORDER: TechConstellationCategory[] = [
 
 // Single place node markup is built — both the desktop scatter canvas and
 // the mobile chain layout call this instead of duplicating node JSX.
-const renderNode = (
-  node: TechConstellationNode,
-  style?: CSSProperties,
-) => {
+const renderNode = (node: TechConstellationNode, style?: CSSProperties) => {
   const Icon = getIconForTech(node.name);
   return (
     // Keeps keyboard users in parity with mouse hover: tabIndex lets them
