@@ -53,7 +53,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 - [x] 5.1 Re-searched the codebase (`src/`, `public/`) for `TechStackCarousel`/`tech-icons/`. Confirmed the only remaining references are internal to `TechStackCarousel.tsx` itself (nothing external imports it anymore). `techStackCarouselSchema` is intentionally kept alive for `aboutSchema.ts` — see 1.7's correction.
 - [x] 5.2 Deleted `src/components/TechStackCarousel/` (component + module SCSS).
 - [x] 5.3 Re-confirmed zero references to `tech-icons` in `src/` (now that the component is deleted too, not just unwired), then deleted `/public/tech-icons/` entirely (15 SVG files).
-- [ ] 5.4 Confirm the production build (`bun build`) succeeds with no missing-module or missing-asset errors.
+- [x] 5.4 Confirmed the production build (`bun run build`) succeeds: 8 pages generated, no missing-module or missing-asset errors. One pre-existing unrelated warning noted (`TbAtom` imported but unused in `AIPassionSection.tsx`, present before this change — out of scope here).
 
 ## 6. CareerTimeLine Label Fix
 
