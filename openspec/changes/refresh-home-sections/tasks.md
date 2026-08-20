@@ -61,7 +61,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 - [x] 6.2 🟢 GREEN — Updated the `Experiences` props interface in `CareerTimeLine.tsx` to require `achievementsLabel`/`technologiesLabel`. Replaced the hardcoded `<h5>Logros</h5>` with `<h5>{achievementsLabel}</h5>` and `<h5>Tecnologías</h5>` with `<h5>{technologiesLabel}</h5>`. All 23 tests pass (ts-jest is transpile-only, so pre-existing render calls missing the now-required props didn't fail here even though they're not type-correct — addressed in 6.3).
 - [x] 6.3 🔵 REFACTOR — Added a shared `defaultLabels` constant and spread it (`{...defaultLabels}`) into all 17 pre-existing render calls in `CareerTimeLine.test.tsx`, avoiding repeating the two literal strings at every call site. Also corrected test 4.2's assertion from `queryByText("Logros")` to `queryByText("Achievements")` — checking for the old hardcoded Spanish string stopped being a meaningful regression guard once the render call passes English labels. All 23 tests green.
 - [x] 6.4 Confirmed no change needed — `HomePage.astro:27` already does `<CareerTimeLine {...careerTimeLine} client:load />`, and `careerTimeLine` content now includes `achievementsLabel`/`technologiesLabel` (from 1.9/1.10), so they flow through automatically via the existing spread.
-- [ ] 6.5 Visually verify `/en/` shows "Achievements"/"Technologies" and `/es/` shows "Logros"/"Tecnologías" on career timeline cards.
+- [x] 6.5 Verified via `curl` against the running dev server: `/en/` contains "Achievements" and "Technologies", `/es/` contains "Logros" and "Tecnologías" — the original bug (Spanish leaking into English) is fixed.
 
 ## 7. Final Verification
 
