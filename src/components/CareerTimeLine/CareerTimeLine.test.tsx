@@ -90,6 +90,65 @@ describe("CareerTimeLine Component Interface", () => {
   });
 });
 
+describe("Locale-driven Section Labels", () => {
+  describe("5.1: Achievements heading uses the achievementsLabel prop", () => {
+    it("should render the achievementsLabel text as the achievements heading", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          achievementsLabel="Achievements"
+          technologiesLabel="Technologies"
+          experiences={mockExperiences}
+        />,
+      );
+      expect(screen.getByText("Achievements")).toBeInTheDocument();
+    });
+  });
+
+  describe("5.2: Technologies heading uses the technologiesLabel prop", () => {
+    it("should render the technologiesLabel text as the technologies heading", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          achievementsLabel="Achievements"
+          technologiesLabel="Technologies"
+          experiences={mockExperiences}
+        />,
+      );
+      expect(screen.getByText("Technologies")).toBeInTheDocument();
+    });
+  });
+
+  describe("5.3: English labels never render the hardcoded Spanish strings", () => {
+    it("should not render 'Logros' or 'Tecnologías' when English labels are passed", () => {
+      const { container } = render(
+        <CareerTimeLine
+          titleSection="Career"
+          achievementsLabel="Achievements"
+          technologiesLabel="Technologies"
+          experiences={mockExperiences}
+        />,
+      );
+      expect(container.textContent).not.toMatch(/Logros|Tecnologías/);
+    });
+  });
+
+  describe("5.4: Spanish labels render Spanish headings", () => {
+    it("should render 'Logros' and 'Tecnologías' when Spanish labels are passed", () => {
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          achievementsLabel="Logros"
+          technologiesLabel="Tecnologías"
+          experiences={mockExperiences}
+        />,
+      );
+      expect(screen.getByText("Logros")).toBeInTheDocument();
+      expect(screen.getByText("Tecnologías")).toBeInTheDocument();
+    });
+  });
+});
+
 describe("Compact Card Rendering (description-less experiences)", () => {
   const fullExperience = (company: string): Experience => ({
     company,
