@@ -28,9 +28,9 @@ describe("getIconForTech", () => {
         "Testing",
       ];
 
-      knownNames.forEach((name) => {
+      for (const name of knownNames) {
         expect(getIconForTech(name)).toBeDefined();
-      });
+      }
     });
   });
 

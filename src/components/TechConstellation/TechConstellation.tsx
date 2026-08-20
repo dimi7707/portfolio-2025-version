@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import type { CSSProperties } from "react";
 import styles from "./TechConstellation.module.scss";
 import { getIconForTech } from "./iconMap";
 import { groupByCategory } from "./groupByCategory";
@@ -27,10 +28,13 @@ const CATEGORY_ORDER: TechConstellationCategory[] = [
 // the mobile chain layout call this instead of duplicating node JSX.
 const renderNode = (
   node: TechConstellationNode,
-  style?: React.CSSProperties,
+  style?: CSSProperties,
 ) => {
   const Icon = getIconForTech(node.name);
   return (
+    // Keeps keyboard users in parity with mouse hover: tabIndex lets them
+    // reach the same :focus-visible glow sighted users get on hover.
+    // biome-ignore lint/a11y/noNoninteractiveTabindex: intentional, see above
     <div key={node.name} className={styles.node} style={style} tabIndex={0}>
       <Icon className={styles.nodeIcon} aria-hidden="true" />
       <span className={styles.nodeName}>{node.name}</span>

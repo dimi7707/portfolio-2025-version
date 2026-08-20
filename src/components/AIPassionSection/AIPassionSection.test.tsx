@@ -1,4 +1,5 @@
 import React from "react";
+import type { ComponentProps } from "react";
 import { describe, it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import AIPassionSection from "./AIPassionSection";
@@ -32,7 +33,7 @@ describe("AIPassionSection Component Interface", () => {
         title: "AI-Native Development",
         description: "Copy",
         tools: ["Claude Code", "Cursor AI", "MCP Integrations"],
-      } as unknown as React.ComponentProps<typeof AIPassionSection>;
+      } as unknown as ComponentProps<typeof AIPassionSection>;
 
       const { container } = render(<AIPassionSection {...legacyProps} />);
       expect(screen.getByText("AI-Native Development")).toBeInTheDocument();
