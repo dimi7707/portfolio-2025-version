@@ -18,6 +18,8 @@ export interface Experience {
 
 interface Experiences {
   titleSection: string;
+  achievementsLabel: string;
+  technologiesLabel: string;
   experiences: Experience[];
 }
 
@@ -61,7 +63,12 @@ const groupExperiencesIntoSlots = (experiences: Experience[]): Slot[] => {
   return slots;
 };
 
-const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
+const CareerTimeLine = ({
+  titleSection,
+  achievementsLabel,
+  technologiesLabel,
+  experiences,
+}: Experiences) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -158,7 +165,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
 
         {exp.achievements && exp.achievements.length > 0 && (
           <div className={styles.achievements}>
-            <h5>Logros</h5>
+            <h5>{achievementsLabel}</h5>
             <ul>
               {exp.achievements.map((achievement, achIndex) => (
                 <li key={achIndex}>{achievement}</li>
@@ -168,7 +175,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
         )}
 
         <div className={styles.technologies}>
-          <h5>Tecnologías</h5>
+          <h5>{technologiesLabel}</h5>
           <div className={styles.techTags}>
             {exp.technologies.map((tech, techIndex) => (
               <span key={techIndex} className={styles.techTag}>
