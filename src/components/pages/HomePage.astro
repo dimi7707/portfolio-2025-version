@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero/Hero.tsx";
 import AIPassionSection from "../../components/AIPassionSection/AIPassionSection.tsx";
 import CareerTimeLine from "../../components/CareerTimeLine/CareerTimeLine.tsx";
-import TechStackCarousel from "../../components/TechStackCarousel/TechStackCarousel.tsx";
+import TechConstellation from "../../components/TechConstellation/TechConstellation.tsx";
 import DownloadCv from "../../components/DownloadCv/DownloadCv.tsx";
 import LenisWrapper from "../../components/LenisWrapper/LenisWraper.tsx";
 import { getCollection } from "astro:content";
@@ -13,9 +13,8 @@ const homeCollection = lang === "en" ? "enHomeCollection" : "esHomeCollection";
 
 const home = await getCollection(homeCollection);
 
-const { hero, aiPassion, careerTimeLine, downloadCv, techStackCarousel } =
+const { hero, aiPassion, careerTimeLine, downloadCv, techConstellation } =
   home[0].data;
-console.log(aiPassion);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -24,7 +23,7 @@ console.log(aiPassion);
   <LenisWrapper client:load />
   <Hero {...hero} client:load />
   <AIPassionSection {...aiPassion} client:load />
-  <TechStackCarousel title={techStackCarousel.title} client:load backgroundAlternative={true} />
+  <TechConstellation {...techConstellation} client:load />
   <CareerTimeLine {...careerTimeLine} client:load />
   <DownloadCv {...downloadCv} client:load />
 </Layout>

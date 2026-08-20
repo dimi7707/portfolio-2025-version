@@ -44,7 +44,7 @@ Implementation follows Red → Green → Refactor per unit of behavior: write th
 
 ## 4. Wire TechConstellation Into Pages
 
-- [ ] 4.1 In `src/components/pages/HomePage.astro`, replace the `TechStackCarousel` import and usage with `TechConstellation`, passing `title`, `subtitle`, and `nodes` from `techConstellation` content.
+- [x] 4.1 In `src/components/pages/HomePage.astro`, replaced the `TechStackCarousel` import and usage with `TechConstellation`, spreading the `techConstellation` content block (`title`, `subtitle`, `nodes`). Also removed a stray leftover `console.log(aiPassion)` debug statement on the same destructuring line.
 - [ ] 4.2 In `src/components/pages/AboutPage.astro`, remove the dead (commented-out) `TechStackCarousel` import and usage.
 - [ ] 4.3 Run the dev server and confirm the home page renders `TechConstellation` (not the carousel) on both `/en/` and `/es/`, and that `AboutPage.astro` still builds without the removed import.
 
