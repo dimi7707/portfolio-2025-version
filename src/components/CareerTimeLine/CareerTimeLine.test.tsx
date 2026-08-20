@@ -16,10 +16,24 @@ const mockExperiences: Experience[] = [
   },
 ];
 
+// Shared default labels so every render call below satisfies the now-required
+// achievementsLabel/technologiesLabel props without repeating the two
+// literal strings at each of the ~17 call sites.
+const defaultLabels = {
+  achievementsLabel: "Achievements",
+  technologiesLabel: "Technologies",
+};
+
 describe("CareerTimeLine Component Interface", () => {
   describe("2.1: Component renders without crashing with minimal props", () => {
     it("should render without crashing", () => {
-      render(<CareerTimeLine titleSection="Career" experiences={[]} />);
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={[]}
+        />,
+      );
       expect(screen.getByText("Career")).toBeInTheDocument();
     });
   });
@@ -27,7 +41,11 @@ describe("CareerTimeLine Component Interface", () => {
   describe("2.2: Component renders title from titleSection prop", () => {
     it("should display the title from titleSection prop", () => {
       render(
-        <CareerTimeLine titleSection="My Career Journey" experiences={[]} />,
+        <CareerTimeLine
+          titleSection="My Career Journey"
+          {...defaultLabels}
+          experiences={[]}
+        />,
       );
       expect(screen.getByText("My Career Journey")).toBeInTheDocument();
     });
@@ -36,7 +54,11 @@ describe("CareerTimeLine Component Interface", () => {
   describe("2.3: Component renders correct number of cards from experiences array", () => {
     it("should render one card for one experience", () => {
       render(
-        <CareerTimeLine titleSection="Career" experiences={mockExperiences} />,
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={mockExperiences}
+        />,
       );
       expect(screen.getByText("Test Company")).toBeInTheDocument();
     });
@@ -50,6 +72,7 @@ describe("CareerTimeLine Component Interface", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={multipleExperiences}
         />,
       );
@@ -61,7 +84,13 @@ describe("CareerTimeLine Component Interface", () => {
 
   describe("2.4: Component handles empty experiences array gracefully", () => {
     it("should render without errors when experiences array is empty", () => {
-      render(<CareerTimeLine titleSection="Career" experiences={[]} />);
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={[]}
+        />,
+      );
       expect(screen.getByText("Career")).toBeInTheDocument();
       expect(screen.queryByRole("article")).not.toBeInTheDocument();
     });
@@ -82,6 +111,7 @@ describe("CareerTimeLine Component Interface", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[validExperience]}
         />,
       );
@@ -175,6 +205,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       const { container } = render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[compactExperience("CompactCo")]}
         />,
       );
@@ -191,10 +222,11 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[compactExperience("CompactCo")]}
         />,
       );
-      expect(screen.queryByText("Logros")).not.toBeInTheDocument();
+      expect(screen.queryByText("Achievements")).not.toBeInTheDocument();
     });
   });
 
@@ -203,6 +235,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[
             compactExperience("CompactCo", ["Python", "Bootstrap"]),
           ]}
@@ -218,6 +251,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       const { container } = render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[
             compactExperience("CorpBid"),
             compactExperience("Coinimp"),
@@ -239,6 +273,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       const { container } = render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[
             fullExperience("FullBefore"),
             compactExperience("LonelyCompact"),
@@ -257,6 +292,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       const { container } = render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[
             compactExperience("First"),
             compactExperience("Second"),
@@ -281,6 +317,7 @@ describe("Compact Card Rendering (description-less experiences)", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={[compactExperience("CompactCo")]}
         />,
       );
@@ -302,7 +339,11 @@ describe("Company Badge Display Logic", () => {
         },
       ];
       render(
-        <CareerTimeLine titleSection="Career" experiences={expWithLogo} />,
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={expWithLogo}
+        />,
       );
       const logoImg = screen.getByAltText(/Logo de LogoCo/i);
       expect(logoImg).toBeInTheDocument();
@@ -321,7 +362,11 @@ describe("Company Badge Display Logic", () => {
         },
       ];
       render(
-        <CareerTimeLine titleSection="Career" experiences={expWithInitials} />,
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={expWithInitials}
+        />,
       );
       expect(screen.getByText("IC")).toBeInTheDocument();
       expect(screen.queryByRole("img")).not.toBeInTheDocument();
@@ -341,6 +386,7 @@ describe("Company Badge Display Logic", () => {
       render(
         <CareerTimeLine
           titleSection="Career"
+          {...defaultLabels}
           experiences={expNoLogoOrInitials}
         />,
       );
@@ -358,7 +404,13 @@ describe("Company Badge Display Logic", () => {
           companyInitials: undefined,
         },
       ];
-      render(<CareerTimeLine titleSection="Career" experiences={exp} />);
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={exp}
+        />,
+      );
       expect(screen.getByText("KU")).toBeInTheDocument();
     });
   });
@@ -373,7 +425,13 @@ describe("Company Badge Display Logic", () => {
           companyInitials: undefined,
         },
       ];
-      render(<CareerTimeLine titleSection="Career" experiences={exp} />);
+      render(
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={exp}
+        />,
+      );
       expect(screen.getByText("SO")).toBeInTheDocument();
     });
   });
@@ -387,7 +445,11 @@ describe("Company Badge Display Logic", () => {
         },
       ];
       const { container } = render(
-        <CareerTimeLine titleSection="Career" experiences={exp} />,
+        <CareerTimeLine
+          titleSection="Career"
+          {...defaultLabels}
+          experiences={exp}
+        />,
       );
       const badge = container.querySelector('[class*="companyBadge"]');
       expect(badge).toBeInTheDocument();
