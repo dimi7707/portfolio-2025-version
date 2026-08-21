@@ -21,6 +21,17 @@ interface AIPassionSectionProps {
   description: string;
 }
 
+// Small "orchestration" graphic: a central hub (the developer) connected to
+// the AI tools/agents named in the copy — visually echoes TechConstellation's
+// node/connector language at a smaller, featured scale, standing in for a
+// literal AI photo without resorting to stock-photo robot/brain imagery.
+const orchestrationNodes = [
+  { Icon: SiAnthropic, top: 16, left: 18, label: "Claude" },
+  { Icon: TbBrandVscode, top: 16, left: 82, label: "Cursor" },
+  { Icon: TbTerminal2, top: 84, left: 16, label: "Warp" },
+  { Icon: TbNetwork, top: 84, left: 84, label: "MCP" },
+];
+
 const AIPassionSection = ({ title, description }: AIPassionSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -146,58 +157,53 @@ const AIPassionSection = ({ title, description }: AIPassionSectionProps) => {
         ))}
       </div>
 
-      {/* Neural network lines */}
-      <div className={styles.neuralNetwork}>
-        <svg className={styles.networkSvg} viewBox="0 0 1200 400">
-          <defs>
-            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgba(79, 172, 254, 0.3)" />
-              <stop offset="50%" stopColor="rgba(139, 69, 255, 0.6)" />
-              <stop offset="100%" stopColor="rgba(255, 71, 87, 0.3)" />
-            </linearGradient>
-          </defs>
-
-          {/* Animated lines connecting nodes */}
-          <path
-            d="M100,200 Q300,100 500,200 T900,200"
-            stroke="url(#lineGradient)"
-            strokeWidth="2"
-            fill="none"
-            className={styles.networkPath}
-          />
-          <path
-            d="M150,150 Q400,250 700,150 T1000,150"
-            stroke="url(#lineGradient)"
-            strokeWidth="2"
-            fill="none"
-            className={styles.networkPath}
-          />
-          <path
-            d="M200,250 Q500,50 800,250"
-            stroke="url(#lineGradient)"
-            strokeWidth="2"
-            fill="none"
-            className={styles.networkPath}
-          />
-
-          {/* Nodes */}
-          <circle cx="100" cy="200" r="6" className={styles.networkNode} />
-          <circle cx="300" cy="150" r="4" className={styles.networkNode} />
-          <circle cx="500" cy="200" r="5" className={styles.networkNode} />
-          <circle cx="700" cy="180" r="4" className={styles.networkNode} />
-          <circle cx="900" cy="200" r="6" className={styles.networkNode} />
-        </svg>
-      </div>
-
       <div className={styles.container}>
-        <div className={styles.content}>
-          <h2 className={styles.title} ref={titleRef}>
-            {title}
-          </h2>
+        <div className={styles.layout}>
+          <div className={styles.visual}>
+            <div className={styles.orchestrationFrame}>
+              <svg
+                className={styles.orchestrationSvg}
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+              >
+                {orchestrationNodes.map(({ top, left, label }) => (
+                  <line
+                    key={label}
+                    x1="50"
+                    y1="50"
+                    x2={left}
+                    y2={top}
+                    className={styles.orchestrationLine}
+                  />
+                ))}
+              </svg>
 
-          <p className={styles.description} ref={descriptionRef}>
-            {description}
-          </p>
+              <div className={`${styles.orchestrationNode} ${styles.hub}`}>
+                <TbCpu />
+              </div>
+
+              {orchestrationNodes.map(({ Icon, top, left, label }) => (
+                <div
+                  key={label}
+                  className={styles.orchestrationNode}
+                  style={{ top: `${top}%`, left: `${left}%` }}
+                  title={label}
+                >
+                  <Icon />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.textCol}>
+            <h2 className={styles.title} ref={titleRef}>
+              {title}
+            </h2>
+
+            <p className={styles.description} ref={descriptionRef}>
+              {description}
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -136,6 +136,13 @@ const CareerTimeLine = ({
     return <span className={styles.badgeInitials}>{initials}</span>;
   };
 
+  // Apptega's logo asset is a white wordmark on a transparent background,
+  // designed for a dark canvas — invisible on the light badge surface used
+  // everywhere else. Give it a dark chip so it renders the way Apptega's own
+  // site presents it, instead of trying to force a mismatched light variant.
+  const needsDarkBadge = (exp: Experience) =>
+    Boolean(exp.companyLogo?.toLowerCase().includes("apptega"));
+
   const renderCard = (exp: Experience, refIndex: number, compact: boolean) => (
     <div
       key={refIndex}
@@ -147,7 +154,15 @@ const CareerTimeLine = ({
       role="article"
     >
       <div className={styles.cardHeader}>
-        <div className={styles.companyBadge}>{getBadgeContent(exp)}</div>
+        <div
+          className={
+            needsDarkBadge(exp)
+              ? `${styles.companyBadge} ${styles.companyBadgeDark}`
+              : styles.companyBadge
+          }
+        >
+          {getBadgeContent(exp)}
+        </div>
         <div className={styles.dateBadge}>{exp.period}</div>
       </div>
 

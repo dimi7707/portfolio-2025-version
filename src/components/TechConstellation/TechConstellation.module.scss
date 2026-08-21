@@ -25,6 +25,8 @@ $glow-opacity-hover: 0.35;
 }
 
 .header {
+  position: relative;
+  z-index: 1;
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -47,6 +49,7 @@ $glow-opacity-hover: 0.35;
 // reads as a star map rather than a list.
 .scatterCanvas {
   position: relative;
+  z-index: 1;
   max-width: 1300px;
   min-height: 40rem;
   margin: 0 auto;
@@ -76,6 +79,8 @@ $glow-opacity-hover: 0.35;
 // Mobile: two-column grid (not a single chain) so the section scrolls less
 // on phones. No connector lines here — they don't map cleanly onto a grid.
 .mobileChain {
+  position: relative;
+  z-index: 1;
   display: none;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;

@@ -17,7 +17,7 @@ $surface-elevation-2: #1c1c1f;
   justify-content: center;
   padding: 5.1rem 2rem;
   overflow: hidden;
-  background: linear-gradient(135deg, $surface-base 0%, $surface-elevation-1 50%, $surface-elevation-2 100%);
+  background: linear-gradient(135deg, $surface-light-0 0%, $surface-light-1 50%, rgba($secondary-color, 0.08) 100%);
   --gradient-rotation: 0deg;
 
   &::before {
@@ -67,7 +67,7 @@ $surface-elevation-2: #1c1c1f;
 
 .backgroundIcon {
   position: absolute;
-  color: rgba(255, 255, 255, 0.08);
+  color: rgba($text-primary, 0.06);
   font-size: 2.5rem;
   transform-origin: center;
   
@@ -201,35 +201,6 @@ $surface-elevation-2: #1c1c1f;
   }
 }
 
-.neuralNetwork {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.networkSvg {
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-}
-
-.networkPath {
-  stroke-dasharray: 5, 10;
-  animation: dashFlow 3s linear infinite;
-}
-
-.networkNode {
-  fill: $neon-cyan;
-  stroke: rgba($neon-cyan, 0.5);
-  stroke-width: 2;
-  animation: nodePulse 2s infinite alternate;
-  filter: drop-shadow(0 0 5px rgba($neon-cyan, 0.7));
-}
-
 .container {
   position: relative;
   max-width: 1200px;
@@ -237,36 +208,107 @@ $surface-elevation-2: #1c1c1f;
   z-index: 3;
 }
 
-.content {
-  text-align: center;
-  padding: 2.55rem 2rem;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 12.75px 25.5px rgba(0, 0, 0, 0.3);
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg,
-      rgba($neon-cyan, 0.05) 0%,
-      rgba($neon-blue, 0.05) 50%,
-      rgba($neon-cyan-alt, 0.05) 100%);
-    border-radius: 20px;
-    z-index: -1;
+// Mirrors Hero's two-column pattern (image/text side by side), reversed:
+// visual on the left, copy on the right.
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 2.5rem;
   }
+}
+
+.visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    order: -1;
+    width: 100%;
+  }
+}
+
+// Small "orchestration" graphic standing in for a literal AI photo: a
+// central hub node connected to the tools named in the copy, echoing
+// TechConstellation's node/connector language at a featured, contained scale.
+.orchestrationFrame {
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 1 / 1;
+  background: $surface-light-0;
+  border: 1px solid $surface-light-border;
+  border-radius: 20px;
+  box-shadow: 0 12.75px 25.5px rgba($primary-dark, 0.08);
+}
+
+.orchestrationSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.orchestrationLine {
+  stroke: rgba($primary, 0.4);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.orchestrationNode {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: $surface-light-1;
+  border: 1px solid $surface-light-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: $primary;
+  box-shadow: 0 4px 10px rgba($primary-dark, 0.06);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 4px 16px rgba($primary, 0.3);
+  }
+
+  &.hub {
+    width: 78px;
+    height: 78px;
+    font-size: 2rem;
+    color: $white;
+    background: linear-gradient(135deg, $secondary-color 0%, $accent-color-text 100%);
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba($secondary-color, 0.35);
+
+    &:hover {
+      border-color: transparent;
+      box-shadow: 0 8px 20px rgba($secondary-color, 0.35);
+    }
+  }
+}
+
+.textCol {
+  flex: 1;
+  text-align: left;
 }
 
 .title {
   font-size: clamp(1.7rem, 3.4vw, 2.55rem);
   font-weight: 700;
-  background: linear-gradient(135deg, $neon-blue 0%, $neon-cyan 100%);
+  background: linear-gradient(135deg, $secondary-color 0%, $accent-color-text 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -278,8 +320,7 @@ $surface-elevation-2: #1c1c1f;
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100px;
     height: 3px;
     background: linear-gradient(90deg, $neon-blue, $neon-cyan);
@@ -290,12 +331,9 @@ $surface-elevation-2: #1c1c1f;
 .description {
   font-size: clamp(0.85rem, 1.7vw, 1.02rem);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
+  color: $text-secondary;
   margin-bottom: 1.915rem;
   max-width: 595px;
-  margin-left: auto;
-  margin-right: auto;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 // Animations
@@ -309,33 +347,15 @@ $surface-elevation-2: #1c1c1f;
   50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.2); }
 }
 
-@keyframes dashFlow {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 15; }
-}
-
-@keyframes nodePulse {
-  0% { r: 4; opacity: 0.7; }
-  100% { r: 6; opacity: 1; }
-}
-
 // Responsive
 @media (max-width: 768px) {
   .aiPassionSection {
     padding: 2.55rem 1rem;
     min-height: 44.2vh;
   }
-  
-  .content {
-    padding: 1.7rem 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .content {
-    padding: 1.275rem 1rem;
-  }
-  
   .description {
     font-size: 0.85rem;
     margin-bottom: 1.275rem;
