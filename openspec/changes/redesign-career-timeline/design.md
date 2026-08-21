@@ -117,13 +117,13 @@ gsap.fromTo(cards,
 ```
 
 ### 4. Hover Effects
-**Decision:** Multi-layered hover with scale, shadow, and border glow
+**Decision:** Multi-layered hover with scale, neutral shadow, and border color shift to cyan
 
 **Rationale:**
 - Scale provides tactile feedback
-- Shadow adds depth perception
-- Border glow (cyan) reinforces brand color
-- Combined effect feels premium and interactive
+- A neutral drop shadow (not cyan-tinted) adds depth perception without the "glow spilling into darkness" look, which only reads correctly on a dark surface — see [[lighten-home-palette]]'s `career-timeline-visual-theme` capability, which moves this section to a light background
+- Border color shift to cyan on hover reinforces brand color without relying on a glow/blur effect
+- Combined effect feels premium and interactive on a light card surface
 
 **Implementation:**
 ```scss
@@ -132,8 +132,8 @@ gsap.fromTo(cards,
 
   &:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
-    border-color: rgba(34, 211, 238, 0.6);
+    box-shadow: 0 20px 40px rgba(17, 17, 17, 0.12);
+    border-color: $primary;
   }
 }
 ```
@@ -161,20 +161,21 @@ gsap.fromTo(cards,
 4. Repeat
 
 ### 6. Color Scheme
-**Decision:** Dark theme with cyan/teal (#22d3ee) accents
+**Decision:** Light theme with cyan/teal (`$primary`) accent borders — superseded from the original dark-theme decision by [[lighten-home-palette]]
 
 **Rationale:**
-- Matches reference design screenshot
-- Cyan provides high contrast on dark background
-- Aligns with modern dev portfolio aesthetics
-- Consistent with existing portfolio color palette
+- The home page was found to read as dark-mode-heavy across three consecutive sections; this component's remaining (mostly unimplemented) styling tasks are redirected to a light theme before more dark-themed work lands, per `lighten-home-palette`'s `career-timeline-visual-theme` capability
+- Cyan is repositioned from a text/glow color to a border/accent-only color, since cyan text fails contrast on a light background
+- Aligns with the rest of the home page's light surfaces (`Hero`, `AIPassionSection`, `DownloadCv`) — `TechConstellation` remains the sole intentional dark exception
+- Still consistent with the existing portfolio color palette — no primary brand colors change, only where they're applied
 
 **Color Palette:**
-- Background: `#0f141c` (card background)
-- Border: `#1f2630` (default border)
-- Accent: `#22d3ee` (cyan for highlights)
-- Text Primary: `#e5e7eb`
-- Text Secondary: `#9ca3af`
+- Section background: `$surface-light-0` (`#ffffff`)
+- Card background: `$surface-light-1` (`#f8f9fa`)
+- Border: `$surface-light-border` (`#e2e8f0`), shifting to `$primary` on hover/focus
+- Accent: `$primary`/`#22d3ee`-family cyan (borders, tags, highlights only — never text)
+- Text Primary: `$text-primary` (`#333333`)
+- Text Secondary: `$text-secondary` (`#666666`)
 
 ## Risks / Trade-offs
 

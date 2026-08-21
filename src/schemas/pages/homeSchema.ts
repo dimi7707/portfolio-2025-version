@@ -3,14 +3,14 @@ import {
   heroSchema,
   careerTimeLineSchema,
   downloadCvSchema,
-  techStackCarouselSchema,
+  techConstellationSchema,
   aiPassionSchema,
 } from "../index";
 
 const homeSchema = z.object({
   hero: heroSchema,
   aiPassion: aiPassionSchema,
-  techStackCarousel: techStackCarouselSchema,
+  techConstellation: techConstellationSchema,
   careerTimeLine: careerTimeLineSchema,
   downloadCv: downloadCvSchema,
 });

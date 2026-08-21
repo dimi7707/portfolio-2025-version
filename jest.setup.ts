@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Mock GSAP
 const mockGsap = {
@@ -29,12 +29,12 @@ const mockScrollTrigger = {
   getById: jest.fn(),
 };
 
-jest.mock('gsap', () => ({
+jest.mock("gsap", () => ({
   __esModule: true,
   default: mockGsap,
 }));
 
-jest.mock('gsap/ScrollTrigger', () => ({
+jest.mock("gsap/ScrollTrigger", () => ({
   __esModule: true,
   ScrollTrigger: mockScrollTrigger,
 }));
@@ -51,7 +51,7 @@ global.IntersectionObserver = class IntersectionObserver {
 } as any;
 
 // Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
     matches: false,

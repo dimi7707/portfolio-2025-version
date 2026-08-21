@@ -1,0 +1,160 @@
+@use "../../styles/variables" as *;
+
+// Cyber-Terminal Executive identity tokens, matching AIPassionSection.module.scss
+// (see openspec/changes/refresh-home-sections/design.md).
+$neon-cyan: $primary; // #00fff7
+$surface-base: #050505;
+$surface-elevation-1: #141416;
+$surface-elevation-2: #1c1c1f;
+$mono-font: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Consolas,
+  monospace;
+
+// Hover only intensifies the glow — never color, scale, or position.
+$glow-blur-rest: 12px;
+$glow-opacity-rest: 0.12;
+$glow-blur-hover: 24px;
+$glow-opacity-hover: 0.35;
+
+.techConstellation {
+  position: relative;
+  padding: 5.1rem 2rem;
+  background:
+    linear-gradient(rgba($neon-cyan, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba($neon-cyan, 0.05) 1px, transparent 1px) 0 0 / 40px 40px,
+    $surface-base;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+  font-weight: 700;
+  color: $white;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: $mono-font;
+  font-size: 0.85rem;
+  color: rgba($white, 0.5);
+}
+
+// Desktop: nodes scattered across hand-placed coordinates (constellationLayout.ts),
+// connected by an SVG overlay — deliberately not grouped by category, so it
+// reads as a star map rather than a list.
+.scatterCanvas {
+  position: relative;
+  z-index: 1;
+  max-width: 1300px;
+  min-height: 40rem;
+  margin: 0 auto;
+}
+
+.scatterSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.connectorLine {
+  stroke: rgba($neon-cyan, 0.55);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.scatterCanvas .node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+// Mobile: two-column grid (not a single chain) so the section scrolls less
+// on phones. No connector lines here — they don't map cleanly onto a grid.
+.mobileChain {
+  position: relative;
+  z-index: 1;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 116px;
+  padding: 1rem 0.75rem;
+  background: $surface-elevation-1;
+  border: 1px solid $surface-elevation-2;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 $glow-blur-rest rgba($neon-cyan, $glow-opacity-rest);
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 $glow-blur-hover rgba($neon-cyan, $glow-opacity-hover);
+  }
+}
+
+.nodeIcon {
+  // Fixed cyan at all times, per design decision — no neutral resting state.
+  color: $neon-cyan;
+  font-size: 2rem;
+}
+
+.nodeName {
+  font-family: $mono-font;
+  font-size: 0.8rem;
+  color: rgba($white, 0.85);
+  text-align: center;
+}
+
+.nodeNote {
+  font-family: $mono-font;
+  font-size: 0.65rem;
+  color: rgba($white, 0.45);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .techConstellation {
+    padding: 2.55rem 1rem;
+  }
+
+  .scatterCanvas {
+    display: none;
+  }
+
+  .mobileChain {
+    display: grid;
+  }
+
+  // Smaller cards so two comfortably fit per row.
+  .mobileChain .node {
+    width: auto;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .mobileChain .nodeIcon {
+    font-size: 1.4rem;
+  }
+
+  .mobileChain .nodeName {
+    font-size: 0.7rem;
+  }
+
+  .mobileChain .nodeNote {
+    font-size: 0.55rem;
+  }
+}

@@ -8,15 +8,49 @@ hero:
   imageAlt: "Foto de perfil de Dimitri Avila"
 
 aiPassion:
-  title: "Mi Pasión por la IA"
-  description: "Tengo una verdadera pasión por la IA. Creo firmemente que no es solo el futuro, sino el presente del desarrollo. Son herramientas increíbles que potencian nuestras capacidades y mejoran la calidad de lo que construimos. En mi día a día trabajo con Claude Code, Cursor IA, integraciones MCP, Warp Terminal y siempre estoy explorando nuevas herramientas y aprendiendo más sobre este ecosistema."
-  tools: ["Claude Code", "Cursor IA", "MCP Integrations", "Warp Terminal", "GitHub Copilot", "ChatGPT", "Midjourney", "Runway ML"]
+  title: "Desarrollo AI-Native"
+  description: "No solo uso herramientas de IA: las orquesto. En 2026, la verdadera ventaja no está en escribir código más rápido, sino en saber delegar intención, supervisar agentes autónomos y validar sus resultados con criterio propio. Mi stack diario incluye Claude Code, Cursor IA e integraciones MCP funcionando junto a Warp Terminal, lo que me permite pasar de dar prompts para tareas puntuales a coordinar flujos de trabajo de múltiples pasos y múltiples archivos. Trato la IA como una colaboradora genuina dentro del ciclo de desarrollo — no como un atajo, sino como un multiplicador de fuerza que exige el mismo rigor, revisión y ownership que cualquier otra decisión de ingeniería."
 
-techStackCarousel:
-  title: "Tecnologías que Domino"
+techConstellation:
+  title: "La Constelación Tecnológica"
+  subtitle: "Mapeando la arquitectura core del stack."
+  nodes:
+    - name: "Python"
+      category: "languages"
+    - name: "PHP"
+      category: "languages"
+    - name: "JavaScript"
+      category: "languages"
+    - name: "TypeScript"
+      category: "languages"
+    - name: "C#"
+      category: "languages"
+    - name: "React"
+      category: "frameworks"
+    - name: "Vue.js"
+      category: "frameworks"
+    - name: "Astro"
+      category: "frameworks"
+    - name: "PostgreSQL"
+      category: "data"
+    - name: "MySQL"
+      category: "data"
+    - name: "Redis"
+      category: "data"
+    - name: "MongoDB"
+      category: "data"
+    - name: "Docker"
+      category: "infra"
+    - name: "AWS"
+      category: "infra"
+    - name: "Testing"
+      category: "testing"
+      note: "Jest / Cypress / PHPUnit"
 
 careerTimeLine:
   titleSection: "Experiencia profesional"
+  achievementsLabel: "Logros"
+  technologiesLabel: "Tecnologías"
   experiences:
     - company: "Cafeto Software / Apptega"
       position: "Full Stack Developer"
@@ -64,7 +98,7 @@ careerTimeLine:
   
     - company: "KUBO SAS"
       position: "Full Stack Developer"
-      period: "Sep 2019 - Sep 2020"
+      period: "Sep 2019 - Dic 2020"
       description: "Full Stack Developer construyendo soluciones móvil-web end-to-end, diseñando e implementando APIs REST con Node.js (Express) y PHP (Laravel, CodeIgniter) para intercambio seguro de datos. Creé aplicaciones administrativas backoffice completas usando Vue.js (Nuxt) y React, proporcionando a los stakeholders dashboards, reportes y capacidades de configuración. Integré socket.io para funcionalidades en tiempo real incluyendo chat en vivo y notificaciones instantáneas."
       technologies: ["TypeScript", "PHP", "Laravel - Codeigniter", "Vue.js - Nuxt", "React", "Node.js - Express", "Socket.io" ]
       companyLogo: "/images/logo-kubo.png"
@@ -72,6 +106,26 @@ careerTimeLine:
         - "Arquitecté e implementé múltiples APIs REST escalables que mejoraron significativamente la estabilidad y rendimiento para integraciones móvil-web."
         - "Implementé funcionalidades de comunicación en tiempo real usando socket.io, habilitando capacidades interactivas como chat en vivo y notificaciones push instantáneas."
         - "Construí plataformas backoffice completas que empoderaron a los clientes con control autónomo total sobre sus aplicaciones móviles mediante interfaces intuitivas en Vue.js (Nuxt) y React." 
+
+    - company: "CORPBID"
+      position: "Desarrollador Full Stack"
+      period: "Jun 2018 - Sep 2019"
+      technologies: ["PHP", "CodeIgniter", "Laravel", "MySQL", "jQuery", "Vue.js", "Polymer Library"]
+
+    - company: "Coinimp.com / ABC Hosting"
+      position: "Desarrollador Full Stack"
+      period: "Abr 2017 - May 2018"
+      technologies: ["Python", "PHP", "jQuery", "Vue.js", "Bootstrap"]
+
+    - company: "Energía y Movilidad"
+      position: "Desarrollador de Software (Medio tiempo)"
+      period: "Jun 2016 - Feb 2017"
+      technologies: ["PHP", "WordPress", "JavaScript", "jQuery"]
+
+    - company: "PATROCINARTE.NET"
+      position: "Desarrollador de Software"
+      period: "Jun 2015 - Ago 2016"
+      technologies: ["PHP", "JavaScript", "jQuery"]
 
 downloadCv:
   title: "Descarga mi CV"

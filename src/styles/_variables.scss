@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary-dark: #111111;
 $white: #ffffff;
 $primary: #00fff7;
@@ -9,3 +11,16 @@ $text-secondary: #666666;
 // Accent colors
 $accent-color: #00fff7;
 $secondary-color: #0066ff;
+
+// Text-safe variant of $accent-color: cyan at full brightness fails WCAG AA
+// contrast as a text color on light surfaces, so headline/gradient text
+// anchors on this darkened variant instead (~4.8:1 against $surface-light-0).
+$accent-color-text: color.scale($accent-color, $lightness: -50%);
+
+// Light surface scale — mirrors the dark $surface-base/elevation tokens
+// used locally by AIPassionSection/TechConstellation, centralized here
+// since the light scale has multiple consumers from the start.
+$surface-light-0: #ffffff;
+$surface-light-1: #f8f9fa;
+$surface-light-border: #e2e8f0;
+$accent-wash: linear-gradient(45deg, rgba($accent-color, 0.1), rgba($secondary-color, 0.1));

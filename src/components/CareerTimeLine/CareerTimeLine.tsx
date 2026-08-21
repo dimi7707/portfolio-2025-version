@@ -9,19 +9,66 @@ export interface Experience {
   company: string;
   position: string;
   period: string;
-  description: string;
+  description?: string;
   technologies: string[];
-  achievements: string[];
+  achievements?: string[];
   companyLogo?: string;
   companyInitials?: string;
 }
 
 interface Experiences {
   titleSection: string;
+  achievementsLabel: string;
+  technologiesLabel: string;
   experiences: Experience[];
 }
 
-const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
+type Slot =
+  | { type: "full"; experience: Experience }
+  | {
+      type: "compactPair";
+      experiences: [Experience] | [Experience, Experience];
+    };
+
+const isCompact = (exp: Experience) => !exp.description;
+
+/**
+ * Groups experiences into render slots: experiences with a description each get
+ * their own full-card slot, while up to two consecutive description-less
+ * experiences share a single compact-pair slot (one grid cell).
+ */
+const groupExperiencesIntoSlots = (experiences: Experience[]): Slot[] => {
+  const slots: Slot[] = [];
+  let i = 0;
+
+  while (i < experiences.length) {
+    const current = experiences[i];
+
+    if (!isCompact(current)) {
+      slots.push({ type: "full", experience: current });
+      i += 1;
+      continue;
+    }
+
+    const next = experiences[i + 1];
+    if (next && isCompact(next)) {
+      slots.push({ type: "compactPair", experiences: [current, next] });
+      i += 2;
+    } else {
+      slots.push({ type: "compactPair", experiences: [current] });
+      i += 1;
+    }
+  }
+
+  return slots;
+};
+
+const CareerTimeLine = ({
+  titleSection,
+  achievementsLabel,
+  technologiesLabel,
+  experiences,
+}: Experiences) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -43,7 +90,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
               trigger: `.${styles.title}`,
               start: "top 80%",
             },
-          }
+          },
         );
 
         // Cards stagger animation
@@ -62,7 +109,7 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
                 trigger: containerRef.current,
                 start: "top 80%",
               },
-            }
+            },
           );
         }
       }, containerRef);
@@ -89,62 +136,96 @@ const CareerTimeLine = ({ titleSection, experiences }: Experiences) => {
     return <span className={styles.badgeInitials}>{initials}</span>;
   };
 
+  // Apptega's logo asset is a white wordmark on a transparent background,
+  // designed for a dark canvas — invisible on the light badge surface used
+  // everywhere else. Give it a dark chip so it renders the way Apptega's own
+  // site presents it, instead of trying to force a mismatched light variant.
+  const needsDarkBadge = (exp: Experience) =>
+    Boolean(exp.companyLogo?.toLowerCase().includes("apptega"));
+
+  const renderCard = (exp: Experience, refIndex: number, compact: boolean) => (
+    <div
+      key={refIndex}
+      className={compact ? `${styles.card} ${styles.compact}` : styles.card}
+      ref={(el) => {
+        cardsRef.current[refIndex] = el;
+      }}
+      tabIndex={0}
+      role="article"
+    >
+      <div className={styles.cardHeader}>
+        <div
+          className={
+            needsDarkBadge(exp)
+              ? `${styles.companyBadge} ${styles.companyBadgeDark}`
+              : styles.companyBadge
+          }
+        >
+          {getBadgeContent(exp)}
+        </div>
+        <div className={styles.dateBadge}>{exp.period}</div>
+      </div>
+
+      <div className={styles.cardBody}>
+        <h3 className={styles.company}>{exp.company}</h3>
+        <h4 className={styles.position}>{exp.position}</h4>
+
+        {exp.description && (
+          <div className={styles.description}>
+            {exp.description.split("\n").map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        )}
+
+        {exp.achievements && exp.achievements.length > 0 && (
+          <div className={styles.achievements}>
+            <h5>{achievementsLabel}</h5>
+            <ul>
+              {exp.achievements.map((achievement, achIndex) => (
+                <li key={achIndex}>{achievement}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className={styles.technologies}>
+          <h5>{technologiesLabel}</h5>
+          <div className={styles.techTags}>
+            {exp.technologies.map((tech, techIndex) => (
+              <span key={techIndex} className={styles.techTag}>
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const slots = groupExperiencesIntoSlots(experiences);
+  let refIndex = 0;
+
   return (
     <div className={styles.careerContainer} ref={containerRef}>
       <h2 className={styles.title}>{titleSection}</h2>
 
       <div className={styles.careerGrid}>
-        {experiences.map((exp, index) => (
-          <div
-            key={index}
-            className={styles.card}
-            ref={(el) => {
-              cardsRef.current[index] = el;
-            }}
-            tabIndex={0}
-            role="article"
-          >
-            <div className={styles.cardHeader}>
-              <div className={styles.companyBadge}>
-                {getBadgeContent(exp)}
-              </div>
-              <div className={styles.dateBadge}>{exp.period}</div>
+        {slots.map((slot, slotIndex) => {
+          if (slot.type === "full") {
+            return renderCard(slot.experience, refIndex++, false);
+          }
+
+          if (slot.experiences.length === 1) {
+            return renderCard(slot.experiences[0], refIndex++, true);
+          }
+
+          return (
+            <div key={slotIndex} className={styles.compactPairSlot}>
+              {slot.experiences.map((exp) => renderCard(exp, refIndex++, true))}
             </div>
-
-            <div className={styles.cardBody}>
-              <h3 className={styles.company}>{exp.company}</h3>
-              <h4 className={styles.position}>{exp.position}</h4>
-
-              <div className={styles.description}>
-                {exp.description.split("\n").map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
-                ))}
-              </div>
-
-              {exp.achievements.length > 0 && (
-                <div className={styles.achievements}>
-                  <h5>Logros</h5>
-                  <ul>
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex}>{achievement}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className={styles.technologies}>
-                <h5>Tecnologías</h5>
-                <div className={styles.techTags}>
-                  {exp.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className={styles.techTag}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

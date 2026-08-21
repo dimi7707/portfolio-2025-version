@@ -43,7 +43,7 @@
 ## 6. Date Range Badge Implementation (TDD - Green Phase)
 
 - [ ] 6.1 Implement date badge container in card header
-- [ ] 6.2 Add date badge SCSS styles (pill shape, cyan text, dark background)
+- [ ] 6.2 Add date badge SCSS styles (pill shape, dark text, light background with cyan border accent)
 - [ ] 6.3 Position date badge with CSS (absolute/flexbox)
 - [ ] 6.4 Verify all date badge tests pass
 - [ ] 6.5 Refactor date badge styles for reusability
@@ -69,14 +69,14 @@
 
 ## 9. Card Styling Tests (TDD - Red Phase)
 
-- [ ] 9.1 Write test: Card has dark background and border colors
+- [ ] 9.1 Write test: Card has light background and cyan-accented border colors
 - [ ] 9.2 Write test: Card has rounded corners
 - [ ] 9.3 Write test: Technology tags have pill styling
 - [ ] 9.4 Write test: Typography hierarchy (h3 for company, h4 for position, h5 for sections)
 
 ## 10. Card Styling Implementation (TDD - Green Phase)
 
-- [ ] 10.1 Add card base styles (background #0f141c, border #1f2630, border-radius)
+- [ ] 10.1 Add card base styles (background $surface-light-1, border $surface-light-border, border-radius)
 - [ ] 10.2 Add company header styles with flexbox layout
 - [ ] 10.3 Add technology tag pill styles
 - [ ] 10.4 Add typography styles with correct hierarchy
@@ -87,7 +87,7 @@
 ## 11. Hover Animation Tests (TDD - Red Phase)
 
 - [ ] 11.1 Write test: Hover CSS class applies transform scale(1.02) and translateY(-8px)
-- [ ] 11.2 Write test: Hover CSS class applies enhanced shadow with cyan tint
+- [ ] 11.2 Write test: Hover CSS class applies a deeper neutral shadow (no cyan tint)
 - [ ] 11.3 Write test: Hover CSS class applies border color change to cyan
 - [ ] 11.4 Write test: Transition duration is 0.3s with correct easing
 - [ ] 11.5 Write test: Active state exists for touch devices
@@ -95,8 +95,8 @@
 ## 12. Hover Animation Implementation (TDD - Green Phase)
 
 - [ ] 12.1 Add hover transform styles to card
-- [ ] 12.2 Add hover shadow styles with cyan rgba(34, 211, 238, 0.2)
-- [ ] 12.3 Add hover border glow styles
+- [ ] 12.2 Add hover shadow styles with a deepened neutral drop shadow (no cyan tint)
+- [ ] 12.3 Add hover border color transition to cyan (elevation change, no glow/blur effect)
 - [ ] 12.4 Add transition with cubic-bezier(0.4, 0, 0.2, 1) easing
 - [ ] 12.5 Add :active state for touch devices
 - [ ] 12.6 Add will-change optimization hint

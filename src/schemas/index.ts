@@ -4,5 +4,6 @@ export { default as contactSectionSchema } from "./components/contactSectionSche
 export { default as aboutMeSchema } from "./components/aboutMeSchema";
 export { default as skillChartSchema } from "./components/skillChartSchema";
 export { default as techStackCarouselSchema } from "./components/techStackCarouselSchema";
+export { default as techConstellationSchema } from "./components/techConstellationSchema";
 export { default as downloadCvSchema } from "./components/downloadCvSchema";
 export { default as aiPassionSchema } from "./components/aiPassionSchema";
